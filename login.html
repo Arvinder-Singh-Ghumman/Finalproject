@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,32 +8,70 @@
 <body>
     
     <nav>
+
+        <!-- logo will be on the left side of the nav bar -->
         <li>logo</li>
+
+        <!-- page links will be in the center -->
         <pages>
-            <li>Home</li>
-            <li>Search <searchIcon> icon of search</searchIcon> </li>
-            <li>About</li>
-            <li>Account</li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="help.html">Help</a></li>
+            <li><input type="text" placeholder="search"> <a href="search.html"><img src="" alt="icon of search"></a>
+            </li>
         </pages>
+
+        <!-- Account info will be on the right side of the nav bar -->
+        <li><a href="login.html">Account</a></li>
+
     </nav>
 
     <main>
-        <form action="">
-            <label for="_name">Name:</label>
-            <input type="text" id="_name">
+        <div class="loginDiv">
+            <h1>LOG IN</h1>
+            <form action="">
+                <label for="_email">E-mail address:</label>
+                <input type="text" id="_email">
 
-            <label for="_phone">Phone Number:</label>
-            <input type="text" id="_phone">
+                <label for="_password">Password</label>
+                <input type="text" id="_password">
+    
+                <label for="_role">Role</label>
+                <input type="text" id="_role">
+    
+            </form>
+    
+            <button onclick="logIn()">CLICK ME</button>
 
-            <label for="_email">E-mail address:</label>
-            <input type="text" id="_email">
+            
+            <!-- make a function named displaySignUp which will display signup div and hide the login div -->
+            <p onclick="displaySignUp()">Don't have an account? Sign Up</p>
+        </div>
+        <div class="signUpDiv">
+            <h1>SIGN UP</h1>
+            <form>
 
-            <label for="_role">Role</label>
-            <input type="text" id="_role">
+                <label for="_name_">Name:</label>
+                <input type="text" id="_name_">
 
-        </form>
+                <label for="_phone_">Phone Number:</label>
+                <input type="text" id="_phone_">
 
-        <button onclick="signUp()">CLICK ME</button>
+                <label for="_email_">E-mail address:</label>
+                <input type="text" id="_email_">
+
+                <label for="_password_">Password</label>
+                <input type="text" id="_password_">
+    
+                <label for="_role">Role</label>
+                <input type="text" id="_role_">
+
+            </form>
+            <button onclick="signUp()"></button>
+
+            <!-- make a function named displayLogIn which will display login div and hide the signup div -->
+            <p onclick="displayLogIn()">Already have an account? Login</p>
+        </div>
     </main>
 
     <footer>
@@ -43,50 +80,4 @@
         <p>Date:</p>
     </footer>
 </body>
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <script src="./script.js"></script>
-</head>
-<body>
-    
-    <nav>
-        <li>logo</li>
-        <pages>
-            <li>Home</li>
-            <li>Search <searchIcon> icon of search</searchIcon> </li>
-            <li>About</li>
-            <li>Account</li>
-        </pages>
-    </nav>
-
-    <main>
-        <form action="">
-            <label for="_name">Name:</label>
-            <input type="text" id="_name">
-
-            <label for="_phone">Phone Number:</label>
-            <input type="text" id="_phone">
-
-            <label for="_email">E-mail address:</label>
-            <input type="text" id="_email">
-
-            <label for="_role">Role</label>
-            <input type="text" id="_role">
-
-        </form>
-        <button onclick="signUp()">CLICK ME</button>
-    </main>
-
-    <footer>
-        <p>copyright info</p>
-        <p>extra links about the site</p>
-        <p>Date</p>
-    </footer>
-</body>
->>>>>>> 39fba57d76495809104dcb1aadc58e161fefdae5
 </html>
