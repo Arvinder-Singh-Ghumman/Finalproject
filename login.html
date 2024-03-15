@@ -27,51 +27,64 @@
     </nav>
 
     <main>
-        <div class="loginDiv">
+        <div id="loginDiv" style="display:none">
+
             <h1>LOG IN</h1>
+
             <form action="">
                 <label for="_email">E-mail address:</label>
-                <input type="text" id="_email">
+                <input type="email" id="_email" inputmode="email" required>
 
                 <label for="_password">Password</label>
-                <input type="text" id="_password">
+                <input type="password" id="_password" required>
     
-                <label for="_role">Role</label>
-                <input type="text" id="_role">
-    
-            </form>
-    
-            <button onclick="logIn()">CLICK ME</button>
+                <label>
+                    Role
+                    <label>
+                        <input type="radio" name="role" value="teacher" required> Teacher
+                    </label>
+                    <label>
+                        <input type="radio" name="role" value="student" required> Student
+                    </label>
+                </label>
 
-            
-            <!-- make a function named displaySignUp which will display signup div and hide the login div -->
+                <input type="submit" value="Login">
+            </form>
+
             <p onclick="displaySignUp()">Don't have an account? Sign Up</p>
         </div>
-        <div class="signUpDiv">
+        <div id="signUpDiv">
             <h1>SIGN UP</h1>
-            <form>
 
+            <form>
                 <label for="_name_">Name:</label>
-                <input type="text" id="_name_">
+                <input type="text" id="_name_" required>
 
                 <label for="_phone_">Phone Number:</label>
-                <input type="text" id="_phone_">
+                <input type="tel" id="_phone_" inputmode="numeric" required>
 
                 <label for="_email_">E-mail address:</label>
-                <input type="text" id="_email_">
+                <input type="email" id="_email_" required>
 
                 <label for="_password_">Password</label>
-                <input type="text" id="_password_">
+                <input type="password" id="_password_" required>
     
-                <label for="_role">Role</label>
-                <input type="text" id="_role_">
+                <label>
+                    Role
+                    <label>
+                        <input type="radio" name="role" value="teacher" required> Teacher
+                    </label>
+                    <label>
+                        <input type="radio" name="role" value="student" required> Student
+                    </label>
+                </label>
 
+                 <button onclick="signUp()">Sign Up</button>
             </form>
-            <button onclick="signUp()"></button>
 
-            <!-- make a function named displayLogIn which will display login div and hide the signup div -->
-            <p onclick="displayLogIn()">Already have an account? Login</p>
+            <p id="displayLogIn" onclick="displayLogIn()">Already have an account? Login</p>
         </div>
+
     </main>
 
     <footer>
@@ -79,5 +92,7 @@
         <p>extra links about the site</p>
         <p>Date:</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
