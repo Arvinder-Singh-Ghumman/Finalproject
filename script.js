@@ -50,4 +50,6 @@ function displaySignUp(){
 
   signUpPage.style.display = "block";
   loginPage.style.display = "none";
+
 }
+
