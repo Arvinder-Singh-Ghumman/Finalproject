@@ -39,11 +39,11 @@
 
             <form action="">
                 <h1>LOG IN</h1>
-                <p> <label for="_email">E-mail address: </label>
-                    <input type="email" id="_email" inputmode="email" required>
+                <p> <label for="_email" >E-mail address: </label>
+                    <input type="email" id="_email" inputmode="email" autocomplete="email" required>
                 </p>
                 <p> <label for="_password">Password: </label>
-                    <input type="password" id="_password" required>
+                    <input type="password" id="_password" autocomplete="password" required>
                 </p><br>
                 <label>
                     
@@ -57,7 +57,7 @@
                     </label>
             
                 <br>
-                <br><br><input type="submit" value="Login"> </input>
+                <br><br><input onclick="LogIn()" type="submit" value="Login"> </input>
             </form>
 
             <p id="signup" onclick="displaySignUp()">Don't have an account? Sign Up</p>
@@ -75,10 +75,10 @@
                     <input type="tel" id="_phone_" inputmode="numeric" required>
                 </p>
                 <p><label for="_email_">E-mail address:</label>
-                    <input type="email" id="_email_" required></p>
+                    <input type="email" id="_email_" autocomplete="new-email" required></p>
 
                 <p><label for="_password_">Password</label>
-                    <input type="password" id="_password_" required>
+                    <input type="password" id="_password_" autocomplete="new-password" required>
                 </p>
                 <br>
 
@@ -106,6 +106,8 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="users.js"></script>
+    <!-- <script src="users.js"></script> -->
 </body>
 
 </html>

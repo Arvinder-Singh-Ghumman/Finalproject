@@ -4,7 +4,7 @@ var users = [
     "password":"abc",
     "phone": "+1234567890",
     "email": "john.doe@example.com",
-    "role": "user"
+    "role": "owner"
   },
   {
     "name": "Jane Smith",
