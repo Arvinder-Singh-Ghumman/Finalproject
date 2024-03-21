@@ -1,4 +1,4 @@
-export var userDatabase = [
+var users = [
   {
     "name": "John Doe",
     "password":"abc",
@@ -35,5 +35,3 @@ export var userDatabase = [
     "role": "admin"
   }
 ]
-
-
