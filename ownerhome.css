@@ -1,8 +1,7 @@
 *{
-    margin: 0;
-    padding: 0;
+    padding: 0%;
+    margin: 0%;
 }
-
 nav{
     display: flex;
     justify-content: space-between;    
@@ -14,32 +13,27 @@ nav{
     padding: 0 2vw;
     
 }
-nav li{
-    list-style-type: none;
-}
-nav li a{
-    text-decoration: none;
-    color: black
-}
-
 pages{
     width: 40vw;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+}
+nav li{
+    list-style: none;
+}
+nav li a{
+    text-decoration: none;
+    color: black;
 }
 
 pages li a{
     text-decoration: none;
-    
+    color: black
 }
 
 pages li{
-    list-style-type: none;
-
-}
-nav li input{
-    height: 25px;
+    list-style: none;
 }
 
 nav li img{
@@ -51,16 +45,13 @@ nav li img{
     top: 5px;
 }
 
-main{
-    margin-left: 7vw;
-}
-
-main p{
-    font-size: large;
-}
-
-main {
-    width: 85%;
+main h1{
+    padding: 0.5vw;
+    display: inline-block;
+    background-color:rgb(235, 235, 192);
+    color: rgb(25, 107, 179);
+    margin-left: 40vw;
+    margin-top: 4vw;
 }
 
 footer{
@@ -72,10 +63,5 @@ footer{
     align-items: center;
     padding: 0 7vw;
     font-size: large ;
-}
-
-#loginPopUp{
-
-    padding: 0.5vw;
 }
 
