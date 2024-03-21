@@ -5,7 +5,6 @@ var listings=[
         ownerContactNumber: "987",
         ownerAddress: "xyz, XYZ, Country",
         pinCode: "B5D 0D20",
-        
     }
 ]
-//hehe
+//hello
