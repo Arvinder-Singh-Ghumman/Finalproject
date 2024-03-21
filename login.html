@@ -7,105 +7,95 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="login.css">
-</head>
-
-<body>
-
+  </head>
+  
+  <body>
+    
     <nav>
-
-        <!-- logo will be on the left side of the nav bar -->
-        <li>logo</li>
-
-        <!-- page links will be in the center -->
-        <pages>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+      
+      <!-- logo will be on the left side of the nav bar -->
+      <li>logo</li>
+      
+      <!-- page links will be in the center -->
+      <pages>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
             <li><input type="text" placeholder="search"> <a href="search.html"><img src="search.png"
-                        alt="icon of search"></a>
+              alt="icon of search"></a>
             </li>
-        </pages>
-
-        <!-- Account info will be on the right side of the nav bar -->
-        <li><a href="login.html">Account</a></li>
-
-    </nav>
-
-    <main>
-
-        <div id="loginDiv" style="display:none">
-
-
-
-            <form action="">
-                <h1>LOG IN</h1>
-                <p> <label for="_email">E-mail address: </label>
-                    <input type="email" id="_email" inputmode="email" required>
-                </p>
-                <p> <label for="_password">Password: </label>
-                    <input type="password" id="_password" required>
-                </p><br>
-                <label>
-                    
-                    <p>
-                        
-                        <label for="CoWorker">CoWorker</label>
-                    <input type="radio" name="role" value="Co - worker" required>
-                 <label for="Owner">Owner</label>
-                        <input type="radio" name="role" value="Owner" required> 
-                    </p>
-                    </label>
+          </pages>
+          
+          <!-- Account info will be on the right side of the nav bar -->
+          <li><a href="login.html">Account</a></li>
+          
+        </nav>
+        
+        <main>
+          
+          <div id="loginDiv" style="display:none">
             
-                <br>
-                <br><br><input type="submit" value="Login"> </input>
+            
+            
+            <form id="login">
+              <h1>LOG IN</h1>
+              <p> <label for="_email">E-mail address: </label>
+                <input type="email" id="_email" inputmode="email" required>
+              </p>
+              <p> <label for="_password">Password: </label>
+                <input type="password" id="_password" required>
+              </p><br>              
+              <br>
+              <br><br><input type="submit" value="Login">
             </form>
-
-            <p id="signup" onclick="displaySignUp()">Don't have an account? Sign Up</p>
-        </div>
+            
+            <p id="displaySignup">Don't have an account? Sign Up</p>
+          </div>
         <div id="signUpDiv">
-
-            <form action="">
-                <h1>Sign Up</h1>
-                <p>
-                    <label for="_name_">Name:</label>
-                    <input type="text" id="_name_" required>
-                </p>
-
-                <p> <label for="_phone_">Phone Number:</label>
-                    <input type="tel" id="_phone_" inputmode="numeric" required>
-                </p>
-                <p><label for="_email_">E-mail address:</label>
-                    <input type="email" id="_email_" required></p>
-
-                <p><label for="_password_">Password</label>
-                    <input type="password" id="_password_" required>
-                </p>
-                <br>
-
-                <p>
-                    <label for="owner">Owner</label>
-                    <input type="radio" name="role" value="teacher" id="owner" required>
-                    <label for="co-worker">CoWorker</label>
-                    <input type="radio" name="role" value="student" id="co-worker" required>
-                </p>
-
-                <br><br><button class="signupbutton" onclick="signUp()">Sign Up</button>
-            </form>
-
-            <p id="login" onclick="displayLogIn()">Already have an account?
-                Login
+          
+          <form id="signup">
+            <h1>Sign Up</h1>
+            <p>
+              <label for="_name_">Name:</label>
+              <input type="text" id="_name_" required>
             </p>
-        </div>
+            
+            <p> <label for="_phone_">Phone Number:</label>
+              <input type="tel" id="_phone_" inputmode="numeric" required>
+            </p>
+            <p><label for="_email_">E-mail address:</label>
+              <input type="email" id="_email_" required></p>
+              
+              <p><label for="_password_">Password</label>
+                <input type="password" id="_password_" required>
+              </p>
+              <br>
+              
+                <p>
+                  <label for="owner">Owner</label>
+                  <input type="radio" name="role" value="owner" id="owner" required>
+                  <label for="co-worker">CoWorker</label>
+                  <input type="radio" name="role" value="coWorker" id="co-worker" required>
+                </p>
+                
+                <br><br><input type="submit" value="Sign up">
+              </form>
+              
+              <p id="Displaylogin">Already have an account?
+                Login
+              </p>
+            </div>
 
-    </main>
+          </main>
 
-    <footer>
-        <p>copyright info</p>
-        <p>extra links about the site</p>
-        <p>Date:</p>
-    </footer>
-
-    <script src="script.js"></script>
-</body>
-
-</html>
+          <footer>
+            <p>copyright info</p>
+            <p>extra links about the site</p>
+            <p>Date:</p>
+          </footer>
+          
+          
+        </body>
+        <script src="script.js" type="module"></script>
+        
+        </html>
