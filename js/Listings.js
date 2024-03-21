@@ -22,6 +22,10 @@ function filterListings() {
     seats = undefined,
     rate = undefined;
 
+    maxPrice = document.querySelector("#maxPrice").value;
+    minPrice = document.querySelector("#minPrice").value;
+    seats = document.querySelector("seatingCapacity").value;
+    rate = document.querySelector('input[name="rating"]:checked').value;
   //on the basis of name
   sortedList===null?
     sortedList.includes(name)
@@ -35,13 +39,13 @@ function filterListings() {
 
   //on the basis of rate
   sortedList===null?
-    sortedList = workspaces.fitler((el)=>el.rate==rate)
+    sortedList = workspaces.filter((el)=>el.rate==rate)
     :
     sortedList = sortedList.filter((el)=>el.rate==rate);
 
   //on the basis of seating
   sortedList===null?
-    sortedList = workspaces.fitler((el)=>el.seats==seats)
+    sortedList = workspaces.filter((el)=>el.seats==seats)
     :
     sortedList = sortedList.filter((el)=>el.seats==seats);
     
