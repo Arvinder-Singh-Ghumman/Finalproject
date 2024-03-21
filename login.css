@@ -1,6 +1,12 @@
 body{
-    background-color: rgb(247, 247, 233);
+
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+   
 }
+
 form{
 
     margin-top: 10vh;
@@ -18,37 +24,52 @@ form p{
     justify-content: space-between;
 }
 
-form :nth-child(1){
+main {
+    flex-grow: 1;
+    }
+
+/* form :nth-child(1){
     margin-bottom: 3vh;
     margin-left: 2vw;
-}
+} */
 input{
     width: 10vw;
 }
 
-footer{
-    margin-top: 8.3%;
-    font-size: large;
-}
+
 
 #signup{
     margin-left: 41.5%;
     margin-top: 5vw;
+    color: rgb(15, 175, 228);
 }
 
 #login{
 
     margin-left: 41.5%;
     margin-top: 3.8vw;
+    color: rgb(15, 175, 228);
 }
-
-  #signupbutton:hover
+ #signupbutton:hover
   {
     color: white;
    background-color: rgb(92, 192, 92);
    text-transform: uppercase;
   }
-
+ 
+#loginbutton:hover{
+    color: aliceblue;
+    background-color: rgb(104, 197, 104);
+    text-transform: uppercase;
+}
   button{
     padding: 4px;
+  }
+
+  #signup:hover{
+    text-decoration: underline;
+  }
+
+  #login:hover{
+    text-decoration: underline;
   }

@@ -7,12 +7,17 @@ nav{
     display: flex;
     justify-content: space-between;    
     color: black;
-    background-color:rgb(235, 235, 192);
+    background-color:#bea0f4;
+    /* rgb(182, 182, 99); */
     height: 65px;
     align-items: center;
     font-size: 23px;
     padding: 0 2vw;
     
+}
+body{
+    background-color:#f8f2ff;
+  
 }
 nav li{
     list-style-type: none;
@@ -21,6 +26,8 @@ nav li a{
     text-decoration: none;
     color: black
 }
+
+
 
 pages{
     width: 40vw;
@@ -67,7 +74,8 @@ footer{
     margin-top: 2vw;
     height: 5vw;
     display: flex;
-    background-color: rgb(164, 164, 90);
+    background-color:#b89ed6;
+    /* rgb(182, 182, 99); */
     justify-content: space-between;
     align-items: center;
     padding: 0 7vw;
