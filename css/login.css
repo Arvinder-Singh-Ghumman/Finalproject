@@ -1,0 +1,68 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+form {
+  margin-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  /* justify-content: space-between; */
+}
+form p {
+  text-align: left;
+  width: 310px;
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* form :nth-child(1){
+  margin-bottom: 3vh;
+  margin-left: 2vw;
+} */
+input {
+  width: 10vw;
+}
+
+#signup {
+  margin-left: 41.5%;
+  margin-top: 5vw;
+  color: rgb(15, 175, 228);
+}
+
+#login {
+  margin-left: 41.5%;
+  margin-top: 3.8vw;
+  color: rgb(15, 175, 228);
+}
+
+#signupbutton:hover {
+  color: white;
+  background-color: rgb(92, 192, 92);
+  text-transform: uppercase;
+}
+
+#loginbutton:hover {
+  color: aliceblue;
+  background-color: rgb(104, 197, 104);
+  text-transform: uppercase;
+}
+button {
+  padding: 4px;
+}
+
+#signup:hover {
+  text-decoration: underline;
+}
+
+#login:hover {
+  text-decoration: underline;
+}
