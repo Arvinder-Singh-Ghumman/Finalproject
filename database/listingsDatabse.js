@@ -1,4 +1,4 @@
-var listings = [
+export var listings = [
   {
       image: "https://www.pexels.com/photo/scenic-view-of-mountain-during-night-1438768/",
       owner: "John Doe",

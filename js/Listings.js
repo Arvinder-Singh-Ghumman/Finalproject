@@ -1,12 +1,73 @@
-//function to add listings to the doc
-function addListing(listing, cardsId){
+import { listings } from "../database/usersDatabase.js";
+var workspaces;
 
+//fetch listings
+function getListings() {
+  //storing all the listings in local database as we are not implementing a backend in phase 1
+  if (localStorage.getItem("workspaces") == null) {
+    workspaces = listings;
+    localStorage.setItem("workspaces", workspaces);
+  } else {
+    workspaces = localStorage.getItem("workspaces" == null);
+  }
+}
+
+//filter listings
+function filterListings() {
+  let sortedList;
+  //update these values from document
+  let maxPrice = undefined,
+    minPrice = undefined,
+    name = undefined,
+    seats = undefined,
+    rate = undefined;
+
+  //on the basis of name
+  sortedList===null?
+    sortedList.includes(name)
+    :
+    sortedList = workspaces.include(name);
+  sortedList.append(workspaces.filter((el)=>{
+    if(name!==undefined){
+      el.name.toLowerCase()===name.toLowerCase()
+    }
+  }))
+
+  //on the basis of rate
+  sortedList===null?
+    sortedList = workspaces.fitler((el)=>el.rate==rate)
+    :
+    sortedList = sortedList.filter((el)=>el.rate==rate);
+
+  //on the basis of seating
+  sortedList===null?
+    sortedList = workspaces.fitler((el)=>el.seats==seats)
+    :
+    sortedList = sortedList.filter((el)=>el.seats==seats);
+    
+
+  //on the basis of price
+  sortedList = workspaces.filter((el) => {
+    if (maxPrice !== undefined && minPrice !== undefined)
+      el.price < maxPrice && el.price > minPrice;
+    else if (maxPrice === undefined && minPrice !== undefined)
+      el.price < maxPrice;
+    else if (maxPrice !== undefined && minPrice === undefined)
+      el.price > minPrice;
+  });
+
+}
+
+//
+
+//function to add listings to the doc
+function addListing(listing, cardsId) {
   // creating card and its elements
   var card = document.createElement("div");
   card.classList.add("card");
 
   var cardTitle = document.createElement("h3");
-  cardTitle.classList.add("cardTitle")
+  cardTitle.classList.add("cardTitle");
   cardTitle.innerText = listing.title;
 
   var cardImg = document.createElement("img");
@@ -31,11 +92,8 @@ function addListing(listing, cardsId){
   card.appendChild(cardDescr);
   card.appendChild(cardPrice);
   card.appendChild(cardRating);
-  
-
 
   //adding card to the given cardsId
   var cards = document.getElementById(cardsId);
   cards.append(card);
-
 }
