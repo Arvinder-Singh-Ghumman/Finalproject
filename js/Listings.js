@@ -6,7 +6,7 @@ function addListing(listing, cardsId){
   card.classList.add("card");
 
   var cardTitle = document.createElement("h3");
-  cardTitle.classList.add("")
+  cardTitle.classList.add("cardTitle")
   cardTitle.innerText = listing.title;
 
   var cardImg = document.createElement("img");
