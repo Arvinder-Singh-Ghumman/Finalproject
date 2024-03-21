@@ -6,7 +6,7 @@ var isLoggedin = JSON.parse(sessionStorage.getItem("user"))==null?true:false;;
 
 //function to sign up
 function signUp(){
-  //get name, phone, email, coworker and store in varirables
+  //get name, phone, email, coworker and store in variables
   var new_userName,new_userPhone,new_userEmail,new_userRole,new_userPassword;
   new_userName = document.querySelector('#_name_').value();
   new_userPhone = document.querySelector('#_phone_').value();
@@ -14,7 +14,7 @@ function signUp(){
   new_userPassword = document.querySelector('#_password_').value();
   new_userRole = document.querySelector('#_role_').value();
   
-    //change the colour of input box, display a message alerting that username already exists
+    //change the color of input box, display a message alerting that username already exists
     if(new_userName.length()<3)
       alert("Name too small");
     else if(users.find(obj=>obj.email==new_userEmail))
