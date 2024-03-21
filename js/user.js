@@ -1,4 +1,4 @@
-import { userDatabase } from "./users.js";
+import { userDatabase } from "../database/usersDatabase.js";
 var users;
 //get users if in localstorage otherwise the default user.js
 if (localStorage.getItem("users") != null) {

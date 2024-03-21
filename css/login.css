@@ -18,7 +18,7 @@ form p {
   height: 20px;
   display: flex;
   justify-content: space-between;
-}
+} 
 
 main {
   flex-grow: 1;
