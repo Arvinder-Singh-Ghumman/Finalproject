@@ -57,6 +57,11 @@ function logIn(event) {
   } else if (index.password == given_password) {
     sessionStorage.setItem("user", JSON.stringify(index));
     alert("hogya");
+    if(index.role==="owner"){
+      openPage("ownerhome.html");
+    }else{
+      openPage("coworkerHome.html");
+    }
   } else {
     alert("wrong password");
   }
@@ -90,3 +95,8 @@ window.onload = () => {
   document.getElementById("displaySignup").addEventListener("click", displaySignUp);
   document.getElementById("Displaylogin").addEventListener("click", displayLogIn);
 };
+
+
+function openPage(pageName){
+  window.location.href = pageName;
+}
