@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
-    
+
     <nav>
 
         <!-- logo will be on the left side of the nav bar -->
@@ -17,7 +21,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="search.html"><img src="" alt="icon of search"></a>
+            <li><input type="text" placeholder="search"> <a href="search.html"><img src="search.png"
+                        alt="icon of search"></a>
             </li>
         </pages>
 
@@ -27,62 +32,69 @@
     </nav>
 
     <main>
+
         <div id="loginDiv" style="display:none">
 
-            <h1>LOG IN</h1>
+
 
             <form action="">
-                <label for="_email">E-mail address:</label>
-                <input type="email" id="_email" inputmode="email" required>
-
-                <label for="_password">Password</label>
-                <input type="password" id="_password" required>
-    
+                <h1>LOG IN</h1>
+                <p> <label for="_email">E-mail address: </label>
+                    <input type="email" id="_email" inputmode="email" required>
+                </p>
+                <p> <label for="_password">Password: </label>
+                    <input type="password" id="_password" required>
+                </p><br>
                 <label>
-                    Role
-                    <label>
-                        <input type="radio" name="role" value="teacher" required> Teacher
+                    
+                    <p>
+                        
+                        <label for="CoWorker">CoWorker</label>
+                    <input type="radio" name="role" value="Co - worker" required>
+                 <label for="Owner">Owner</label>
+                        <input type="radio" name="role" value="Owner" required> 
+                    </p>
                     </label>
-                    <label>
-                        <input type="radio" name="role" value="student" required> Student
-                    </label>
-                </label>
-
-                <input type="submit" value="Login">
+            
+                <br>
+                <br><br><input type="submit" value="Login"> </input>
             </form>
 
-            <p onclick="displaySignUp()">Don't have an account? Sign Up</p>
+            <p id="signup" onclick="displaySignUp()">Don't have an account? Sign Up</p>
         </div>
         <div id="signUpDiv">
-            <h1>SIGN UP</h1>
 
-            <form>
-                <label for="_name_">Name:</label>
-                <input type="text" id="_name_" required>
+            <form action="">
+                <h1>Sign Up</h1>
+                <p>
+                    <label for="_name_">Name:</label>
+                    <input type="text" id="_name_" required>
+                </p>
 
-                <label for="_phone_">Phone Number:</label>
-                <input type="tel" id="_phone_" inputmode="numeric" required>
+                <p> <label for="_phone_">Phone Number:</label>
+                    <input type="tel" id="_phone_" inputmode="numeric" required>
+                </p>
+                <p><label for="_email_">E-mail address:</label>
+                    <input type="email" id="_email_" required></p>
 
-                <label for="_email_">E-mail address:</label>
-                <input type="email" id="_email_" required>
+                <p><label for="_password_">Password</label>
+                    <input type="password" id="_password_" required>
+                </p>
+                <br>
 
-                <label for="_password_">Password</label>
-                <input type="password" id="_password_" required>
-    
-                <label>
-                    Role
-                    <label>
-                        <input type="radio" name="role" value="owner" required> Owner
-                    </label>
-                    <label>
-                        <input type="radio" name="role" value="co-worker" required> Co-worker
-                    </label>
-                </label>
+                <p>
+                    <label for="owner">Owner</label>
+                    <input type="radio" name="role" value="teacher" id="owner" required>
+                    <label for="co-worker">CoWorker</label>
+                    <input type="radio" name="role" value="student" id="co-worker" required>
+                </p>
 
-                 <button onclick="signUp()">Sign Up</button>
+                <br><br><button class="signupbutton" onclick="signUp()">Sign Up</button>
             </form>
 
-            <p id="displayLogIn" onclick="displayLogIn()">Already have an account? Login</p>
+            <p id="login" onclick="displayLogIn()">Already have an account?
+                Login
+            </p>
         </div>
 
     </main>
@@ -95,4 +107,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
