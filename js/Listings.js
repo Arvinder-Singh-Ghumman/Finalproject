@@ -1,4 +1,4 @@
-import { listings } from "../database/usersDatabase.js";
+import { listings } from "../database/listingsDatabse.js";
 var workspaces;
 
 //fetch listings
@@ -6,10 +6,11 @@ function getListings() {
   //storing all the listings in local database as we are not implementing a backend in phase 1
   if (localStorage.getItem("workspaces") == null) {
     workspaces = listings;
-    localStorage.setItem("workspaces", workspaces);
+    localStorage.setItem("workspaces", JSON.stringify(workspaces));
   } else {
-    workspaces = localStorage.getItem("workspaces" == null);
+    workspaces = JSON.parse(localStorage.getItem("workspaces"));
   }
+  console.log(listings);
 }
 
 //filter listings
@@ -22,33 +23,34 @@ function filterListings() {
     seats = undefined,
     rate = undefined;
 
-    maxPrice = document.querySelector("#maxPrice").value;
-    minPrice = document.querySelector("#minPrice").value;
-    seats = document.querySelector("seatingCapacity").value;
-    rate = document.querySelector('input[name="rating"]:checked').value;
+  maxPrice = document.querySelector("#maxPrice").value;
+  minPrice = document.querySelector("#minPrice").value;
+  seats = document.querySelector("#seatingCapacity").value;
+  rate = document.querySelector('input[name="rating"]:checked')==null?null:document.querySelector('input[name="rating"]:checked').value;
+
   //on the basis of name
-  sortedList===null?
-    sortedList.includes(name)
-    :
-    sortedList = workspaces.include(name);
-  sortedList.append(workspaces.filter((el)=>{
-    if(name!==undefined){
-      el.name.toLowerCase()===name.toLowerCase()
-    }
-  }))
+  sortedList === null
+    ? sortedList.includes(name)
+    : (sortedList = workspaces.includes(name));
+  workspaces
+    .filter((el) => {
+      if (name !== undefined) {
+        el.name.toLowerCase() === name.toLowerCase();
+      }
+    })
+    .forEach((element) => {
+      sortedList.contains(element) ? "" : sortedList.append(element);
+    });
 
   //on the basis of rate
-  sortedList===null?
-    sortedList = workspaces.filter((el)=>el.rate==rate)
-    :
-    sortedList = sortedList.filter((el)=>el.rate==rate);
+  // sortedList == null
+  //   ? (sortedList = workspaces.filter((el) => el.rate == rate))
+  //   : (sortedList = sortedList.filter((el) => el.rate == rate));
 
-  //on the basis of seating
-  sortedList===null?
-    sortedList = workspaces.filter((el)=>el.seats==seats)
-    :
-    sortedList = sortedList.filter((el)=>el.seats==seats);
-    
+  // //on the basis of seating
+  // sortedList == null
+  //   ? (sortedList = workspaces.filter((el) => el.seats == seats))
+  //   : (sortedList = sortedList.filter((el) => el.seats == seats));
 
   //on the basis of price
   sortedList = workspaces.filter((el) => {
@@ -60,9 +62,11 @@ function filterListings() {
       el.price > minPrice;
   });
 
-}
 
-//
+  console.log(workspaces);
+
+  workspaces.forEach((el)=>addListing(el, "SearchResults"))
+}
 
 //function to add listings to the doc
 function addListing(listing, cardsId) {
@@ -72,10 +76,10 @@ function addListing(listing, cardsId) {
 
   var cardTitle = document.createElement("h3");
   cardTitle.classList.add("cardTitle");
-  cardTitle.innerText = listing.title;
+  cardTitle.innerText = listing.owner;
 
   var cardImg = document.createElement("img");
-  cardImg.src = listing.img;
+  cardImg.src = listing.image;
 
   var cardDescr = document.createElement("p");
   cardDescr.classList.add("cardDescr");
@@ -101,3 +105,9 @@ function addListing(listing, cardsId) {
   var cards = document.getElementById(cardsId);
   cards.append(card);
 }
+
+window.onload = () => {
+  getListings();
+  filterListings();
+  document.querySelector("#filtered").addEventListener("click", filterListings);
+};

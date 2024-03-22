@@ -61,30 +61,32 @@
 
                 <div class="filters" id="ratingFilter">
                     <p><u>Rating</u></p>
-                    <input type="radio" name="rating" value="5Star" id="5Star">
+                    <input type="radio" name="rating" value="5" id="5Star">
                     <label for="RatingFilter">5 Star</label>
 
-                    <input type="radio" name="rating" value="4Star" id="4Star">
+                    <input type="radio" name="rating" value="4" id="4Star">
                     <label for="RatingFilter">4 Star</label>
 
-                    <input type="radio" name="rating" value="3Star" id="3Star">
+                    <input type="radio" name="rating" value="3" id="3Star">
                     <label for="RatingFilter">3 Star</label>
 
-                    <input type="radio" name="rating" value="2Star" id="2Star">
+                    <input type="radio" name="rating" value="2" id="2Star">
                     <label for="RatingFilter">2 Star</label>
 
-                    <input type="radio" name="rating" value="1Star" id="1Star">
+                    <input type="radio" name="rating" value="1" id="1Star">
                     <label for="RatingFilter">1 Star</label>
 
-                    <input id="filtered" type="submit" onclick="filterListings()">
+                    <input id="filtered" type="submit">
 
                 </div>
             </div>
         </div>
 
-        
+        <div class="searchCards">
+          <div id="SearchResults">
+
+          </div>
         </div>
-        
     </main>
 
 
@@ -95,7 +97,7 @@
         <p id="date">Date: </p>
     </footer>
 
-    <script src="Listings.js"></script>
-</body>
+    <script src="js/Listings.js" type="module"></script>
+  </body>
 
 </html>
