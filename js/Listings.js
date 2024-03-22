@@ -23,10 +23,10 @@ function filterListings() {
     seats = undefined,
     rate = undefined;
 
-  // maxPrice = document.querySelector("#maxPrice").value;
-  // minPrice = document.querySelector("#minPrice").value;
-  // seats = document.querySelector(".seatingCapacity").value;
-  // rate = document.querySelector('input[name="rating"]:checked').value;
+  maxPrice = document.querySelector("#maxPrice").value;
+  minPrice = document.querySelector("#minPrice").value;
+  seats = document.querySelector("#seatingCapacity").value;
+  rate = document.querySelector('input[name="rating"]:checked')==null?null:document.querySelector('input[name="rating"]:checked').value;
 
   //on the basis of name
   sortedList === null
@@ -65,7 +65,7 @@ function filterListings() {
 
   console.log(workspaces);
 
-  workspaces.forEach((el)=>addListing(workspaces, "SearchResults"))
+  workspaces.forEach((el)=>addListing(el, "SearchResults"))
 }
 
 //function to add listings to the doc
@@ -76,10 +76,10 @@ function addListing(listing, cardsId) {
 
   var cardTitle = document.createElement("h3");
   cardTitle.classList.add("cardTitle");
-  cardTitle.innerText = listing.title;
+  cardTitle.innerText = listing.owner;
 
   var cardImg = document.createElement("img");
-  cardImg.src = listing.img;
+  cardImg.src = listing.image;
 
   var cardDescr = document.createElement("p");
   cardDescr.classList.add("cardDescr");
@@ -109,7 +109,5 @@ function addListing(listing, cardsId) {
 window.onload = () => {
   getListings();
   filterListings();
-  document
-    .querySelector("#filtered")
-    .addEventListener("click", filterListings());
+  document.querySelector("#filtered").addEventListener("click", filterListings);
 };
