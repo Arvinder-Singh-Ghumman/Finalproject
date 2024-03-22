@@ -15,6 +15,7 @@ function getListings() {
 
 //filter listings
 function filterListings() {
+  console.log("function executed.")
   let sortedList;
   //update these values from document
   let maxPrice = undefined,
