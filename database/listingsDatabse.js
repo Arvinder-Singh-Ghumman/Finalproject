@@ -1,6 +1,6 @@
 export var listings = [
   {
-      image: "https://www.pexels.com/photo/scenic-view-of-mountain-during-night-1438768/",
+      image: "https://images.unsplash.com/photo-1706263802672-4b2d95854bb1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMTEzMzIwMQ&ixlib=rb-4.0.3&q=80&w=300",
       owner: "John Doe",
       ownerContactNumber: "9876543210",
       ownerAddress: "123 Main St, City, Country",
@@ -11,7 +11,7 @@ export var listings = [
       description: "Cozy cabin with stunning mountain views, perfect for nature lovers and outdoor enthusiasts. Fully furnished with modern amenities."
   },
   {
-      image: "https://www.pexels.com/photo/landscape-photo-of-mountain-covered-with-snow-during-daytime-2280101/",
+      image: "https://images.unsplash.com/photo-1706263802672-4b2d95854bb1?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTcxMTEzMzIwMQ&ixlib=rb-4.0.3&q=80&w=300",
       owner: "Jane Smith",
       ownerContactNumber: "1234567890",
       ownerAddress: "456 Elm St, Town, Country",
