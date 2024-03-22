@@ -23,10 +23,10 @@ function filterListings() {
     seats = undefined,
     rate = undefined;
 
-  // maxPrice = document.querySelector("#maxPrice").value;
-  // minPrice = document.querySelector("#minPrice").value;
-  // seats = document.querySelector(".seatingCapacity").value;
-  // rate = document.querySelector('input[name="rating"]:checked').value;
+  maxPrice = document.querySelector("#maxPrice").value;
+  minPrice = document.querySelector("#minPrice").value;
+  seats = document.querySelector("#seatingCapacity").value;
+  rate = document.querySelector('input[name="rating"]:checked')==null?null:document.querySelector('input[name="rating"]:checked').value;
 
   //on the basis of name
   sortedList === null
@@ -109,7 +109,5 @@ function addListing(listing, cardsId) {
 window.onload = () => {
   getListings();
   filterListings();
-  document
-    .querySelector("#filtered")
-    .addEventListener("click", filterListings());
+  document.querySelector("#filtered").addEventListener("click", filterListings);
 };
