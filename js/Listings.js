@@ -1,4 +1,4 @@
-import { listings } from "../database/usersDatabase.js";
+import { listings } from "../database/listingsDatabse.js";
 var workspaces;
 
 //fetch listings
@@ -14,6 +14,7 @@ function getListings() {
 
 //filter listings
 function filterListings() {
+  console.log("function executed.")
   let sortedList;
   //update these values from document
   let maxPrice = undefined,
