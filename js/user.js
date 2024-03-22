@@ -1,4 +1,4 @@
-import { userDatabase } from "./users.js";
+import { userDatabase } from "../database/usersDatabase.js";
 var users;
 //get users if in localstorage otherwise the default user.js
 if (localStorage.getItem("users") != null) {
@@ -57,6 +57,11 @@ function logIn(event) {
   } else if (index.password == given_password) {
     sessionStorage.setItem("user", JSON.stringify(index));
     alert("hogya");
+    if(index.role==="owner"){
+      openPage("ownerhome.html");
+    }else{
+      openPage("coworkerHome.html");
+    }
   } else {
     alert("user not found");
   }
@@ -92,3 +97,8 @@ window.onload = () => {
   document.getElementById("displaySignup").addEventListener("click", displaySignUp);
   document.getElementById("Displaylogin").addEventListener("click", displayLogIn);
 };
+
+
+function openPage(pageName){
+  window.location.href = pageName;
+}
