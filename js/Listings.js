@@ -10,64 +10,90 @@ function getListings() {
   } else {
     workspaces = JSON.parse(localStorage.getItem("workspaces"));
   }
-  console.log(listings);
+
+  //updating workspaces as per search param
+  let searchParam = document.querySelector("#searchBar").value;
+  if (search !== "") var results = search(searchParam);
+  
+  results!==null?
+  filterListings(results):filterListings(workspaces);
 }
 
-//filter listings
-function filterListings() {
-  console.log("function executed.")
-  let sortedList;
-  //update these values from document
-  let maxPrice = undefined,
-    minPrice = undefined,
-    name = undefined,
-    seats = undefined,
-    rate = undefined;
+function search(searchParam) {
+  //in name
+  let res = workspaces.filter((el) => {
+    if (el.title.includes(searchParam)) return true;
+  });
+  let categories = ["workspace","meeting Room","desk","private Office"]
+  categories.forEach((el)=>{if(searchParam.toLowerCase().includes(el.toLowerCase()))document.querySelector("#"+el.replace(" ","")).checked = true; });
+  return res;
+}
 
+function filterListings(results) {
+  let sortedList = results;
+  //variables
+  let maxPrice, minPrice, name, seats, category, city, rate;
+
+  //fetching values
   maxPrice = document.querySelector("#maxPrice").value;
   minPrice = document.querySelector("#minPrice").value;
   seats = document.querySelector("#seatingCapacity").value;
-  rate = document.querySelector('input[name="rating"]:checked')==null?null:document.querySelector('input[name="rating"]:checked').value;
+  city = document.querySelector("#citySelection").value;
+  rate =
+    document.querySelector('input[name="rating"]:checked') == null
+      ? null
+      : document.querySelector('input[name="rating"]:checked').value;
+  category =
+    document.querySelector('input[name="category"]:checked') == null
+      ? null
+      : document.querySelector('input[name="category"]:checked').value;
 
-  //on the basis of name
-  sortedList === null
-    ? sortedList.includes(name)
-    : (sortedList = workspaces.includes(name));
-  workspaces
-    .filter((el) => {
-      if (name !== undefined) {
-        el.name.toLowerCase() === name.toLowerCase();
-      }
-    })
-    .forEach((element) => {
-      sortedList.contains(element) ? "" : sortedList.append(element);
-    });
+  //calling appropriate filtering functions
+  if (minPrice !== "" || maxPrice !== "")
+    sortedList = filterByPrice(minPrice, maxPrice, sortedList);
+  if (rate !== null) sortedList = filterByRate(rate, sortedList);
+  if (seats !== "") sortedList = filterBySeats(seats, sortedList);
+  if (category !== null) sortedList = filterByCategory(category, sortedList);
+  if (city !== "") sortedList = filterByCity(city, sortedList);
 
-  //on the basis of rate
-  // sortedList == null
-  //   ? (sortedList = workspaces.filter((el) => el.rate == rate))
-  //   : (sortedList = sortedList.filter((el) => el.rate == rate));
-
-  // //on the basis of seating
-  // sortedList == null
-  //   ? (sortedList = workspaces.filter((el) => el.seats == seats))
-  //   : (sortedList = sortedList.filter((el) => el.seats == seats));
-
-  //on the basis of price
-  sortedList = workspaces.filter((el) => {
-    if (maxPrice !== undefined && minPrice !== undefined)
-      el.price < maxPrice && el.price > minPrice;
-    else if (maxPrice === undefined && minPrice !== undefined)
-      el.price < maxPrice;
-    else if (maxPrice !== undefined && minPrice === undefined)
-      el.price > minPrice;
-  });
-
-
-  console.log(workspaces);
-
-  workspaces.forEach((el)=>addListing(el, "SearchResults"))
+  //updating the cards in html
+  console.log(sortedList);
+  document.querySelector("#SearchResults").innerHTML = "";
+  sortedList.forEach((el) => addListing(el, "SearchResults"));
 }
+const filterByPrice = (min, max, sortedList) => {
+  //filter by price
+  let res = sortedList.filter((el) => {
+    if (max !== "" && min !== "") {
+      return el.price < max && el.price > min ? ture : false;
+    } else if (max === "" && min !== "") {
+      return el.price > min ? true : false;
+    } else if (max !== "" && min === "") {
+      return el.price < max ? true : false;
+    }
+  });
+  return res;
+};
+const filterByRate = (rate, sortedList) => {
+  //filter by rate
+  let res = sortedList.filter((el) => Math.floor(el.rating) == rate);
+  return res;
+};
+const filterBySeats = (seats, sortedList) => {
+  //filter by seats
+  let res = sortedList.filter((el) => el.seating >= seats);
+  return res;
+};
+const filterByCategory = (category, sortedList) => {
+  //filter by seats
+  let res = sortedList.filter((el) => el.category == category);
+  return res;
+};
+const filterByCity = (city, sortedList) => {
+  //filter by city
+  let res = sortedList.filter((el) => el.location.includes(city));
+  return res;
+};
 
 //function to add listings to the doc
 function addListing(listing, cardsId) {
@@ -109,6 +135,8 @@ function addListing(listing, cardsId) {
 
 window.onload = () => {
   getListings();
-  filterListings();
+
+  //adding event listenr
   document.querySelector("#filtered").addEventListener("click", filterListings);
+  document.querySelector("#searchBar").addEventListener("change", getListings);
 };
