@@ -61,8 +61,12 @@ function filterListings() {
     else if (maxPrice !== undefined && minPrice === undefined)
       el.price > minPrice;
   });
+
+
   console.log(workspaces);
-  }
+
+  workspaces.forEach((el)=>addListing(workspaces, "SearchResults"))
+}
 
 //function to add listings to the doc
 function addListing(listing, cardsId) {
@@ -105,5 +109,7 @@ function addListing(listing, cardsId) {
 window.onload = () => {
   getListings();
   filterListings();
-  document.querySelector("#filtered").addEventListener("click",filterListings());
-}
+  document
+    .querySelector("#filtered")
+    .addEventListener("click", filterListings());
+};
