@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Page</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Search Page</title> <link rel="stylesheet" href="css/styles.css"> <link rel="stylesheet" href="css/serach.css">
 </head>
 
 <body>
@@ -20,7 +19,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="assets/search.png"><img src="search.png"
+            <li><input type="text" placeholder="search"> <a href="search.html"><img src="assets/search.png"
                         alt="icon of search"></a>
             </li>
         </pages>
@@ -30,8 +29,9 @@
 
     </nav>
 
-    <br><br><br><br><br><br><br><br><br>
+    <br>
     <main>
+       
         <div id="searchAndFilter">
             <div id="searchInput">
                 <input type="text" id="searchBar" placeholder="Search">
@@ -73,26 +73,27 @@
 
                 <div class="filters" id="ratingFilter">
                     <p><u>Rating</u></p>
-                    <input type="radio" name="rating" value="5Star" id="5Star">
+                    <input type="radio" name="rating" value="5" id="5Star">
                     <label for="RatingFilter">5 Star</label>
 
-                    <input type="radio" name="rating" value="4Star" id="4Star">
+                    <input type="radio" name="rating" value="4" id="4Star">
                     <label for="RatingFilter">4 Star</label>
 
-                    <input type="radio" name="rating" value="3Star" id="3Star">
+                    <input type="radio" name="rating" value="3" id="3Star">
                     <label for="RatingFilter">3 Star</label>
 
-                    <input type="radio" name="rating" value="2Star" id="2Star">
+                    <input type="radio" name="rating" value="2" id="2Star">
                     <label for="RatingFilter">2 Star</label>
 
-                    <input type="radio" name="rating" value="1Star" id="1Star">
+                    <input type="radio" name="rating" value="1" id="1Star">
                     <label for="RatingFilter">1 Star</label>
 
-                    <input id="filtered" type="submit" onclick="filterListings()">
+                    <input id="filtered" type="submit">
 
                 </div>
             </div>
         </div>
+
         <div class="searchCards">
           <div id="SearchResults">
 
@@ -108,7 +109,7 @@
         <p id="date">Date: </p>
     </footer>
 
-    <script src=".js/Listings.js" type="modules"></script>
-</body>
+    <script src="js/Listings.js" type="module"></script>
+  </body>
 
 </html>

@@ -24,25 +24,22 @@ main {
   flex-grow: 1;
 }
 
-/* form :nth-child(1){
-  margin-bottom: 3vh;
-  margin-left: 2vw;
-} */
+
 input {
   width: 10vw;
 }
 
-#signup {
+ #displaySignup {
   margin-left: 41.5%;
   margin-top: 5vw;
-  color: rgb(15, 175, 228);
+  
 }
 
-#login {
+#Displaylogin {
   margin-left: 41.5%;
   margin-top: 3.8vw;
-  color: rgb(15, 175, 228);
-}
+  
+} 
 
 #signupbutton:hover {
   color: white;
@@ -55,14 +52,18 @@ input {
   background-color: rgb(104, 197, 104);
   text-transform: uppercase;
 }
+
 button {
   padding: 4px;
 }
 
-#signup:hover {
+#displaySignup:hover {
   text-decoration: underline;
+  color: rgb(93, 93, 238);
 }
 
-#login:hover {
+#Displaylogin:hover {
   text-decoration: underline;
+  color: rgb(93, 93, 238);
 }
+
