@@ -1,46 +1,144 @@
-/* #filterDropdown {
-    float: right;
-    position: relative;
-    display: inline-block;
+/* CSS for Navigation */
+nav {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
 }
 
-.dropbtn {
-    background-color: #ffffff;
-    color: #333333;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    cursor: pointer;
+nav li {
+  list-style-type: none;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    z-index: 1;
+nav pages {
+  display: flex;
 }
 
-.dropdown-content a {
-    color: #333333;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
+nav pages li {
+  margin: 0 10px;
 }
 
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
+nav input[type="text"] {
+  padding: 5px;
+  border-radius: 5px;
 }
 
-#filterDropdown:hover .dropdown-content {
-    display: block;
-} */
-#filter{
-    position: relative;
-    float: right;
-    
-}
-#searchBar{
-width: 100%;
+nav img {
+  width: 20px;
+  height: 20px;
 }
 
+/* CSS for Main Content */
+main {
+  padding: 20px;
+}
+
+#searchAndFilter {
+  display: flex;
+  justify-content: space-between;
+}
+
+#searchInput input[type="text"] {
+  padding: 8px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+#filter {
+  font-weight: bold;
+  text-decoration: underline;
+  margin-left: 20px;
+}
+
+.filters {
+  margin-top: 20px;
+}
+
+.filters p {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.filters input[type="number"] {
+  padding: 5px;
+  width: 100px;
+  margin-top: 5px;
+}
+
+.filters input[type="radio"] {
+  margin-right: 5px;
+}
+
+.filters label {
+  margin-right: 10px;
+}
+
+#filtered {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* CSS for Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+#SearchResults {
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-evenly;
+}
+/* CSS for Card */
+.card {
+  flex-basis: 0 1 1;
+  width: 30%;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+/* CSS for Card Title */
+.cardTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* CSS for Card Image */
+.card img {
+  width: 100%; /* Make sure image fills the width of its container */
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* CSS for Card Description */
+.cardDescr {
+  margin-bottom: 10px;
+}
+
+/* CSS for Card Price */
+.cardPrice {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* CSS for Card Rating */
+.cardRating {
+  font-style: italic;
+  color: #888;
+}
