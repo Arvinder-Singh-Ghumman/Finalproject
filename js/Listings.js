@@ -62,9 +62,7 @@ function filterListings() {
       el.price > minPrice;
   });
   console.log(workspaces);
-}
-
-//
+  }
 
 //function to add listings to the doc
 function addListing(listing, cardsId) {
