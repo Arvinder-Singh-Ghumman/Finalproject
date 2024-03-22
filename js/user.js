@@ -63,7 +63,7 @@ function logIn(event) {
       openPage("coworkerHome.html");
     }
   } else {
-    alert("wrong password");
+    alert("user not found");
   }
 }
 
@@ -71,6 +71,7 @@ function displayLogIn() {
   let loginPage = document.querySelector("#loginDiv");
   let signUpPage = document.querySelector("#signUpDiv");
 
+  console.log("login page opened")
   loginPage.style.display = "block";
   signUpPage.style.display = "none";
 }
@@ -81,6 +82,7 @@ function displaySignUp() {
 
   signUpPage.style.display = "block";
   loginPage.style.display = "none";
+
 }
 
 window.onload = () => {
