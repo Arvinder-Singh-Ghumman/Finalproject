@@ -3,6 +3,17 @@
   padding: 0;
 }
 
+
+  body{
+
+
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color:#f2eef8;
+     
+  }
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -14,9 +25,10 @@ nav {
   font-size: 23px;
   padding: 0 2vw;
 }
-body {
-  background-color: #f8f2ff;
+main{
+  flex-grow: 1;
 }
+
 nav li {
   list-style-type: none;
 }
