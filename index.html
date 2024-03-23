@@ -4,19 +4,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Co Worker</title> <link rel="stylesheet" href="css/styles.css">
+    <title>Co Worker</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+<style>
+    #loginPopUp {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(2px);
+    }
+    #loginPopUpContainer {
+        background-color: #ffffff;
+        margin: 15% auto;
+        padding: 20px;
+        border: 2px solid #888;
+        border-radius: 10px;
+        width: 400px;
+        text-align: center;
+        box-shadow: 2px 2px 10px 5px rgba(192, 192, 192, 0.0);
+    }
+    #loginPopUpHeading{
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    #loginPopUpMessage{
+        color: rgb(0, 0, 0);
+        margin-bottom: 5px;
+    }
+    #loginPopUpLoginButton{
+        width: 40px;
+        height: 20px;
+        background-color: #4385f4;
+        border: none;
+        border-radius: 6px;
+    }
+    #loginPopUpLogin{
+        text-decoration: none;
+        color: white;
+    }
+    #loginPopUpClose{
+        width: 40px;
+        height: 20px;
+        border: 1px solid black;
+        border-radius: 6px;
+    }
+</style>
 
 <body>
 
-    <div id="loginPopUp"
-        style="display:none; position:fixed; z-index:1; left:0; top:0; width:100%; height:100%; overflow:auto; background-color:rgba(0,0,0,0.4);">
-        <div
-            style="background-color: #fff; margin: 10% auto; padding: 20px; border: 1px solid #888; width: 300px; text-align: center;">
-            <h2>Login</h2>
-            <p>Please login to access the site.</p>
-            <button><a href="login.html">Login</a></button>
-            <button onclick="closeLoginPopUp()">Close</button>
+    <div id="loginPopUp">
+        <div id="loginPopUpContainer">
+            <h2 id="loginPopUpHeading">Login</h2>
+            <p id="loginPopUpMessage">Please login to access the site!!</p>
+            <button id="loginPopUpLoginButton"><a id="loginPopUpLogin" href="login.html">Login</a></button>
+            <button id="loginPopUpClose" onclick="closeLoginPopUp()">Close</button>
         </div>
     </div>
 
@@ -30,7 +78,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="search.html"><img src="assets/search.png" alt="icon of search"></a>
+            <li><input type="text" placeholder="search"> <a href="search.html"><img src="assets/search.png"
+                        alt="icon of search"></a>
             </li>
         </pages>
 
@@ -42,16 +91,40 @@
     <br><br><br><br>
 
     <main>
-        
-            <h1>Shared Workspace</h1> <br>
-            <p>Welcome to our shared workspace platform, where productivity meets collaboration. At our shared workspace, we strive to create an environment that fosters creativity, innovation, and teamwork. Whether you're a freelancer, entrepreneur, or remote worker, our space offers everything you need to thrive. From comfortable workstations to state-of-the-art amenities, we provide the perfect backdrop for your professional journey. Join our vibrant community of like-minded individuals and unlock new opportunities for growth and success.</p>
-            <br>
-           
-            <p>At our shared workspace, we understand the importance of flexibility and convenience. That's why we offer flexible membership plans tailored to suit your needs. Whether you require a dedicated desk, a private office, or simply a place to drop in and work for the day, we have options to accommodate every lifestyle. Our collaborative environment encourages networking and knowledge-sharing, enabling you to connect with peers, exchange ideas, and expand your professional network. Experience the power of community-driven workspace and take your productivity to new heights with us.</p>
-            <br><br><br><br><br>
-            <h3>How co Worker Website Will Help The Community?</h3> <br>
-            <p>Our shared workspace serves the community by providing a hub for collaboration, networking, and professional development. By bringing together individuals from diverse backgrounds and industries, we facilitate the exchange of ideas, expertise, and resources. Through events, workshops, and networking opportunities, we foster a culture of learning and growth, empowering members to develop new skills, expand their networks, and pursue their professional goals. Additionally, we support local businesses and entrepreneurs by offering flexible workspace solutions and access to essential amenities, enabling them to focus on their work and drive innovation. Ultimately, our shared workspace contributes to the overall vibrancy and success of the community by providing a supportive environment for individuals to thrive and succeed together.</p> <br><br>
-        
+
+        <h1>Shared Workspace</h1> <br>
+        <p>
+            Welcome to our shared workspace platform, where productivity meets collaboration. At our shared workspace,
+            we strive to create an environment that fosters creativity, innovation, and teamwork. Whether you're a
+            freelancer, entrepreneur, or remote worker, our space offers everything you need to thrive. From comfortable
+            workstations to state-of-the-art amenities, we provide the perfect backdrop for your professional journey.
+            Join our vibrant community of like-minded individuals and unlock new opportunities for growth and success.
+        </p>
+        <br>
+        <p>
+            At our shared workspace, we understand the importance of flexibility and convenience. That's why we offer
+            flexible membership plans tailored to suit your needs. Whether you require a dedicated desk, a private
+            office, or simply a place to drop in and work for the day, we have options to accommodate every lifestyle.
+            Our collaborative environment encourages networking and knowledge-sharing, enabling you to connect with
+            peers, exchange ideas, and expand your professional network. Experience the power of community-driven
+            workspace and take your productivity to new heights with us.
+        </p>
+
+        <br><br><br><br><br>
+
+        <h3>How co Worker Website Will Help The Community?</h3>
+        <br>
+        <p>
+            Our shared workspace serves the community by providing a hub for collaboration, networking, and professional
+            development. By bringing together individuals from diverse backgrounds and industries, we facilitate the
+            exchange of ideas, expertise, and resources. Through events, workshops, and networking opportunities, we
+            foster a culture of learning and growth, empowering members to develop new skills, expand their networks,
+            and pursue their professional goals. Additionally, we support local businesses and entrepreneurs by offering
+            flexible workspace solutions and access to essential amenities, enabling them to focus on their work and
+            drive innovation. Ultimately, our shared workspace contributes to the overall vibrancy and success of the
+            community by providing a supportive environment for individuals to thrive and succeed together.
+        </p> <br><br>
+
     </main>
 
     <footer>
