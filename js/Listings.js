@@ -14,9 +14,8 @@ function getListings() {
   //updating workspaces as per search param
   let searchParam = document.querySelector("#searchBar").value;
   if (search !== "") var results = search(searchParam);
-  
-  results!==null?
-  filterListings(results):filterListings(workspaces);
+
+  results !== null ? filterListings(results) : filterListings(workspaces);
 }
 
 function search(searchParam) {
@@ -24,8 +23,12 @@ function search(searchParam) {
   let res = workspaces.filter((el) => {
     if (el.title.includes(searchParam)) return true;
   });
-  let categories = ["workspace","meeting Room","desk","private Office"]
-  categories.forEach((el)=>{if(searchParam.toLowerCase().includes(el.toLowerCase()))document.querySelector("#"+el.replace(" ","")).checked = true; });
+  let categories = ["workspace", "meeting Room", "desk", "private Office"];
+  categories.forEach((el) => {
+    if (searchParam.toLowerCase().includes(el.toLowerCase()))
+      document.querySelector("#" + el.replace(" ", "")).checked = true;
+  });
+
   return res;
 }
 
@@ -137,6 +140,6 @@ window.onload = () => {
   getListings();
 
   //adding event listenr
-  document.querySelector("#filtered").addEventListener("click", filterListings);
+  document.querySelector("#filtered").addEventListener("click", getListings);
   document.querySelector("#searchBar").addEventListener("change", getListings);
 };

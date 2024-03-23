@@ -1,4 +1,4 @@
-var users = [
+export var userDatabase = [
   {
     "name": "John Doe",
     "password":"abc",
