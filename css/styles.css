@@ -70,16 +70,12 @@ nav li img {
   top: 5px;
 }
 
-main {
+/* main {
   margin-left: 7vw;
-}
+} */
 
 main p {
   font-size: large;
-}
-
-main {
-  /* width: 85%; */
 }
 
 footer {

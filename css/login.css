@@ -21,7 +21,11 @@ form p {
 } 
 
 main {
-  flex-grow: 1;
+  background-image: url("../assets/shakingHands.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
 }
 
 
