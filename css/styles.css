@@ -19,18 +19,17 @@ nav{
   width: 100%;
   display: flex;
   justify-content: space-between;
-  color: white;
+  /* color: white; */
+  /* gap: 2vw; */
   /* background-color: white; */
   /* rgb(182, 182, 99); */
   height: 65px;
   align-items: center;
-  font-size: 23px;
+  font-size: 22px;
   padding: 0 2vw;
   color: whitesmoke;
-  /* box-shadow: 0px 4px 20px 20px rgba(0, 0, 0, 0.4); */
-  z-index: 1;
-  background: t;
-  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.623), rgba(0, 0, 0, 0));
+  z-index: 2;
+  background: transparent;
 }
 
 main {
@@ -49,12 +48,15 @@ nav li a {
 }
 
 pages {
-  flex-grow: 1;
+  /* flex-grow: 1; */
   display: flex;
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
+  gap: 8vw;
+  margin-left: 15vw;
   align-items: center;
   /* gap: 10px; */
-  max-width: 60vw;
+  /* max-width: 60vw; */
+  /* min-width: none; */
 }
 
 pages li a {
@@ -64,28 +66,23 @@ pages li a {
 pages li {
   list-style-type: none;
 }
-
-nav li input {
-  height: 27px;
-  position: relative;
-  right: -400px;
+search input{
+height: 29px;
+margin-top: 24px;
+margin-left: 10vw;
+border: 1px solid black;
+border-radius: 5px;
 }
-
-nav li img {
-  position: relative;
-  /* top: 200vw; */
-  right: -370px;
+search img{
   width: 20px;
-  padding: 0 3vw 0 0;
-  top: 5px;
+  position: relative;
+  top: -24.5px;
+  right: -142px;
+  margin-left: 10vw;
 }
 nav li img:active{
   width: 20.3px;
 }
-
-/* main {
-  margin-left: 7vw;
-} */
 
 main p {
   font-size: large;

@@ -8,6 +8,61 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <style>
+    main {
+        width: 100%;
+        /* padding: 50px; */
+        /* padding-top: 150px; */
+        /* padding-bottom: 150px; */
+        min-height: 100vh;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        font-family: sans serif;
+        /* background-color: blue; */
+        position: relative;
+        /* background-color: rgba(34, 29, 29, 0.74); */
+        background-color: rgba(0, 0, 0, 0.808);
+        /* z-index: -1; */
+    }
+    
+    .background-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("assets/homePageImage.jpg");
+        background-size: cover;
+        z-index: -1;
+        /* Adjust the overlay color and opacity as needed */
+        /* backdrop-filter: blur(5px); */
+        /* Adjust the blur radius as needed */
+        /* z-index: 3; */
+    }
+    main h1{
+        padding-top: 180px;
+        font-size: 100px;
+        text-align: center;
+        color: white;
+        text-shadow: 3px 3px 3px rgb(255, 166, 0);
+    }
+    main h2{
+        padding-left: 320px;
+        padding-bottom: 365px;
+        text-align: center;
+        color: white;
+        text-shadow: 1px 1px 1px rgb(255, 166, 0);
+    }
+    main h3{
+        color: white;
+        text-align: center;
+    }
+    main p{
+        padding: 0 300px 0 300px;
+        text-align: center;
+        color: white;
+    }
+
     #loginPopUp {
         display: none;
         position: fixed;
@@ -84,21 +139,23 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="search.html"><img src="assets/search.png"
-                        alt="icon of search"></a>
-            </li>
         </pages>
+        <search>
+            <li><input type="text" placeholder=" search"> </li><a href="search.html"><img src="assets/search.png"
+                    id="searchIconPNG" alt="icon of search"></a>
+        </search>
 
         <!-- Account info will be on the right side of the nav bar -->
         <li><a href="login.html">Account</a></li>
 
     </nav>
 
-    <br><br><br><br>
 
     <main>
 
+        <div class="background-overlay"></div>
         <h1>Shared Workspace</h1> <br>
+        <h2>A perfect place to get productive workspaces...</h2>
         <p>
             Welcome to our shared workspace platform, where productivity meets collaboration. At our shared workspace,
             we strive to create an environment that fosters creativity, innovation, and teamwork. Whether you're a
