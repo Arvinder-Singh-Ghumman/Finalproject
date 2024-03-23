@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Search Page</title> <link rel="stylesheet" href="css/styles.css"> <link rel="stylesheet" href="css/serach.css">
+    <title>Search Page</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/serach.css">
 </head>
 
 <body>
@@ -31,73 +33,109 @@
 
     <br>
     <main>
-       
+
         <div id="searchAndFilter">
             <div id="searchInput">
+                <!-- <label for="searchBar">Search</label> -->
                 <input type="text" id="searchBar" placeholder="Search">
             </div>
-            <div id="filter"><u><b>Filters</b></u></div>
-            <div id="filterSlection">
-                <div class="filters" id="cityFilter">
-                    <p><u>City</u></p>
+            <div id="filterIcon" onclick="filterSelectionDisplay()"><img src="assets/filterIcon.png" id="filterImg" alt="Filter"></div>
+            <div id="filter">Filters</div>
+        </div>
+        <div id="filterSelection">
+            <p id="filterContainerHeading"><b>Filters</b></p>
+            <div class="filters" id="cityFilter">
+                <p class="filterSubHeadings">City</p>
+                <p>
                     <label for="citySelection">Select City</label>
                     <input type="text" id="citySelection">
+                </p>
+            </div>
+
+            <div class="filters" id="categoryFilter">
+                <p class="filterSubHeadings">Category</p>
+                <div class="filterOptions">
+                    <p>
+                        <input type="radio" name="category" class="categoryFilter" id="desk">
+                        <label for="desk">Desk</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="category" class="categoryFilter" id="workspaces">
+                        <label for="workspaces">Workspaces</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="category" class="categoryFilter" id="meetingRoom">
+                        <label for="meetingRoom">Meeting Room</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="category" class="categoryFilter" id="privateOffice">
+                        <label for="privateOffice">Private Office</label>
+                    </p>
                 </div>
 
-                <div class="filters" id="categoryFilter">
-                    <p><u>Category</u></p>
-                    <input type="radio" name="category" class="categoryFilter" id="desk" value="desk">
-                    <label for="desk">Desk</label>
-                    <input type="radio" name="category" class="categoryFilter" id="workspaces" value="workspace">
-                    <label for="workspaces">Workspaces</label>
-                    <input type="radio" name="category" class="categoryFilter" id="meetingRoom" value="meetingRoom">
-                    <label for="meetingRoom">Meeting Room</label>
-                    <input type="radio" name="category" class="categoryFilter" id="privateOffice" value="privateOffice">
-                    <label for="privateOffice">Private Office</label>
-                </div>
-                
-                <div class="filters" id="priceFilter">
-                    <p><u>Price</u></p>
-                    <label for="minPrice">Minimum Price(in $):</label>
-                    <input type="number" id="minPrice" placeholder="Enter a number">
-                    <label for="maxPrice">Maximum Price(in $):</label>
-                    <input type="number" id="maxPrice" placeholder="Enter a number">
+            </div>
 
+            <div class="filters" id="priceFilter">
+                <p class="filterSubHeadings">Price</p>
+                <div class="filterOptions">
+                    <p>
+                        <label for="minPrice">Minimum Price(in $):</label>
+                        <input type="number" id="minPrice" placeholder="Enter a number">
+                    </p>
+                    <p>
+                        <label for="maxPrice">Maximum Price(in $):</label>
+                        <input type="number" id="maxPrice" placeholder="Enter a number">
+                    </p>
                 </div>
 
-                <div class="filters" id="ratingFilter">
-                    <p><u>Seating Capacity</u></p>
-                    <label for="seatingCapcity">Minimum Seating Capacity:</label>
-                    <input type="number" id="seatingCapacity" placeholder="Enter a number">
+
+            </div>
+
+            <div class="filters" id="ratingFilter">
+                <p class="filterSubHeadings">Seating Capacity</p>
+                <div class="filterOptions">
+                    <p>
+                        <label for="seatingCapcity">Minimum Seating Capacity:</label>
+                        <input type="number" id="seatingCapacity" placeholder="Enter a number">
+                    </p>
                 </div>
+            </div>
 
-                <div class="filters" id="ratingFilter">
-                    <p><u>Rating</u></p>
-                    <input type="radio" name="rating" value="5" id="5Star">
-                    <label for="RatingFilter">5 Star</label>
-
-                    <input type="radio" name="rating" value="4" id="4Star">
-                    <label for="RatingFilter">4 Star</label>
-
-                    <input type="radio" name="rating" value="3" id="3Star">
-                    <label for="RatingFilter">3 Star</label>
-
-                    <input type="radio" name="rating" value="2" id="2Star">
-                    <label for="RatingFilter">2 Star</label>
-
-                    <input type="radio" name="rating" value="1" id="1Star">
-                    <label for="RatingFilter">1 Star</label>
-
-                    <input id="filtered" type="submit">
-
+            <div class="filters" id="ratingFilter">
+                <p class="filterSubHeadings">Rating</p>
+                <div class="filterOptions">
+                    <p>
+                        <input type="radio" name="rating" value="5" id="5Star">
+                        <label for="RatingFilter">5 Star</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="rating" value="4" id="4Star">
+                        <label for="RatingFilter">4 Star</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="rating" value="3" id="3Star">
+                        <label for="RatingFilter">3 Star</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="rating" value="2" id="2Star">
+                        <label for="RatingFilter">2 Star</label>
+                    </p>
+                    <p>
+                        <input type="radio" name="rating" value="1" id="1Star">
+                        <label for="RatingFilter">1 Star</label>
+                    </p>
                 </div>
+                <br>
+                <input id="filtered" type="submit" value="Search">
+
             </div>
         </div>
 
-        <div class="searchCards">
-          <div id="SearchResults">
 
-          </div>
+        <div class="searchCards">
+            <div id="SearchResults">
+
+            </div>
         </div>
     </main>
 
@@ -110,6 +148,13 @@
     </footer>
 
     <script src="js/Listings.js" type="module"></script>
-  </body>
+    <script>
+        //function to display the filter div on clicking the filter icon
+        function filterSelectionDisplay() {
+            var filterDiv = document.querySelector("#filterSelection");
+            filterDiv.style.display==="none"? filterDiv.style.display="flex":filterDiv.style.display="none";
+        }
+    </script>
+</body>
 
 </html>
