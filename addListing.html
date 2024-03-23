@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Listing</title>
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+
+        }
+
+        body {
+            /* background-color: gray; */
+        }
+
+        main {
+            padding-top: 10px;
+            padding-bottom: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: sans serif;
+            background-image: url("assets/K-50-JG-1229WF.avif");
+            background-size: cover;
+            /* background: inherit; */
+            position: relative;
+            left: -60px;
+            /* filter: blur(5px); */
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(216, 208, 208, 0.5);
+            /* Adjust the overlay color and opacity as needed */
+            filter: blur(10px);
+            /* Adjust the blur radius as needed */
+        }
+
+        #formContainer {
+            /* background-color: rgb(240, 240, 240); */
+            background-color: white;
+            max-width: 30rem;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            padding: 10px 50px 40px 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        #formHeading {
+            margin-top: px;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+
+        .textInputContainer {
+            position: relative;
+            width: 100%;
+        }
+
+        .textInputContainer input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            outline: none;
+            color: black;
+            font-size: 1rem;
+        }
+
+        .textInputContainer span {
+            position: absolute;
+            left: 0;
+            top: 1px;
+            padding: 10px;
+            pointer-events: none;
+            font-size: 1em;
+            color: black;
+            text-transform: uppercase;
+
+        }
+
+        .textInputContainer input:focus~span {
+            /* color: #4385f4; */
+            color: #4385f4;
+            transform: translateX(10px) translateY(-10px);
+            padding: 0 10px;
+            background-color: #fff;
+        }
+
+        .textInputContainer input:valid~span {
+
+            color: green;
+            transform: translateX(10px) translateY(-10px);
+            padding: 0 10px;
+            background-color: #fff;
+        }
+
+        .textInputContainer input:focus {
+            border: 2px solid #4385f4;
+        }
+
+        .textInputContainer input:valid {
+            border: 3px solid rgb(36, 161, 36);
+        }
+
+        .textInputContainer textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 5px;
+            outline: none;
+            color: black;
+            font-size: 1em;
+        }
+
+        .textInputContainer textarea:focus~span {
+            color: #4385f4;
+            transform: translateX(10px) translateY(-10px);
+            padding: 0 10px;
+            background-color: #fff;
+        }
+
+        .textInputContainer textarea:valid~span {
+            color: green;
+            transform: translateX(10px) translateY(-10px);
+            padding: 0 10px;
+            background-color: #fff;
+        }
+
+        .textInputContainer textarea:focus {
+            border: 2px solid #4385f4;
+        }
+
+        .textInputContainer textarea:valid {
+            border: 3px solid rgb(36, 161, 36);
+        }
+
+        #formSubmissionButton {
+            width: fit-content;
+            padding: 5px;
+            font-size: 17px;
+            text-transform: uppercase;
+            border: 2px solid black;
+            border-radius: 7px;
+            margin-left: 150px;
+
+        }
+
+        #formSubmissionButton:hover {
+            color: white;
+            background-color: #4385f4;
+        }
+
+        #formSubmissionButton:active {
+            box-shadow: 1px 1px 10px 1px #4385f4;
+        }
+
+        /* input[type="checkbox"]{
+            appearance: none;
+        }
+        input[type="checkbox"]{
+            margin-left: 5px;
+            margin-bottom: -2px;
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 2px;
+        }
+        input[type="checkbox"]:checked{
+            background-color: green;
+            color: green;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <!-- logo will be on the left side of the nav bar -->
+        <li>logo</li>
+
+        <!-- page links will be in the center -->
+        <pages>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="help.html">Help</a></li>
+            <li><input type="text" placeholder=" search"> <a href="search.html"><img src="assets/search.png" id="searchIconPNG"
+                        alt="icon of search"></a>
+            </li>
+        </pages>
+
+        <!-- Account info will be on the right side of the nav bar -->
+        <li><a href="login.html">Account</a></li>
+
+    </nav>
+
+    <main>
+
+        <div class="background-overlay"></div>
+        <div id="formContainer">
+            <h2 id="formHeading">Add New Listing</h2>
+            <form>
+                <div id="addTitleContainer" class="textInputContainer">
+                    <input type="text" class="textInput" id="title" name="title" required>
+                    <!-- <label for="title" id="titleInputLabel"></label> -->
+                    <span>Title</span>
+                </div>
+
+                <div class="textInputContainer">
+                    <input type="text" id="location" name="location" required>
+                    <span>Location</span>
+                </div>
+
+
+                <div class="textInputContainer">
+                    <input type="number" id="seatingInput" name="seating" required>
+                    <span>Seating Capacity</span>
+                </div>
+
+                <!-- <div class="inputContainer">
+                    <label for="ownerContact">Owner Contact:</label>
+                    <input type="email" id="ownerContact" name="ownerContact" value="info@collabzone.com">
+                </div> -->
+
+                <div class="textInputContainer">
+                    <textarea id="descriptionInput" name="description" rows="4" cols="50" required></textarea>
+                    <span>Description</span>
+                </div>
+
+                <div class="textInputContainer">
+                    <input type="number" id="price" name="price" required>
+                    <span>Price per session(in $)</span>
+                </div>
+
+                <div class="inputContainer">
+                    <label for="imageInput">Select an Image: </label>
+                    <input type="file" id="imageInput" name="image">
+                </div>
+
+                <div class="inputContainer">
+                    <label for="addIsSmokingAllowed">Smoking Allowed:</label>
+                    <input type="checkbox" id="isSmokingAllowed" name="isSmokingAllowed">
+                </div>
+
+                <div class="inputContainer">
+                    <span>Availability:</span>
+                    <label for="addFromAvailability">From</label>
+                    <input type="date" id="addFromAvailability" name="availability">
+                    <label for="addToAvailability">To</label>
+                    <input type="date" id="addToAvailability" name="availability">
+                    <!-- if to availability is null then it is available till infinite time there is no expected closure of this workspace -->
+                </div>
+                <!-- the next line is if we want to set one input for availability which allows us to pick a date check if teh workspace is available on that day or not -->
+                <!-- after a date is picked from the above input,
+                then i will make a div with hidden visibility
+                 so that it can be displayed whether any timings on that specific day are available
+                it is extra work(only do if got enough time) -->
+
+                <!-- <div class="inputContainer">
+                    <label for="addTerm">Term:</label>
+                    <input type="text" id="addTerm" name="term" value="Flexible booking options available">
+                </div> -->
+
+                <div class="inputContainer" id="categoryInputContainer">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option id="addMeetingRoom" value="meetingRoom">Meeting Room</option>
+                        <option id="addDesk" value="desk">Desk</option>
+                        <option id="addWorkspace" value="workspace">Workspace</option>
+                        <option id="addPrivateOffice" value="privateOffice">Private Office</option>
+                    </select>
+
+                </div>
+
+                <input id="formSubmissionButton" type="submit" value="Submit">
+            </form>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>Copyright @ group-4</p>
+        <p>extra links about the site</p>
+        <p id="date">Date: </p>
+    </footer>
+
+</body>
+
+</html>

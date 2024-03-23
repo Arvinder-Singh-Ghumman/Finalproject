@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 
@@ -10,7 +11,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      background-color:#f2eef8;
+      background-color:white;
      
   }
 
@@ -18,12 +19,14 @@ nav {
   display: flex;
   justify-content: space-between;
   color: black;
-  background-color: #bea0f4;
+  background-color: white;
   /* rgb(182, 182, 99); */
   height: 65px;
   align-items: center;
   font-size: 23px;
   padding: 0 2vw;
+  box-shadow: 0px 4px 20px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 main{
   flex-grow: 1;
@@ -38,10 +41,12 @@ nav li a {
 }
 
 pages {
-  width: 40vw;
+  flex-grow: 1;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  /* gap: 10px; */
+  max-width: 60vw;
 }
 
 pages li a {
@@ -58,6 +63,7 @@ nav li input {
 nav li img {
   position: relative;
   top: 20vw;
+  right: 31px;
   width: 20px;
   padding: 0 3vw 0 0;
   position: relative;
@@ -73,21 +79,27 @@ main p {
 }
 
 main {
-  width: 85%;
+  /* width: 85%; */
 }
 
 footer {
-  margin-top: 2vw;
+  margin-top: 0;
   height: 5vw;
   display: flex;
-  background-color: #b89ed6;
+  background-color: white;
   /* rgb(182, 182, 99); */
   justify-content: space-between;
   align-items: center;
   padding: 0 7vw;
   font-size: large;
+  box-shadow: 0px -4px 20px 20px rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
 #loginPopUp {
   padding: 0.5vw;
+}
+
+#searchIconPNG{
+  box-sizing:content-box;
 }
