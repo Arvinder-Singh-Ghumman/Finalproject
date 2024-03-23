@@ -10,10 +10,3 @@ window.onload = function() {
   currentDateElement.innerHTML += currentDate.toLocaleDateString();
 }
 
-(setTimeout(function () {
-  document.getElementById('loginPopUp').style.display = 'block';
-}, 10))(); // 10000 milliseconds = 10 seconds
-
-function closeLoginPopUp() {
-  document.getElementById('loginPopUp').style.display = 'none';
-}

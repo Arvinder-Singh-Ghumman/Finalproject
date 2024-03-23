@@ -20,6 +20,7 @@
         background-color: rgba(0, 0, 0, 0.4);
         backdrop-filter: blur(2px);
     }
+
     #loginPopUpContainer {
         background-color: #ffffff;
         margin: 15% auto;
@@ -30,26 +31,31 @@
         text-align: center;
         box-shadow: 2px 2px 10px 5px rgba(192, 192, 192, 0.0);
     }
-    #loginPopUpHeading{
+
+    #loginPopUpHeading {
         text-transform: uppercase;
         margin-bottom: 10px;
     }
-    #loginPopUpMessage{
+
+    #loginPopUpMessage {
         color: rgb(0, 0, 0);
         margin-bottom: 5px;
     }
-    #loginPopUpLoginButton{
+
+    #loginPopUpLoginButton {
         width: 40px;
         height: 20px;
         background-color: #4385f4;
         border: none;
         border-radius: 6px;
     }
-    #loginPopUpLogin{
+
+    #loginPopUpLogin {
         text-decoration: none;
         color: white;
     }
-    #loginPopUpClose{
+
+    #loginPopUpClose {
         width: 40px;
         height: 20px;
         border: 1px solid black;
@@ -128,12 +134,21 @@
     </main>
 
     <footer>
-        <p>Copyright @ group-4</p>
-        <p>extra links about the site</p>
+        <p>Copyright@group-4SODV1201</p>
+        <p></p>
         <p id="date">Date: </p>
     </footer>
 
     <script src="js/index.js"></script>
+    <script>
+        (setTimeout(function () {
+            document.getElementById('loginPopUp').style.display = 'block';
+        }, 10000))(); // 10000 milliseconds = 10 seconds
+
+        function closeLoginPopUp() {
+            document.getElementById('loginPopUp').style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
