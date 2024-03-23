@@ -108,6 +108,8 @@
             transform: translateX(10px) translateY(-10px);
             padding: 0 10px;
             background-color: #fff;
+            transition: color 0.2s ease, transform 0.2s ease, padding 0.2s ease, background-color 0.2s ease;
+
         }
 
         .textInputContainer input:valid~span {
@@ -141,6 +143,7 @@
             transform: translateX(10px) translateY(-10px);
             padding: 0 10px;
             background-color: #fff;
+            transition: color 0.2s ease, transform 0.2s ease, padding 0.2s ease, background-color 0.2s ease;
         }
 
         .textInputContainer textarea:valid~span {
@@ -159,19 +162,21 @@
         }
 
         #formSubmissionButton {
-            width: fit-content;
+            width: 65px;
             padding: 5px;
-            font-size: 17px;
-            text-transform: uppercase;
-            border: 2px solid black;
-            border-radius: 7px;
+            font-size: 14px;
+            /* text-transform: uppercase; */
+            /* border: 2px solid black; */
+            border: none;
+            background-color: #3c79e4;
+            color: white;
+            border-radius: 20px;
             margin-left: 150px;
 
         }
 
         #formSubmissionButton:hover {
-            color: white;
-            background-color: #4385f4;
+            box-shadow: 1px 1px 5px 5px rgb(0,0,0,0.1);
         }
 
         #formSubmissionButton:active {
