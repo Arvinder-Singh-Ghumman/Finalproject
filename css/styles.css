@@ -5,39 +5,47 @@
 }
 
 
-  body{
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: white;
+}
 
-
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      background-color:white;
-     
-  }
-
-nav {
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  color: black;
-  background-color: white;
+  color: white;
+  /* background-color: white; */
   /* rgb(182, 182, 99); */
   height: 65px;
   align-items: center;
   font-size: 23px;
   padding: 0 2vw;
-  box-shadow: 0px 4px 20px 20px rgba(0, 0, 0, 0.4);
+  color: whitesmoke;
+  /* box-shadow: 0px 4px 20px 20px rgba(0, 0, 0, 0.4); */
   z-index: 1;
+  background: t;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.623), rgba(0, 0, 0, 0));
 }
-main{
+
+main {
   flex-grow: 1;
+  padding-top: 150px;
+  padding-bottom: 100px;
 }
 
 nav li {
   list-style-type: none;
 }
+
 nav li a {
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 pages {
@@ -56,50 +64,58 @@ pages li a {
 pages li {
   list-style-type: none;
 }
+
 nav li input {
-  height: 25px;
+  height: 27px;
+  position: relative;
+  right: -400px;
 }
 
 nav li img {
   position: relative;
-  top: 20vw;
-  right: 31px;
+  /* top: 200vw; */
+  right: -370px;
   width: 20px;
   padding: 0 3vw 0 0;
-  position: relative;
   top: 5px;
 }
-
-main {
-  margin-left: 7vw;
+nav li img:active{
+  width: 20.3px;
 }
+
+/* main {
+  margin-left: 7vw;
+} */
 
 main p {
   font-size: large;
-}
-
-main {
-  /* width: 85%; */
 }
 
 footer {
   margin-top: 0;
   height: 5vw;
   display: flex;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.938);
+  color: white;
   /* rgb(182, 182, 99); */
   justify-content: space-between;
   align-items: center;
   padding: 0 7vw;
-  font-size: large;
-  box-shadow: 0px -4px 20px 20px rgba(0, 0, 0, 0.4);
+  /* font-size: large; */
+  /* box-shadow: 0px -4px 20px 20px rgba(0, 0, 0, 0.4); */
+  /* background: linear-gradient(to bottom , rgba(0, 0, 0, 0.89),rgb(0, 0, 0)); */
   z-index: 1;
+  font-size: 16px;
+}
+footer p{
+  font-weight: thin;
+  /* font-stretch: 30px; */
 }
 
 #loginPopUp {
   padding: 0.5vw;
 }
 
-#searchIconPNG{
-  box-sizing:content-box;
+#searchIconPNG {
+  box-sizing: content-box;
 }

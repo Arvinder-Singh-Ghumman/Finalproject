@@ -19,6 +19,7 @@
         }
 
         main {
+            width: 100%;
             padding-top: 10px;
             padding-bottom: 0;
             min-height: 100vh;
@@ -26,40 +27,39 @@
             justify-content: center;
             align-items: center;
             font-family: sans serif;
-            background-image: url("assets/addListingWorkspaceImage.jpg");
+            background-image: url("assets/addListingWorkspaceImage-modified.jpg");
             background-size: cover;
-            /* background: inherit; */
             position: relative;
-            left: -60px;
-            /* filter: blur(5px); */
+            /* z-index: -1; */
         }
 
         .background-overlay {
             position: absolute;
-            top: 0px;
+            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(216, 208, 208, 0.1);
+            /* background-color: rgba(216, 208, 208, 0.2); */
             /* Adjust the overlay color and opacity as needed */
-            filter: blur(5px);
+            /* backdrop-filter: blur(5px); */
             /* Adjust the blur radius as needed */
+            /* z-index: 3; */
         }
 
         #formContainer {
             /* background-color: rgb(240, 240, 240); */
             background-color: white;
-            max-width: 30rem;
+            max-width: 35rem;
             border: 1px solid lightgray;
             border-radius: 8px;
-            padding: 10px 50px 40px 50px;
+            padding: 3vh 5vw 3vh 5vw;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             gap: 20px;
             position: relative;
-            z-index: 1;
+            /* z-index: 1; */
         }
 
         form {
@@ -67,6 +67,7 @@
             justify-content: center;
             flex-direction: column;
             gap: 30px;
+            /* z-index: 5; */
         }
 
         #formHeading {
@@ -78,6 +79,7 @@
         .textInputContainer {
             position: relative;
             width: 100%;
+            /* z-index: 10; */
         }
 
         .textInputContainer input {
@@ -88,6 +90,7 @@
             outline: none;
             color: black;
             font-size: 1rem;
+            /* z-index: 11; */
         }
 
         .textInputContainer span {
@@ -176,7 +179,7 @@
         }
 
         #formSubmissionButton:hover {
-            box-shadow: 1px 1px 5px 5px rgb(0,0,0,0.1);
+            box-shadow: 1px 1px 5px 5px rgb(0, 0, 0, 0.1);
         }
 
         #formSubmissionButton:active {
@@ -215,8 +218,8 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder=" search"> <a href="search.html"><img src="assets/search.png" id="searchIconPNG"
-                        alt="icon of search"></a>
+            <li><input type="text" placeholder=" search"> <a href="search.html"><img src="assets/search.png"
+                        id="searchIconPNG" alt="icon of search"></a>
             </li>
         </pages>
 
@@ -310,11 +313,13 @@
     </main>
 
     <footer>
-        <p>Copyright @ group-4</p>
-        <p>extra links about the site</p>
+        <p>Copyright@group-4SODV1201</p>
+        <p></p>
         <p id="date">Date: </p>
     </footer>
     <script src="./js/newListing.js" type="module"></script>
+
+    <script src="js/index.js"></script>
 
 </body>
 
