@@ -98,6 +98,24 @@ const filterByCity = (city, sortedList) => {
   return res;
 };
 
+function sortListings(unsorted, sortBy) {
+  let sortedList;
+  switch (sortBy) {
+    case "price":
+      sortedList = unsorted.sort((a, b) => a.price > b.price);
+      break;
+    case "name":
+      sortedList = unsorted.sort((a, b) => a.localeCompare(b));
+      break;
+    case "rating":
+      sortedList = unsorted.sort((a, b) => a.rating > b.rating);
+      break;
+  }
+  if (document.getElementById("sortByOrder").value === "1")
+    sortedList = sortedList.reverse();
+  return sortedList;
+}
+
 //function to add listings to the doc
 function addListing(listing, cardsId) {
   // creating card and its elements
@@ -140,9 +158,10 @@ window.onload = () => {
   getListings();
 
   //adding event listenr
-  try{
+  try {
     document.querySelector("#filtered").addEventListener("click", getListings);
-    document.querySelector("#searchBar").addEventListener("change", getListings);
-  }catch{}
-}
-
+    document
+      .querySelector("#searchBar")
+      .addEventListener("change", getListings);
+  } catch {}
+};

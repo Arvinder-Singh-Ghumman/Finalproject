@@ -2,6 +2,7 @@ import { listings } from "../database/listingsDatabse.js";
 var workspaces;
 var user = JSON.parse(sessionStorage.getItem("user"));
 user == null ? (window.location = "index.html") : "";
+var myListCounter =3;
 
 //fetch listings
 function getListings() {
@@ -12,7 +13,11 @@ function getListings() {
   } else {
     workspaces = JSON.parse(localStorage.getItem("workspaces"));
   }
-  addListing(workspaces.filter((el) => el.owner === user.name));
+  document.querySelector("#listings").innerHTML="";
+  let resultLists = workspaces.filter((el) => el.owner === user.name);
+  if(resultLists.length<=myListCounter)
+    document.querySelector("#myListingsMore").style.display = "none"
+  addListing(resultLists.slice(0,myListCounter));
 }
 
 function addListing(list) {
@@ -60,4 +65,13 @@ window.onload = () => {
   currentDateElement.innerHTML += currentDate.toLocaleDateString();
 
   getListings();
+  window.addEventListener("scroll",()=>{
+    if(window.scrollY>100){
+      document.querySelector("nav").classList.add("navScrolled")
+    }else{
+      document.querySelector("nav").classList.remove("navScrolled")
+    }
+  })
+  document.querySelector("#ownerInfo").innerText = `Hey, ${user.name}!`
+  document.querySelector("#myListingsMore").addEventListener("click",()=>{myListCounter+=6;getListings()})
 };
