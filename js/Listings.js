@@ -140,6 +140,9 @@ window.onload = () => {
   getListings();
 
   //adding event listenr
-  document.querySelector("#filtered").addEventListener("click", getListings);
-  document.querySelector("#searchBar").addEventListener("change", getListings);
-};
+  try{
+    document.querySelector("#filtered").addEventListener("click", getListings);
+    document.querySelector("#searchBar").addEventListener("change", getListings);
+  }catch{}
+}
+
