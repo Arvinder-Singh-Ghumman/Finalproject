@@ -12,6 +12,9 @@ main{
   margin-inline: 20vmin;
   border-radius: 25px;
   background: #e4e4e4;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 /* nav */

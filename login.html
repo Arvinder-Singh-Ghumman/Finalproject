@@ -16,6 +16,7 @@
       padding-left: 10px;
       font-size: 14px;
       /* margin-bottom: 10px; */
+      /* z-index: 5; */
     }
 
     form p span {
@@ -23,6 +24,8 @@
       bottom: 30px;
       left: 7px;
       text-transform: uppercase;
+      /* z-index: 1; */
+      pointer-events: none;
     }
 
     form p input:focus~span,
@@ -33,6 +36,7 @@
       background-color: white;
       padding: 5px;
       border-radius: 5px;
+      transition: bottom 2s ease, padding 0.2 ease , background-color 0.2s ease;
     }
 
     form p input:valid~span {
