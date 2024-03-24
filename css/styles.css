@@ -72,6 +72,7 @@ margin-top: 24px;
 margin-left: 10vw;
 border: 1px solid black;
 border-radius: 5px;
+/* position: relative; */
 }
 search img{
   width: 20px;
@@ -90,9 +91,10 @@ main p {
 
 footer {
   margin-top: 0;
-  height: 5vw;
+  height: 100px;
   display: flex;
   background-color: rgba(0, 0, 0, 0.938);
+  /* background: transparent; */
   color: white;
   /* rgb(182, 182, 99); */
   justify-content: space-between;
@@ -103,6 +105,7 @@ footer {
   /* background: linear-gradient(to bottom , rgba(0, 0, 0, 0.89),rgb(0, 0, 0)); */
   z-index: 1;
   font-size: 16px;
+  border: none;
 }
 footer p{
   font-weight: thin;
@@ -114,5 +117,5 @@ footer p{
 }
 
 #searchIconPNG {
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
