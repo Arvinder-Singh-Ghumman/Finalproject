@@ -102,3 +102,9 @@ h1 {
   font-style: italic;
   color: #888;
 }
+
+#ownerInfo{
+  color: white;
+  text-align: center;
+  font-size:xx-large;
+}

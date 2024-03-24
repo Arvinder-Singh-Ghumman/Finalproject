@@ -4,47 +4,81 @@ body {
   min-height: 100vh;
   /* align-items: center; */
 }
-
+#loginDiv, #signUpDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 10px; */
+}
 form {
   width: max-content;
-  margin-top: 10vh;
-  margin-left: 45vw;
+  /* margin-top: 10vh; */
+  /* margin-left: 45vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
+  gap: 40px;
   background-color: rgba(255, 255, 255, 0.7);
+  padding: 60px;
+  border-radius: 20px;
 }
 form p {
   text-align: left;
   width: 310px;
   height: 20px;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
 } 
-
+form h1{
+  padding-bottom: 10px;
+}
+form #loginButton, form #signUpButton{
+  width: 80px;
+  margin-top: 20px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 15px;
+  background-color: #3c79e4;
+  color: white;
+  border: none;
+}
+form #loginButton:hover, form #signUpButton:hover{
+  background-color: #2a62c4;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.13);
+}
+form #loginButton:active, form #signUpButton:active{
+  background-color: #3c79e4;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.13);
+}
 main {
   background-image: url("../assets/shakingHands.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 10px; */
   /* z-index: 1; */
 }
 
 
-input {
+/* form input {
   width: 10vw;
-}
+} */
 
  #displaySignup {
-  margin-left: 41.5%;
-  margin-top: 5vw;
+  /* margin-left: 41.5%;
+  margin-top: 5vw; */
+  position: relative;
+  bottom: 2vw;
   
 }
 
 #Displaylogin {
-  margin-left: 41.5%;
-  margin-top: 3.8vw;
+  /* margin-left: 41.5%;
+  margin-top: 3.8vw; */
   
 } 
 
@@ -54,11 +88,11 @@ input {
   text-transform: uppercase;
 }
 
-#loginbutton:hover {
+/* #loginbutton:hover {
   color: aliceblue;
   background-color: rgb(104, 197, 104);
   text-transform: uppercase;
-}
+} */
 
 button {
   padding: 4px;
@@ -72,5 +106,34 @@ button {
 #Displaylogin:hover {
   text-decoration: underline;
   color: rgb(93, 93, 238);
+}
+
+
+
+/* 
+#login, #signup{
+  padding: 50px;
+} */
+
+#loginDiv, #signUpDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 5vw; */
+}
+#Displaylogin, #displaySignup{
+  position: relative;
+  bottom: 40px;
+  text-align: center;
+}
+#signUpDiv{
+  display: none;
+}
+form#signup div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
 }
 

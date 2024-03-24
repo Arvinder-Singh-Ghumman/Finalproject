@@ -1,4 +1,6 @@
-import { userDatabase } from "../database/usersDatabase.js";
+import {
+  userDatabase
+} from "../database/usersDatabase.js";
 var users;
 //get users if in localstorage otherwise the default user.js
 if (localStorage.getItem("users") != null) {
@@ -22,7 +24,8 @@ function signUp(event) {
   new_userName = document.querySelector("#_name_").value;
   new_userPhone = document.querySelector("#_phone_").value;
   new_userEmail = document.querySelector("#_email_").value;
-  new_userPassword = document.querySelector("#_password_").value;new_userRole = document.querySelector('input[name="role"]:checked').value;
+  new_userPassword = document.querySelector("#_password_").value;
+  new_userRole = document.querySelector('input[name="role"]:checked').value;
 
   //change the colour of input box, display a message alerting that username already exists
   if (new_userName.length < 3) alert("Name too small");
@@ -47,7 +50,7 @@ function logIn(event) {
   event.preventDefault();
   var givenEmail = document.querySelector("#_email").value,
     given_password = document.querySelector("#_password").value;
-    console.log(users)
+  console.log(users)
   var index = users.find((abc) => abc.email == givenEmail);
   console.log(index);
   console.log(givenEmail);
@@ -57,9 +60,9 @@ function logIn(event) {
   } else if (index.password == given_password) {
     sessionStorage.setItem("user", JSON.stringify(index));
     alert("hogya");
-    if(index.role==="owner"){
+    if (index.role === "owner") {
       openPage("ownerhome.html");
-    }else{
+    } else {
       openPage("coworkerHome.html");
     }
   } else {
@@ -96,9 +99,19 @@ window.onload = () => {
 
   document.getElementById("displaySignup").addEventListener("click", displaySignUp);
   document.getElementById("Displaylogin").addEventListener("click", displayLogIn);
+  
+  
+  // Get the current date
+  var currentDate = new Date();
+  
+  // Get the HTML element with the ID "currentDate"
+  var currentDateElement = document.getElementById('date');
+  
+  // Update the innerHTML of the element with the current date
+  currentDateElement.innerHTML += currentDate.toLocaleDateString();
 };
 
 
-function openPage(pageName){
+function openPage(pageName) {
   window.location.href = pageName;
 }
