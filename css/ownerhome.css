@@ -1,4 +1,6 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap');
+
+*{
   margin: 0;
   padding: 0;
 }
@@ -11,6 +13,54 @@ main{
   border-radius: 25px;
   background: #e4e4e4;
 }
+
+/* nav */
+nav{
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: 600; */
+}
+.navScrolled{
+  height: 50px;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  background: #191919;
+}
+nav li a {
+  opacity: 0.5;
+  position: relative;
+  font-weight: 500;
+  transition: 0.3s all ease-out;
+}
+nav li a:hover{
+  opacity: 1;
+  font-weight: 700;
+}
+/* Hover effect for the underline */
+nav li a::before {
+  content: ''; 
+  position: absolute; 
+  bottom: -5px; 
+  left: 0; 
+  width: 0; 
+  height: 1px; 
+  background-color: #ff0000; 
+  transition: width 0.3s;
+}
+nav li a:hover::before {
+  width: 100%; 
+}
+nav .active{
+  color: aqua;
+  opacity: 1;
+  font-weight: 700;
+}
+nav .active::before{
+  background-color: aqua;
+}
+
+/* body */
 h1 {
   text-align: center;
   letter-spacing: 5px;
@@ -21,6 +71,24 @@ h1 {
   margin-top: 50px;
   font-weight: 800;
   font-size: 3em;
+}
+#ownerInfo{
+  font-family: "Raleway", sans-serif;
+  text-align: left;
+  color: white;
+  font-size:xx-large;
+  margin: 20vmin;
+  margin-top: 30dvh;
+  margin-bottom: 10px;
+}
+#ownerWelcome{
+  opacity: 0.4;
+  color: white;
+  margin-inline: 20vmin;
+  margin-bottom: 20dvh;
+  letter-spacing: 2px;
+  font-family: "Raleway", sans-serif;
+  line-height: 150%;
 }
 .listings {
   background-color: #ffffff; /* Card background color */
@@ -103,8 +171,3 @@ h1 {
   color: #888;
 }
 
-#ownerInfo{
-  color: white;
-  text-align: center;
-  font-size:xx-large;
-}
