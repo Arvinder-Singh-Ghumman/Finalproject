@@ -91,7 +91,7 @@ main p {
 
 footer {
   margin-top: 0;
-  height: 5vw;
+  height: 100px;
   display: flex;
   background-color: rgba(0, 0, 0, 0.938);
   /* background: transparent; */

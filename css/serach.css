@@ -198,7 +198,7 @@ footer {
 /* CSS for Card */
 .card {
   flex-basis: 0 1 1;
-  width: 30%;
+  width: 20%;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -207,6 +207,13 @@ footer {
   margin-bottom: 20px;
   background-color: #fff;
 }
+.card:hover{
+  background: linear-gradient(to bottom, rgb(77, 87, 94), white);
+}
+/* .card:hover + .cardTitle{
+  color: white;
+  background-color: black;
+} */
 
 /* CSS for Card Title */
 .cardTitle {
@@ -229,7 +236,7 @@ footer {
 /* CSS for Card Price */
 .cardPrice {
   font-weight: bold;
-  color: #333;
+  color: rgb(17, 155, 17);
   margin-bottom: 10px;
 }
 
