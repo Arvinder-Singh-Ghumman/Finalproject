@@ -65,6 +65,7 @@ window.onload = () => {
   currentDateElement.innerHTML += currentDate.toLocaleDateString();
 
   getListings();
+  
   window.addEventListener("scroll",()=>{
     if(window.scrollY>100){
       document.querySelector("nav").classList.add("navScrolled")
