@@ -1,6 +1,4 @@
-import {
-  userDatabase
-} from "../database/usersDatabase.js";
+import { userDatabase } from "../database/usersDatabase.js";
 var users;
 //get users if in localstorage otherwise the default user.js
 if (localStorage.getItem("users") != null) {
@@ -14,6 +12,7 @@ var isLoggedin =
 
 function signUp(event) {
   event.preventDefault();
+
   var new_userName,
     new_userPhone,
     new_userEmail,
@@ -50,7 +49,7 @@ function logIn(event) {
   event.preventDefault();
   var givenEmail = document.querySelector("#_email").value,
     given_password = document.querySelector("#_password").value;
-  console.log(users)
+  console.log(users);
   var index = users.find((abc) => abc.email == givenEmail);
   console.log(index);
   console.log(givenEmail);
@@ -74,7 +73,7 @@ function displayLogIn() {
   let loginPage = document.querySelector("#loginDiv");
   let signUpPage = document.querySelector("#signUpDiv");
 
-  console.log("login page opened")
+  console.log("login page opened");
   loginPage.style.display = "block";
   signUpPage.style.display = "none";
 }
@@ -85,7 +84,6 @@ function displaySignUp() {
 
   signUpPage.style.display = "block";
   loginPage.style.display = "none";
-
 }
 
 window.onload = () => {
@@ -97,20 +95,29 @@ window.onload = () => {
     .querySelector("#login")
     .addEventListener("submit", (event) => logIn(event));
 
-  document.getElementById("displaySignup").addEventListener("click", displaySignUp);
-  document.getElementById("Displaylogin").addEventListener("click", displayLogIn);
-  
-  
+  document
+    .getElementById("displaySignup")
+    .addEventListener("click", displaySignUp);
+  document
+    .getElementById("Displaylogin")
+    .addEventListener("click", displayLogIn);
+    
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      document.querySelector("nav").classList.add("navScrolled");
+    } else {
+      document.querySelector("nav").classList.remove("navScrolled");
+    }
+  });
   // Get the current date
   var currentDate = new Date();
-  
+
   // Get the HTML element with the ID "currentDate"
-  var currentDateElement = document.getElementById('date');
-  
+  var currentDateElement = document.getElementById("date");
+
   // Update the innerHTML of the element with the current date
   currentDateElement.innerHTML += currentDate.toLocaleDateString();
 };
-
 
 function openPage(pageName) {
   window.location.href = pageName;
