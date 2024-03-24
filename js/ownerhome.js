@@ -1,11 +1,63 @@
-window.onload = function() {
-    // Get the current date
-    var currentDate = new Date();
-  
-    // Get the HTML element with the ID "currentDate"
-    var currentDateElement = document.getElementById('date');
-  
-    // Update the innerHTML of the element with the current date
-    currentDateElement.innerHTML += currentDate.toLocaleDateString();
+import { listings } from "../database/listingsDatabse.js";
+var workspaces;
+var user = JSON.parse(sessionStorage.getItem("user"));
+user == null ? (window.location = "index.html") : "";
+
+//fetch listings
+function getListings() {
+  //storing all the listings in local database as we are not implementing a backend in phase 1
+  if (localStorage.getItem("workspaces") == null) {
+    workspaces = listings;
+    localStorage.setItem("workspaces", JSON.stringify(workspaces));
+  } else {
+    workspaces = JSON.parse(localStorage.getItem("workspaces"));
   }
-  
+  addListing(workspaces.filter((el) => el.owner === user.name));
+}
+
+function addListing(list) {
+  console.log(list);
+  list.forEach((listing) => {
+    var card = document.createElement("div");
+    card.classList.add("card");
+
+    var cardTitle = document.createElement("h3");
+    cardTitle.classList.add("cardTitle");
+    cardTitle.innerText = listing.title;
+
+    var cardImg = document.createElement("img");
+    cardImg.src = listing.image;
+
+    var cardDescr = document.createElement("p");
+    cardDescr.classList.add("cardDescr");
+    cardDescr.innerText = listing.description;
+
+    var cardPrice = document.createElement("p");
+    cardPrice.classList.add("cardPrice");
+    cardPrice.innerText = listing.price;
+
+    var cardRating = document.createElement("p");
+    cardRating.classList.add("cardRating");
+    cardRating.innerText = listing.rating;
+
+    //adding elements of card to card
+    card.appendChild(cardTitle);
+    card.appendChild(cardImg);
+    card.appendChild(cardDescr);
+    card.appendChild(cardPrice);
+    card.appendChild(cardRating);
+
+    //adding card to the given div
+    var cards = document.getElementById("listings");
+    cards.append(card);
+  });
+  // creating card and its elements
+}
+
+window.onload = () => {
+  var currentDate = new Date();
+  var currentDateElement = document.getElementById("date");
+  currentDateElement.innerHTML += currentDate.toLocaleDateString();
+
+  getListings();
+};

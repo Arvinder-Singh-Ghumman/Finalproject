@@ -1,7 +1,7 @@
 import { listings } from "../database/listingsDatabse.js";
 var workspaces;
 var user = sessionStorage.getItem("user");
-user===null?window.location="login.html":"";
+user === null ? (window.location = "login.html") : "";
 
 //fetch listings
 function getListings() {
@@ -15,9 +15,23 @@ function getListings() {
 }
 
 //function to add new listing
-function newListing(event) {
-  event.preventDefault()
-  let title,owner,image,seating,ownerContact,rating,reviews,description,price,location,isSmokingAllowed, availabilityStart, availabilityEnd, term, category;
+async function newListing(event) {
+  event.preventDefault();
+  let title,
+    owner,
+    image,
+    seating,
+    ownerContact,
+    rating,
+    reviews,
+    description,
+    price,
+    location,
+    isSmokingAllowed,
+    availabilityStart,
+    availabilityEnd,
+    term,
+    category;
   //fetching values
   title = document.getElementById("title").value;
   location = document.getElementById("location").value;
@@ -26,46 +40,57 @@ function newListing(event) {
   price = document.getElementById("price").value;
   isSmokingAllowed = document.getElementById("isSmokingAllowed").checked;
   category = document.getElementById("category").value;
-  
+
   availabilityStart = document.getElementById("addFromAvailability").value;
   availabilityEnd = document.getElementById("addToAvailability").value;
-  //getting image
-  let input = document.getElementById('imageInput');
-  let file = input.files[0];
 
-  if (file) {
-    let reader = new FileReader();
-    reader.onload = function(e) {
-        image = e.target.result;
-    };
-  } else {
-      image=null;
-  }
-  
-  
+  image = await forImage();
+
+  console.log(image);
+
   // term = document.getElementById("term").value;
   //adding to the databse;
   workspaces.push({
-    "title": title,
-    "owner": user.name,
-    "image": image,
-    "seating": seating,
-    "ownerContact": user.email,
+    title: title,
+    owner: user.name,
+    image: image,
+    seating: seating,
+    ownerContact: user.email,
     rating: 0,
     reviews: 0,
-    "description": description,
-    "price": price,
-    "location": location,
-    "isSmokingAllowed": isSmokingAllowed,
-    "availability": availabilityStart+" to "+availabilityEnd,
-    "term": term,
-    "category": category
-  })
-  localStorage.setItem("workspaces",JSON.stringify(workspaces));
+    description: description,
+    price: price,
+    location: location,
+    isSmokingAllowed: isSmokingAllowed,
+    availability: availabilityStart + " to " + availabilityEnd,
+    term: term,
+    category: category,
+  });
+  localStorage.setItem("workspaces", JSON.stringify(workspaces));
 }
 
-window.onload = ()=>{
-  getListings()
+function forImage() {
+  return new Promise((resolve, reject) => {
+    //getting image
+    let input = document.getElementById("imageInput");
+    let file = input.files[0];
 
-  document.getElementById("newListing").addEventListener("submit",(event)=>newListing(event))
+    if (file) {
+      let reader = new FileReader();
+      reader.onload = function (e) {
+        resolve(e.target.result); // Resolve with the image data
+      };
+      reader.readAsDataURL(file);
+    } else {
+      resolve(null); // Resolve with null if no file is selected
+    }
+  });
 }
+
+window.onload = () => {
+  getListings();
+
+  document
+    .getElementById("newListing")
+    .addEventListener("submit", (event) => newListing(event));
+};
