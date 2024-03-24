@@ -51,7 +51,7 @@
 
     </nav>
 
-    <main>
+    <main style="padding-top: 90px;">
 
         <div id="searchAndFilter">
             <div id="searchInput">
@@ -181,13 +181,14 @@
             filterDiv.style.display !== "flex" ? filterDiv.style.display = "flex" : filterDiv.style.display = "none";
 
             // Adjust width of searchBar
-            searchBar.style.width = filterDiv.style.display === "flex" ? "65vw" : "80vw";
-            searchBar.style.marginLeft = filterDiv.style.display === "flex" ? "5vw" : "9vw";
-            cards.forEach(function (card) {
-                card.style.width = filterDiv.style.display === "flex" ? "20%" : "30%";
-            });
-            cardContainer.style.width = filterDiv.style.display === "flex" ? "50vw" : "80vw";
+            searchBar.style.width = filterDiv.style.display === "flex" ? "65.5vw" : "80vw";
+            searchBar.style.marginLeft = filterDiv.style.display === "flex" ? "4vw" : "9vw";
+            // cards.forEach(function (card) {
+            //     card.style.width = filterDiv.style.display === "flex" ? "20%" : "30%";
+            // });
+            cardsContainer.style.width = filterDiv.style.display === "flex" ? "70vw" : "90vw";
             // main.style.width = filterDiv.style.display !== "flex" ? "100%" : "calc(100% - 429px)"
+            cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "2vw" : "4.8vw";
         }
     </script>
 </body>
