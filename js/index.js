@@ -1,4 +1,3 @@
-
 window.onload = function() {
   // Get the current date
   var currentDate = new Date();
