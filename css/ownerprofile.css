@@ -14,10 +14,14 @@ body {
 main {
     flex-grow: 1;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8148740f96e6f6513eb64f8dae2e44187580995a
     background: linear-gradient(to bottom, black, );
 }
 
 main h1 {
+<<<<<<< HEAD
 =======
     }
     body{
@@ -29,6 +33,8 @@ main h1 {
 
 main h1{
 >>>>>>> 528d0d22c164ded5603eece87eaea965176bcc91
+=======
+>>>>>>> 8148740f96e6f6513eb64f8dae2e44187580995a
     padding: 0.5vw;
     display: inline-block;
     background-color: #dcc6f5;
