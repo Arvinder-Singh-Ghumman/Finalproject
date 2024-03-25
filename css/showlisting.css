@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap');
+
+nav li {
+    font-size: x-large;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    padding: 20vmin;
+    background:linear-gradient(to bottom, rgb(18, 24, 28), rgb(0, 147, 147))
+}
+
+#container {
+    min-width: 50dvw;
+    min-height: 90dvh;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    gap: 50px;
+    padding: 2vw;
+
+}
+.splitContainer{
+    display: flex;
+}
+#left{
+    flex: 0 1 1;
+    flex-grow: 1;
+    /* background: black; */
+}
+#right{
+    flex: 0 1 1;
+    flex-grow: 1;
+    text-align: right;
+    /* background: red; */
+}
+#container p{
+    font-family: "Raleway", sans-serif;
+    font-size: 1.5em;
+}
+#title{
+    font-weight: 800;
+}
+#container #owner{
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 0.9em;
+}
+#owner::before{
+    content: "By ";
+}
+#image{
+    padding: 10vmin;
+    box-sizing: border-box;
+}
+#description{
+    text-align: justify;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 50px 0
+}
+
+#location::before{
+    content: "Address: ";
+}
+
+/* #left{
+    position: relative;
+ right: 100px;
+ top: 225px;
+}
+
+#right{
+    position: relative;
+    top: 100px;
+    left: 100px ;
+}
+
+#listingInfo p{
+    font-size: x-large;
+    
+}
+ */
