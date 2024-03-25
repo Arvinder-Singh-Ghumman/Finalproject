@@ -13,10 +13,22 @@ body {
 
 main {
     flex-grow: 1;
+<<<<<<< HEAD
     background: linear-gradient(to bottom, black, );
 }
 
 main h1 {
+=======
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: rgb(247, 247, 233);
+    }
+
+main h1{
+>>>>>>> 528d0d22c164ded5603eece87eaea965176bcc91
     padding: 0.5vw;
     display: inline-block;
     background-color: #dcc6f5;
