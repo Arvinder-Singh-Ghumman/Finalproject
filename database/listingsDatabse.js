@@ -6,7 +6,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=1`,
     seating: 6,
     ownerContact: "info@techinnovations.com",
-    rating: 4.8,
+    rating: [],
     reviews: 35,
     description:
       "A modern and collaborative workspace designed for creativity and productivity.",
@@ -24,7 +24,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=2`,
     seating: 1,
     ownerContact: "info@downtownenterprises.com",
-    rating: 4.6,
+    rating: [],
     reviews: 20,
     description:
       "An executive desk offering a stunning city view, perfect for focused work or meetings.",
@@ -42,7 +42,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=3`,
     seating: 12,
     ownerContact: "info@collabzone.com",
-    rating: 4.9,
+    rating: [],
     reviews: 40,
     description:
       "A spacious meeting room equipped with state-of-the-art amenities for productive discussions and brainstorming sessions.",
@@ -60,7 +60,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=4`,
     seating: 4,
     ownerContact: "info@eliteworkspaces.com",
-    rating: 4.7,
+    rating:[],
     reviews: 25,
     description:
       "A fully furnished private office suite tailored for small teams or individuals seeking privacy and comfort.",
@@ -78,7 +78,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
     ownerContact: "info@creativesolutions.com",
-    rating: 4.5,
+    rating: [],
     reviews: 30,
     description:
       "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
@@ -96,7 +96,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
     ownerContact: "info@seasideoffices.com",
-    rating: 4.8,
+    rating: [],
     reviews: 18,
     description:
       "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
@@ -114,7 +114,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
     ownerContact: "info@corporatesolutions.com",
-    rating: 4.9,
+    rating: [],
     reviews: 45,
     description:
       "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
@@ -132,7 +132,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
     ownerContact: "info@creativesolutions.com",
-    rating: 4.5,
+    rating:[],
     reviews: 30,
     description:
       "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
@@ -150,7 +150,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
     ownerContact: "info@seasideoffices.com",
-    rating: 4.8,
+    rating: [],
     reviews: 18,
     description:
       "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
@@ -168,7 +168,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
     ownerContact: "info@corporatesolutions.com",
-    rating: 4.9,
+    rating: [],
     reviews: 45,
     description:
       "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
@@ -186,7 +186,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
     ownerContact: "info@creativesolutions.com",
-    rating: 4.5,
+    rating: [],
     reviews: 30,
     description:
       "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
@@ -204,7 +204,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
     ownerContact: "info@seasideoffices.com",
-    rating: 4.8,
+    rating: [],
     reviews: 18,
     description:
       "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
@@ -222,7 +222,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
     ownerContact: "info@corporatesolutions.com",
-    rating: 4.9,
+    rating: [],
     reviews: 45,
     description:
       "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
@@ -240,7 +240,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
     ownerContact: "info@creativesolutions.com",
-    rating: 4.5,
+    rating: [],
     reviews: 30,
     description:
       "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
@@ -258,7 +258,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
     ownerContact: "info@seasideoffices.com",
-    rating: 4.8,
+    rating: [],
     reviews: 18,
     description:
       "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
@@ -276,7 +276,7 @@ export const listings = [
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
     ownerContact: "info@corporatesolutions.com",
-    rating: 4.9,
+    rating: [],
     reviews: 45,
     description:
       "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
