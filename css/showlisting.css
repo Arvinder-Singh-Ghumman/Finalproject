@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap");
 
+
 * {
   margin: 0;
   padding: 0;
@@ -16,57 +17,160 @@ main {
 }
 
 #container {
-  min-width: 50dvw;
-  min-height: 90dvh;
-  background-color: whitesmoke;
-  border-radius: 30px;
-  gap: 50px;
-  padding: 2vw;
+    min-width: 50dvw;
+    min-height: 90dvh;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    gap: 50px;
+    padding: 2vw;
+
 }
-.splitContainer {
-  display: flex;
+.splitContainer{
+    display: flex;
 }
-#left {
-  flex: 0 1 1;
-  flex-grow: 1;
-  /* background: black; */
-}
-#right {
-  flex: 0 1 1;
-  flex-grow: 1;
-  text-align: right;
-  /* background: red; */
-}
-#container p {
-  font-family: "Raleway", sans-serif;
-  font-size: 1.5em;
-}
-#title {
-  font-weight: 800;
-}
-#container #owner {
-  font-weight: 400;
-  letter-spacing: 2px;
-  font-size: 0.9em;
-}
-#owner::before {
-  content: "By ";
-}
-#image {
-  padding: 10vmin;
-  box-sizing: border-box;
-}
-#description {
-  text-align: justify;
-  font-size: 1em;
-  font-weight: 600;
-  letter-spacing: 2px;
-  margin: 50px 0;
+#left{
+    flex: 0 1 1;
+    flex-grow: 1;
+    width:50% ;
+    /* background: black; */
 }
 
-#location::before {
-  content: "Address: ";
+
+#right{
+    flex: 0 1 1;
+    flex-grow: 1;
+    text-align: right;
+    /* background: red; */
 }
+#container p{
+    font-family: "arial", sans-serif;
+    font-size: 1.5em;
+}
+#title{
+    font-weight: 800;
+}
+#container #owner{
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-size: 0.9em;
+}
+#owner::before{
+    content: "By ";
+}
+#image{
+    padding: 10vmin;
+    box-sizing: border-box;
+}
+#description{
+    text-align: justify;
+    font-size: 1em;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin: 50px 0
+}
+#price::before{
+    content: "$" ;
+}
+
+#location::before{
+    content: "Address: ";
+    font-weight: bolder;
+    text-decoration: underline;
+
+}
+#contact::before {
+    content: "Contact Info:";
+    font-weight: bolder;
+    text-decoration: underline ;
+}
+
+#smoking::before{
+    content: "Smoking:"; font-weight: bolder;text-decoration: underline ;
+}
+#term::before{
+    content: "Term:"; font-weight: bolder;text-decoration: underline ;
+}
+#availability::before{
+    content:  "Availability:"; font-weight: bolder;text-decoration: underline ;
+}
+#category::before{
+    content: "Category:"; font-weight: bolder;text-decoration: underline ;
+}
+
+#rating{
+position: relative;
+display: inline;
+}
+
+
+#rating::before{
+    content: "";
+    background-image:  url(../assets/rating.jpeg) ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;                                                                             
+    top: -5px;
+    left:-46px;
+    height: 35px;
+    width: 40px;
+    display: block;
+    mix-blend-mode: multiply;
+}
+#seating{
+    position: relative;
+    display: inline;
+}
+#seating::before{
+    content: "";
+    background-image: url(../assets/seat.jpeg);
+    background-size: 100%;
+    position: absolute;                                                                             
+    top: -2px;
+    left:-65px;
+    height: 30px;
+    width: 40px;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
+#reviews{
+    position: relative;
+    display: inline;
+}
+#reviews::before{
+    content: "";
+    background-image:  url(../assets/review.jpeg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;                                                                             
+    top: -2px;
+    left:-49px;
+    height: 35px;
+    width: 30px;
+    display: block;
+    mix-blend-mode: multiply;
+}
+
+#price{
+    position: relative;
+    display: inline;
+}
+
+#price::before{
+    content:"";
+    background-image: url(../assets/dollar.jpeg) ;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    position: absolute;                                                                             
+    top: -2px;
+    left:-45px;
+    height: 30px;
+    width: 20px;
+    display: block;
+    mix-blend-mode: multiply;
+
+}
+
 
 /* #left{
     position: relative;
