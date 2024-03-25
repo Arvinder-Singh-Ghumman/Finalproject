@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap");
 
+<<<<<<< HEAD
 *{
 <<<<<<< HEAD
     padding: 0%;
@@ -8,16 +9,22 @@
   margin: 0;
   padding: 0;
 >>>>>>> 5cce8e783053e96c4fd5e17fcacb0acc98ff5271
+=======
+
+* {
+  margin: 0;
+  padding: 0;
+>>>>>>> 2aefd4d99909aff4c6978006b657da9b531dff06
 }
 nav li {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    padding: 20vmin;
-    background:linear-gradient(to bottom, rgb(18, 24, 28), rgb(0, 147, 147))
+  display: flex;
+  justify-content: center;
+  padding: 20vmin;
+  background: linear-gradient(to bottom, rgb(18, 24, 28), rgb(0, 147, 147));
 }
 
 #container {
@@ -195,3 +202,17 @@ display: inline;
     
 }
  */
+
+.slider-container {
+  margin-top: 20px;
+}
+#editListing{
+  /* display: none; */
+}
+.slider {
+  width: 200px;
+}
+
+#sliderValue {
+  margin-top: 10px;
+}
