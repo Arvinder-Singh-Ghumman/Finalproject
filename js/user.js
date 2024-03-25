@@ -59,11 +59,7 @@ function logIn(event) {
   } else if (index.password == given_password) {
     sessionStorage.setItem("user", JSON.stringify(index));
     alert("hogya");
-    if (index.role === "owner") {
-      openPage("ownerhome.html");
-    } else {
-      openPage("coworkerHome.html");
-    }
+    openPage("loggedInHome.html")
   } else {
     alert("user not found");
   }
@@ -101,7 +97,7 @@ window.onload = () => {
   document
     .getElementById("Displaylogin")
     .addEventListener("click", displayLogIn);
-    
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 100) {
       document.querySelector("nav").classList.add("navScrolled");
