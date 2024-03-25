@@ -51,6 +51,7 @@ async function newListing(event) {
   // term = document.getElementById("term").value;
   //adding to the databse;
   workspaces.push({
+    id: workspaces.length+1,
     title: title,
     owner: user.name,
     image: image,

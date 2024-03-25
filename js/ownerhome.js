@@ -19,7 +19,11 @@ function getListings() {
   //checking owner or coworker
   if (user.role === "owner")
     resultLists = workspaces.filter((el) => el.owner === user.name);
-  else resultLists = workspaces;
+  else {
+    resultLists = workspaces;
+    document.getElementById("listingsTitle").innerText = "All listings";
+  }
+  console.log(resultLists);
 
   //see more button
   if (resultLists.length <= myListCounter)
@@ -29,7 +33,6 @@ function getListings() {
 }
 
 function addListing(list) {
-  console.log(list);
   list.forEach((listing) => {
     var card = document.createElement("div");
     card.classList.add("card");
@@ -55,6 +58,28 @@ function addListing(list) {
 
     //adding elements of card to card
     card.appendChild(cardTitle);
+
+    //if(user.role==="owner"){
+    //adding update/delete
+      var cardManipulate = document.createElement("div");
+      cardManipulate.classList.add("ownerControls");
+
+      var updateButton = document.createElement("button");
+      updateButton.classList.add("updateListingButton")
+      updateButton.textContent = "UPDATE";
+      cardManipulate.appendChild(updateButton);
+
+      // Create a delete button with an image
+      var deleteButton = document.createElement("button");
+      deleteButton.className="deleteListingButton";
+      deleteButton.classList.add(listing.id);
+      var deleteImage = document.createElement("img");
+      deleteImage.src = "./assets/bin.png";
+      deleteButton.appendChild(deleteImage);
+      cardManipulate.appendChild(deleteButton);
+      card.appendChild(cardManipulate)
+    // }
+
     card.appendChild(cardImg);
     card.appendChild(cardDescr);
     card.appendChild(cardPrice);
@@ -65,6 +90,13 @@ function addListing(list) {
     cards.append(card);
   });
   // creating card and its elements
+}
+
+function deleteListing(id){
+  workspaces = workspaces.filter((el)=>el.id!=id)
+  localStorage.setItem("workspaces", JSON.stringify(workspaces))
+  getListings();
+  document.querySelectorAll(".deleteListingButton").forEach((el)=>el.addEventListener("click",(e)=>deleteListing(e.currentTarget.classList[1])));
 }
 
 window.onload = () => {
@@ -86,4 +118,6 @@ window.onload = () => {
     myListCounter += 6;
     getListings();
   });
+  document.querySelectorAll(".deleteListingButton").forEach((el)=>el.addEventListener("click",(e)=>deleteListing(e.currentTarget.classList[1])));
+  document.querySelectorAll(".updateListingButton").forEach((el)=>el.addEventListener("click",(e)=>window.location.href="edit.html"));
 };

@@ -1,5 +1,6 @@
 export const listings = [
   {
+    id: 1,
     title: "Modern Workspace in Tech Hub",
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=1`,
@@ -7,15 +8,17 @@ export const listings = [
     ownerContact: "info@techinnovations.com",
     rating: 4.8,
     reviews: 35,
-    description: "A modern and collaborative workspace designed for creativity and productivity.",
+    description:
+      "A modern and collaborative workspace designed for creativity and productivity.",
     price: "30",
     location: "Tech Hub Plaza, Silicon Valley",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 8 AM to 8 PM",
     term: "Flexible booking options available",
-    category: "workspace"
+    category: "workspace",
   },
   {
+    id: 2,
     title: "Executive Desk with City View",
     owner: "Bob Anderson",
     image: `https://source.unsplash.com/random?workspace&number=2`,
@@ -23,15 +26,17 @@ export const listings = [
     ownerContact: "info@downtownenterprises.com",
     rating: 4.6,
     reviews: 20,
-    description: "An executive desk offering a stunning city view, perfect for focused work or meetings.",
+    description:
+      "An executive desk offering a stunning city view, perfect for focused work or meetings.",
     price: "40",
     location: "Central Business District, Downtown",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 5 PM",
     term: "Hourly or daily bookings available",
-    category: "desk"
+    category: "desk",
   },
   {
+    id: 3,
     title: "Spacious Meeting Room",
     owner: "Alice Johnson",
     image: `https://source.unsplash.com/random?workspace&number=3`,
@@ -39,15 +44,17 @@ export const listings = [
     ownerContact: "info@collabzone.com",
     rating: 4.9,
     reviews: 40,
-    description: "A spacious meeting room equipped with state-of-the-art amenities for productive discussions and brainstorming sessions.",
+    description:
+      "A spacious meeting room equipped with state-of-the-art amenities for productive discussions and brainstorming sessions.",
     price: "50",
     location: "Business Park Avenue, Suite 200",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 8 AM to 6 PM",
     term: "Flexible booking options available",
-    category: "meetingRoom"
+    category: "meetingRoom",
   },
   {
+    id: 4,
     title: "Private Office Suite",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=4`,
@@ -55,15 +62,17 @@ export const listings = [
     ownerContact: "info@eliteworkspaces.com",
     rating: 4.7,
     reviews: 25,
-    description: "A fully furnished private office suite tailored for small teams or individuals seeking privacy and comfort.",
+    description:
+      "A fully furnished private office suite tailored for small teams or individuals seeking privacy and comfort.",
     price: "80",
     location: "Executive Tower, Floor 15",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 7 PM",
     term: "Hourly or monthly rentals available",
-    category: "privateOffice"
+    category: "privateOffice",
   },
   {
+    id: 5,
     title: "Collaborative Workspace",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
@@ -71,15 +80,17 @@ export const listings = [
     ownerContact: "info@creativesolutions.com",
     rating: 4.5,
     reviews: 30,
-    description: "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
+    description:
+      "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
     price: "35",
     location: "Innovation Center, Suite 301",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 6 PM",
     term: "Flexible booking options available",
-    category: "workspace"
+    category: "workspace",
   },
   {
+    id: 6,
     title: "Executive Desk with Harbor View",
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
@@ -87,15 +98,17 @@ export const listings = [
     ownerContact: "info@seasideoffices.com",
     rating: 4.8,
     reviews: 18,
-    description: "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
+    description:
+      "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
     price: "45",
     location: "Marina Tower, Suite 501",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 8 AM to 6 PM",
     term: "Hourly or daily bookings available",
-    category: "desk"
+    category: "desk",
   },
   {
+    id: 7,
     title: "Elegant Boardroom",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
@@ -103,16 +116,17 @@ export const listings = [
     ownerContact: "info@corporatesolutions.com",
     rating: 4.9,
     reviews: 45,
-    description: "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
+    description:
+      "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
     price: "60",
     location: "Business Tower, Floor 10",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 7 PM",
     term: "Flexible booking options available",
-    category: "meetingRoom"
- 
+    category: "meetingRoom",
   },
   {
+    id: 8,
     title: "Collaborative Workspace",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
@@ -120,15 +134,17 @@ export const listings = [
     ownerContact: "info@creativesolutions.com",
     rating: 4.5,
     reviews: 30,
-    description: "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
+    description:
+      "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
     price: "35",
     location: "Innovation Center, Suite 301",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 6 PM",
     term: "Flexible booking options available",
-    category: "workspace"
+    category: "workspace",
   },
   {
+    id: 9,
     title: "Executive Desk with Harbor View",
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
@@ -136,15 +152,17 @@ export const listings = [
     ownerContact: "info@seasideoffices.com",
     rating: 4.8,
     reviews: 18,
-    description: "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
+    description:
+      "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
     price: "45",
     location: "Marina Tower, Suite 501",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 8 AM to 6 PM",
     term: "Hourly or daily bookings available",
-    category: "desk"
+    category: "desk",
   },
   {
+    id: 10,
     title: "Elegant Boardroom",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
@@ -152,16 +170,17 @@ export const listings = [
     ownerContact: "info@corporatesolutions.com",
     rating: 4.9,
     reviews: 45,
-    description: "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
+    description:
+      "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
     price: "60",
     location: "Business Tower, Floor 10",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 7 PM",
     term: "Flexible booking options available",
-    category: "meetingRoom"
- 
+    category: "meetingRoom",
   },
   {
+    id: 11,
     title: "Collaborative Workspace",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
@@ -169,15 +188,17 @@ export const listings = [
     ownerContact: "info@creativesolutions.com",
     rating: 4.5,
     reviews: 30,
-    description: "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
+    description:
+      "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
     price: "35",
     location: "Innovation Center, Suite 301",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 6 PM",
     term: "Flexible booking options available",
-    category: "workspace"
+    category: "workspace",
   },
   {
+    id: 12,
     title: "Executive Desk with Harbor View",
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
@@ -185,15 +206,17 @@ export const listings = [
     ownerContact: "info@seasideoffices.com",
     rating: 4.8,
     reviews: 18,
-    description: "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
+    description:
+      "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
     price: "45",
     location: "Marina Tower, Suite 501",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 8 AM to 6 PM",
     term: "Hourly or daily bookings available",
-    category: "desk"
+    category: "desk",
   },
   {
+    id: 13,
     title: "Elegant Boardroom",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
@@ -201,16 +224,17 @@ export const listings = [
     ownerContact: "info@corporatesolutions.com",
     rating: 4.9,
     reviews: 45,
-    description: "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
+    description:
+      "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
     price: "60",
     location: "Business Tower, Floor 10",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 7 PM",
     term: "Flexible booking options available",
-    category: "meetingRoom"
- 
+    category: "meetingRoom",
   },
   {
+    id: 14,
     title: "Collaborative Workspace",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
@@ -218,15 +242,17 @@ export const listings = [
     ownerContact: "info@creativesolutions.com",
     rating: 4.5,
     reviews: 30,
-    description: "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
+    description:
+      "A vibrant and dynamic workspace designed to foster creativity and collaboration among professionals.",
     price: "35",
     location: "Innovation Center, Suite 301",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 6 PM",
     term: "Flexible booking options available",
-    category: "workspace"
+    category: "workspace",
   },
   {
+    id: 15,
     title: "Executive Desk with Harbor View",
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
@@ -234,15 +260,17 @@ export const listings = [
     ownerContact: "info@seasideoffices.com",
     rating: 4.8,
     reviews: 18,
-    description: "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
+    description:
+      "An exclusive executive desk offering breathtaking views of the harbor, ideal for focused work or client meetings.",
     price: "45",
     location: "Marina Tower, Suite 501",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 8 AM to 6 PM",
     term: "Hourly or daily bookings available",
-    category: "desk"
+    category: "desk",
   },
   {
+    id: 16,
     title: "Elegant Boardroom",
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
@@ -250,13 +278,13 @@ export const listings = [
     ownerContact: "info@corporatesolutions.com",
     rating: 4.9,
     reviews: 45,
-    description: "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
+    description:
+      "An elegant boardroom equipped with advanced audiovisual technology for high-level presentations and meetings.",
     price: "60",
     location: "Business Tower, Floor 10",
     isSmokingAllowed: false,
     availability: "Monday to Friday, 9 AM to 7 PM",
     term: "Flexible booking options available",
-    category: "meetingRoom"
- 
-  }
-]
+    category: "meetingRoom",
+  },
+];
