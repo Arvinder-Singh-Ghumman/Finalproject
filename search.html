@@ -14,7 +14,7 @@
             padding-top: 90px;
         }
 
-        .searchBarOnclickFilter {}
+        /* .searchBarOnclickFilter{} */
 
         @keyframes gradientAnimation {
             0% {
@@ -24,6 +24,11 @@
             100% {
                 background-position: 100% 50%;
             }
+        }
+
+
+        #sortContainer{
+            position: absolute;
         }
     </style>
 
@@ -57,6 +62,9 @@
             <div id="searchInput">
                 <!-- <label for="searchBar">Search</label> -->
                 <input type="text" id="searchBar" placeholder="Search">
+            </div>
+            <div id="sortContainer">
+                <div id="sort">Sort</div>
             </div>
             <div id="filterIcon" onclick="filterSelectionDisplay()"><img src="assets/filterIcon.png" id="filterImg"
                     alt="Filter"></div>
