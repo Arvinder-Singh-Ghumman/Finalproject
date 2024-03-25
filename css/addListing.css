@@ -1,0 +1,167 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  padding-top: 150px;
+  padding-bottom: 150px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: sans serif;
+  background-image: url("../assets/addListingWorkspaceImage-modified.jpg");
+  background-size: cover;
+  position: relative;
+  /* z-index: -1; */
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#formContainer {
+  /* background-color: rgb(240, 240, 240); */
+  background-color: white;
+  max-width: 35rem;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  padding: 3vh 5vw 3vh 5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  /* z-index: 1; */
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  /* z-index: 5; */
+}
+
+#formHeading {
+  margin-top: px;
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.textInputContainer {
+  position: relative;
+  width: 100%;
+  /* z-index: 10; */
+}
+
+.textInputContainer input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1rem;
+  /* z-index: 11; */
+}
+
+.textInputContainer span {
+  position: absolute;
+  left: 0;
+  top: 1px;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: black;
+  text-transform: uppercase;
+}
+
+.textInputContainer input:focus~span {
+  /* color: #4385f4; */
+  color: #4385f4;
+  transform: translateX(10px) translateY(-10px);
+  padding: 0 10px;
+  background-color: #fff;
+  transition: color 0.2s ease, transform 0.2s ease, padding 0.2s ease, background-color 0.2s ease;
+
+}
+
+.textInputContainer input:valid~span {
+
+  color: green;
+  transform: translateX(10px) translateY(-10px);
+  padding: 0 10px;
+  background-color: #fff;
+}
+
+.textInputContainer input:focus {
+  border: 2px solid #4385f4;
+}
+
+.textInputContainer input:valid {
+  border: 3px solid rgb(36, 161, 36);
+}
+
+.textInputContainer textarea {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  font-size: 1em;
+}
+
+.textInputContainer textarea:focus~span {
+  color: #4385f4;
+  transform: translateX(10px) translateY(-10px);
+  padding: 0 10px;
+  background-color: #fff;
+  transition: color 0.2s ease, transform 0.2s ease, padding 0.2s ease, background-color 0.2s ease;
+}
+
+.textInputContainer textarea:valid~span {
+  color: green;
+  transform: translateX(10px) translateY(-10px);
+  padding: 0 10px;
+  background-color: #fff;
+}
+
+.textInputContainer textarea:focus {
+  border: 2px solid #4385f4;
+}
+
+.textInputContainer textarea:valid {
+  border: 3px solid rgb(36, 161, 36);
+}
+
+#formSubmissionButton {
+  width: 65px;
+  padding: 5px;
+  font-size: 14px;
+  /* text-transform: uppercase; */
+  /* border: 2px solid black; */
+  border: none;
+  background-color: #3c79e4;
+  color: white;
+  border-radius: 20px;
+  margin-left: 150px;
+  
+}
+
+#formSubmissionButton:hover {
+  box-shadow: 1px 1px 5px 5px rgb(0, 0, 0, 0.1);
+}
+
+#formSubmissionButton:active {
+  background-color: #1851b3;
+  /* box-shadow: 1px 1px 10px 1px #4385f4; */
+}

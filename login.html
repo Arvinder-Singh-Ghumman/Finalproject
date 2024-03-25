@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login Page</title>
   <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/styles.css">
 
   <style>
@@ -52,26 +53,25 @@
 
 <body>
 
+  <!-- navbar -->
   <nav>
-
-    <!-- logo will be on the left side of the nav bar -->
     <li>logo</li>
-
-    <!-- page links will be in the center -->
-    <pages>
-      <li><a href="index.html">Home</a></li>
+    <!--links to other pages -->
+    <div class="pages">
+      <li><a href="index.html" class="active">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="help.html">Help</a></li>
-    </pages>
-    <search>
-      <li><input type="text" placeholder=" search"> </li><a href="search.html"><img src="assets/search.png"
-          id="searchIconPNG" alt="icon of search"></a>
-    </search>
-
-    <!-- Account info will be on the right side of the nav bar -->
+    </div>
+    <!-- search andd account -->
+    <div class="navSearch">
+      <li><input type="text" placeholder=" search" /></li>
+      <a href="search.html"
+        ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+      /></a>
+    </div>
     <li><a href="login.html">Account</a></li>
-
   </nav>
+
 
   <main>
     <div id="loginDiv">
