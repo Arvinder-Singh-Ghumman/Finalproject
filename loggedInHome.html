@@ -15,6 +15,8 @@
         border-right: 1px;
         padding: 2px;
         box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.075);
+        position: relative;
+        left: 64vw;
       }
       #myListingsMore:hover{
         color: blue;
@@ -34,6 +36,58 @@
         font-size: 20px;
         margin-top: 100px;
       }
+
+
+
+
+      #sort {
+            color: black;
+            display: none;
+            position: absolute;
+            border: 1px solid black;
+            padding: 0 3px;
+            border-radius: 5px;
+            top: 880px;
+            right: 16.5vw;
+        }
+
+        #sortIcon {
+            width: 40px;
+            position: absolute;
+            /* bottom: 0px; */
+            top: 900px;
+            right: 16.5vw;
+            /* background-color: gray; */
+            padding: 3px 4px 3px 4px;
+        }
+
+        #sortIcon:hover~#sort {
+            display: block;
+        }
+
+        #sortSelection {
+            position: absolute;
+            top: 123px;
+            right: 14vw;
+            /* display: none; */
+        }
+
+        #sortIcon:focus~#sortSelection {
+            display: block;
+        }
+
+        #sortOptions {
+            font-size: 14px;
+            color: white;
+            padding: 1px;
+            background-color: rgb(41, 41, 59);
+        }
+
+        select option {
+            background-color: rgb(41, 41, 59);
+            color: white;
+            font-size: 14px;
+        }
     </style>
   </head>
 
@@ -67,8 +121,25 @@
         adds value to our team, and we look forward to collaborating with you
         once again.
       </p>
+
+
       <div id="container">
+
         <h1>My Listings</h1>
+
+        <div id="sortContainer">
+          <img id="sortIcon" onclick="displaySort()" src="assets/sortIcon.png" alt="">
+          <div id="sort">Sort </div>
+          <div id="sortSelection">
+              <select name="SortSelection" id="sortOptions">
+                  <option value="None">None</option>
+                  <option value="Sort By Price(Dec)">Sort By Price(Dec)</option>
+                  <option value="Sort By Price(Inc)">Sort By Price(Inc)</option>
+                  <option value="Sort By Name">Sort By Name</option>
+                  <option value="Sort By Rating">Sort By Rating</option>
+              </select>
+        </div>
+
         <div>
           <div id="listings"></div>
           <button id="myListingsMore">See More</button>
@@ -76,6 +147,7 @@
         <button id="addListing">Add Listing</button>
 
       </div>
+
     </main>
 
     <footer>
@@ -85,4 +157,11 @@
     </footer>
   </body>
   <script src="js/ownerhome.js" type="module"></script>
+  <script>
+    
+    function displaySort() {
+            var sortContainer = document.querySelector("#sortSelection");
+            sortContainer.style.display = sortContainer.style.display === "block" ? "none": "block";
+        }
+  </script>
 </html>
