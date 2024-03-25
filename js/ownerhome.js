@@ -64,6 +64,7 @@ function addListing(list) {
   list.forEach((listing) => {
     var card = document.createElement("div");
     card.classList.add("card");
+    card.id=listing.id;
 
     var cardTitle = document.createElement("h3");
     cardTitle.classList.add("cardTitle");
@@ -147,6 +148,10 @@ window.onload = () => {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
+  
+  document.querySelectorAll(".card").forEach((el)=>{
+    el.addEventListener("click", (e)=> window.location.href=("listinginfo.html?id="+el.id))
+  })
 
   //displaying name
   document.querySelector("#ownerInfo").innerText = `Hey, ${user.name}!`;
