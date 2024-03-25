@@ -23,13 +23,41 @@ function getListings() {
     resultLists = workspaces;
     document.getElementById("listingsTitle").innerText = "All listings";
   }
-  console.log(resultLists);
 
   //see more button
   if (resultLists.length <= myListCounter)
     document.querySelector("#myListingsMore").style.display = "none";
 
+  if (document.querySelector("#sortOptions").value !== "none")
+    resultLists = sortListings(
+      resultLists,
+      document.querySelector("#sortOptions").value
+    );
+
   addListing(resultLists.slice(0, myListCounter));
+}
+
+function sortListings(unsorted, sortBy) {
+  let sortedList = unsorted;
+  switch (sortBy) {
+    case "price":
+      sortedList = unsorted.sort((a, b) => a.price - b.price);
+      alert("yea");
+      break;
+    case "price dec":
+      sortedList = unsorted.sort((a, b) => b.price - a.price);
+      break;
+    case "name":
+      sortedList = unsorted.sort((a, b) => a.title.localeCompare(b.title));
+      break;
+    case "rating":
+      sortedList = unsorted.sort((a, b) => a.rating - b.rating);
+      break;
+    case "rating dec":
+      sortedList = unsorted.sort((a, b) => b.rating - a.rating);
+      break;
+  }
+  return sortedList;
 }
 
 function addListing(list) {
@@ -61,23 +89,23 @@ function addListing(list) {
 
     //if(user.role==="owner"){
     //adding update/delete
-      var cardManipulate = document.createElement("div");
-      cardManipulate.classList.add("ownerControls");
+    var cardManipulate = document.createElement("div");
+    cardManipulate.classList.add("ownerControls");
 
-      var updateButton = document.createElement("button");
-      updateButton.classList.add("updateListingButton")
-      updateButton.textContent = "UPDATE";
-      cardManipulate.appendChild(updateButton);
+    var updateButton = document.createElement("button");
+    updateButton.classList.add("updateListingButton");
+    updateButton.textContent = "UPDATE";
+    cardManipulate.appendChild(updateButton);
 
-      // Create a delete button with an image
-      var deleteButton = document.createElement("button");
-      deleteButton.className="deleteListingButton";
-      deleteButton.classList.add(listing.id);
-      var deleteImage = document.createElement("img");
-      deleteImage.src = "./assets/bin.png";
-      deleteButton.appendChild(deleteImage);
-      cardManipulate.appendChild(deleteButton);
-      card.appendChild(cardManipulate)
+    // Create a delete button with an image
+    var deleteButton = document.createElement("button");
+    deleteButton.className = "deleteListingButton";
+    deleteButton.classList.add(listing.id);
+    var deleteImage = document.createElement("img");
+    deleteImage.src = "./assets/bin.png";
+    deleteButton.appendChild(deleteImage);
+    cardManipulate.appendChild(deleteButton);
+    card.appendChild(cardManipulate);
     // }
 
     card.appendChild(cardImg);
@@ -92,11 +120,17 @@ function addListing(list) {
   // creating card and its elements
 }
 
-function deleteListing(id){
-  workspaces = workspaces.filter((el)=>el.id!=id)
-  localStorage.setItem("workspaces", JSON.stringify(workspaces))
+function deleteListing(id) {
+  workspaces = workspaces.filter((el) => el.id != id);
+  localStorage.setItem("workspaces", JSON.stringify(workspaces));
   getListings();
-  document.querySelectorAll(".deleteListingButton").forEach((el)=>el.addEventListener("click",(e)=>deleteListing(e.currentTarget.classList[1])));
+  document
+    .querySelectorAll(".deleteListingButton")
+    .forEach((el) =>
+      el.addEventListener("click", (e) =>
+        deleteListing(e.currentTarget.classList[1])
+      )
+    );
 }
 
 window.onload = () => {
@@ -105,7 +139,7 @@ window.onload = () => {
   currentDateElement.innerHTML += currentDate.toLocaleDateString();
 
   getListings();
-
+  //for nav
   window.addEventListener("scroll", () => {
     if (window.scrollY > 100) {
       document.querySelector("nav").classList.add("navScrolled");
@@ -113,11 +147,28 @@ window.onload = () => {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
+
+  //displaying name
   document.querySelector("#ownerInfo").innerText = `Hey, ${user.name}!`;
+
+  //event listeners
+  document
+    .querySelector("#sortOptions")
+    .addEventListener("change", getListings);
   document.querySelector("#myListingsMore").addEventListener("click", () => {
     myListCounter += 6;
     getListings();
   });
-  document.querySelectorAll(".deleteListingButton").forEach((el)=>el.addEventListener("click",(e)=>deleteListing(e.currentTarget.classList[1])));
-  document.querySelectorAll(".updateListingButton").forEach((el)=>el.addEventListener("click",(e)=>window.location.href="edit.html"));
+  document
+    .querySelectorAll(".deleteListingButton")
+    .forEach((el) =>
+      el.addEventListener("click", (e) =>
+        deleteListing(e.currentTarget.classList[1])
+      )
+    );
+  document
+    .querySelectorAll(".updateListingButton")
+    .forEach((el) =>
+      el.addEventListener("click", (e) => (window.location.href = "edit.html"))
+    );
 };
