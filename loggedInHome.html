@@ -6,6 +6,35 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/ownerhome.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      #myListingsMore{
+        display: inline-block;
+        color: black;
+        background-color: white;
+        border-bottom: 1px;
+        border-right: 1px;
+        padding: 2px;
+        box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.075);
+      }
+      #myListingsMore:hover{
+        color: blue;
+      }
+      #myListingsMore:active{
+        color: white;
+        background-color: rgb(30, 44, 58);
+      }
+
+      #addListing{
+        display: block;
+        /* margin-left: ; */
+        background: linear-gradient(45deg, black, rgb(66,94,122));
+        color: white;  
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 20px;
+        margin-top: 100px;
+      }
+    </style>
   </head>
 
   <body>
@@ -15,7 +44,7 @@
 
       <!-- page links will be in the center -->
       <pages>
-        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="loggedInHome.html" class="active">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="help.html">Help</a></li>
       </pages>
@@ -27,7 +56,7 @@
       </search>
 
       <!-- Account info will be on the right side of the nav bar -->
-      <li><a href="login.html">Account</a></li>
+      <li><a href="ownerprofile.html">Account</a></li>
     </nav>
 
     <main>
@@ -38,11 +67,14 @@
         adds value to our team, and we look forward to collaborating with you
         once again.
       </p>
-      <br /><br /><br />
       <div id="container">
         <h1>My Listings</h1>
-        <div id="listings"></div>
-        <button id="myListingsMore">See More</button>
+        <div>
+          <div id="listings"></div>
+          <button id="myListingsMore">See More</button>
+        </div>
+        <button id="addListing">Add Listing</button>
+
       </div>
     </main>
 
