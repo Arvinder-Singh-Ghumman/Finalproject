@@ -4,10 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="css/listing.css" /> -->
     <link rel="stylesheet" href="css/navbar.css" />
-    <!-- <link rel="stylesheet" href="css/styles.css" /> -->
-    <link rel="stylesheet" href="css/showlisting.css">
+    <link rel="stylesheet" href="css/showlisting.css" />
   </head>
   <body>
     <!-- navbar -->
@@ -31,32 +29,93 @@
 
     <main>
       <div id="container">
+        <button id="editListing">Edit Listing</button>
         <div id="listingInfo">
           <p id="title">Title:</p>
           <p id="owner">Owner:</p>
-          <img id="image" src="" alt="image">
+          <img id="image" src="" alt="image" />
           <p id="description">Description:</p>
         </div>
-<div class="splitContainer">
-
-  <div id="left">
-    <p id="location"></p> <br>
-    <p id="contact"></p><br>
-    <p id="smoking"></p><br>
-    <p id="term"></p><br>
-    <p id="availability"></p><br>
-    <p id="category"></p>
-  </div>
-  <div id="right">
-    <br>
-    <p id="seating">Seating Capacity:</p> <br><br>
-    <p id="rating"></p> <br><br> 
-    <p id="reviews"></p><br><br>
-    <p id="price"></p><br>
-  </div>
-</div>
-</div>
-</main>
+        <div class="splitContainer">
+          <div id="left">
+            <p id="location">Address:</p>
+            <p id="contact">Contact</p>
+            <p id="smoking">Smoking:</p>
+            <p id="term">Term:</p>
+            <p id="availability">Availability:</p>
+            <p id="category">Category:</p>
+          </div>
+          <div id="right">
+            <p id="seating">Seating Capacity:</p>
+            <p id="rating">Rating:</p>
+            <p id="reviews">Reviews:</p>
+            <p id="price">Price:</p>
+          </div>
+        </div>
+      </div>
+      <div id="containerInput">
+        <button id="submitEdit">Done</button>
+        <div id="listingInfoInput">
+          <input type="text" id="titleInput" placeholder="Title" />
+          <input type="text" id="ownerInput" placeholder="Owner" />
+          <input type="text" id="imageInput" placeholder="Image URL" />
+          <textarea id="descriptionInput" placeholder="Description"></textarea>
+        </div>
+        <div class="splitContainer">
+          <div id="leftInput">
+            <input type="text" id="locationInput" placeholder="Address" />
+            <input type="text" id="contactInput" placeholder="Contact" />
+            <input type="text" id="smokingInput" placeholder="Smoking" />
+            <input type="text" id="termInput" placeholder="Term" />
+            <input
+              type="text"
+              id="availabilityInput"
+              placeholder="Availability"
+            />
+            <input type="text" id="categoryInput" placeholder="Category" />
+          </div>
+          <div id="rightInput">
+            <input
+              type="text"
+              id="seatingInput"
+              placeholder="Seating Capacity"
+            />
+            <input type="text" id="ratingInput" placeholder="Rating" />
+            <input type="text" id="reviewsInput" placeholder="Reviews" />
+            <input type="text" id="priceInput" placeholder="Price" />
+          </div>
+        </div>
+      </div>
+      <div class="rate">
+        <h4>Rate this listing :</h4>
+        <div class="slider-container">
+          <input
+            type="range"
+            min="1"
+            max="5"
+            value="3"
+            class="slider"
+            id="ratingSlider"
+          />
+          <p id="sliderValue">3</p>
+        </div>
+        <div class="message-container">
+          <textarea
+            id="message"
+            rows="4"
+            placeholder="Enter your message"
+          ></textarea>
+        </div>
+        <button id="addRating">Submit</button>
+      </div>
+      <div class="contactOwner">
+        <!-- <button id="pay">pay</button> -->
+        <p>Contact owner for further inquiry:</p>
+        <a href="mailto:arvindersinghghumman@gmail.com" id="contactOwner"
+          >Contact via email</a
+        >
+      </div>
+    </main>
 
     <footer>
       <p>Copyright@group-4SODV1201</p>
