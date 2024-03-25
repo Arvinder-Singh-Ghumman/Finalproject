@@ -89,7 +89,9 @@ main {
 .slider-container {
   margin-top: 20px;
 }
-
+#editListing{
+  /* display: none; */
+}
 .slider {
   width: 200px;
 }
