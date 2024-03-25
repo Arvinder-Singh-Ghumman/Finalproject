@@ -27,8 +27,55 @@
         }
 
 
-        #sortContainer{
+        #sort {
+            color: white;
+            display: none;
             position: absolute;
+            top: 65px;
+            /* font-weight: 600; */
+            right: 14vw;
+            border: 1px solid white;
+            padding: 0 3px;
+            border-radius: 5px;
+            /* text-transform: uppercase; */
+        }
+
+        #sortIcon {
+            width: 33px;
+            position: absolute;
+            /* bottom: 0px; */
+            top: 92px;
+            right: 14vw;
+            background-color: gray;
+            padding: 3px 4px 3px 4px;
+        }
+
+        #sortIcon:hover~#sort {
+            display: block;
+        }
+
+        #sortSelection {
+            position: absolute;
+            top: 123px;
+            right: 14vw;
+            /* display: none; */
+        }
+
+        #sortIcon:focus~#sortSelection {
+            display: block;
+        }
+
+        #sortOptions {
+            font-size: 14px;
+            color: white;
+            padding: 1px;
+            background-color: rgb(41, 41, 59);
+        }
+
+        select option {
+            background-color: rgb(41, 41, 59);
+            color: white;
+            font-size: 14px;
         }
     </style>
 
@@ -47,8 +94,8 @@
             <li><a href="help.html">Help</a></li>
         </pages>
         <search>
-            <li><input type="text" placeholder=" search"> </li><a href="search.html"><img src="assets/search.png"
-                    id="searchIconPNG" alt="icon of search"></a>
+            <li><input type="text" placeholder=" search"> </li>
+            <a href="search.html"><img src="assets/search.png" id="searchIconPNG" alt="icon of search"></a>
         </search>
 
         <!-- Account info will be on the right side of the nav bar -->
@@ -64,7 +111,17 @@
                 <input type="text" id="searchBar" placeholder="Search">
             </div>
             <div id="sortContainer">
-                <div id="sort">Sort</div>
+                <img id="sortIcon" onclick="displaySort()" src="assets/sortIcon.png" alt="">
+                <div id="sort">Sort </div>
+                <div id="sortSelection">
+                    <select name="SortSelection" id="sortOptions">
+                        <option value="None">None</option>
+                        <option value="Sort By Price(Dec)">Sort By Price(Dec)</option>
+                        <option value="Sort By Price(Inc)">Sort By Price(Inc)</option>
+                        <option value="Sort By Name">Sort By Name</option>
+                        <option value="Sort By Rating">Sort By Rating</option>
+                    </select>
+                </div>
             </div>
             <div id="filterIcon" onclick="filterSelectionDisplay()"><img src="assets/filterIcon.png" id="filterImg"
                     alt="Filter"></div>
@@ -183,7 +240,7 @@
             var cards = document.querySelectorAll(".card");
             var cardsContainer = document.querySelector("#SearchResults");
             // var filterIcon = document.querySelector("filterIcon");
-            // var main = document.getElementsByName("main");
+            // var main = document.getElementsByName("searchAndFilter");
 
             // Toggle filterDiv display between "flex" and "none"
             filterDiv.style.display !== "flex" ? filterDiv.style.display = "flex" : filterDiv.style.display = "none";
@@ -197,6 +254,11 @@
             cardsContainer.style.width = filterDiv.style.display === "flex" ? "70vw" : "90vw";
             // main.style.width = filterDiv.style.display !== "flex" ? "100%" : "calc(100% - 429px)"
             cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "2vw" : "4.8vw";
+        }
+
+        function displaySort() {
+            var sortContainer = document.querySelector("#sortSelection");
+            sortContainer.style.display = sortContainer.style.display ==="block" ? "none": "block";
         }
     </script>
 </body>
