@@ -1,8 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap');
 
 *{
+<<<<<<< HEAD
     padding: 0%;
     margin: 0%;
+=======
+  margin: 0;
+  padding: 0;
+>>>>>>> 5cce8e783053e96c4fd5e17fcacb0acc98ff5271
 }
 nav li {
     font-size: x-large;
@@ -54,7 +59,9 @@ main {
     font-size: 0.9em;
 }
 #owner::before{
-    content: "By ";
+    content: "By: ";
+    font-size: medium;
+    font-weight: bolder;
 }
 #image{
     padding: 10vmin;
