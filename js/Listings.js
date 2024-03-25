@@ -121,6 +121,7 @@ function addListing(listing, cardsId) {
   // creating card and its elements
   var card = document.createElement("div");
   card.classList.add("card");
+  card.id=listing.id;
 
   var cardTitle = document.createElement("h3");
   cardTitle.classList.add("cardTitle");
