@@ -7,9 +7,6 @@ if (localStorage.getItem("users") != null) {
   users = userDatabase;
 }
 
-var isLoggedin =
-  JSON.parse(sessionStorage.getItem("user")) == null ? false : true;
-
 function signUp(event) {
   event.preventDefault();
 
@@ -38,6 +35,12 @@ function signUp(event) {
       email: new_userEmail,
       role: new_userRole,
     });
+
+    var index = users.find((abc) => abc.email == new_userEmail);
+    delete index.password;
+    sessionStorage.setItem("user", JSON.stringify(index));
+    alert("Signup successful");
+    openPage("loggedInHome.html");
   }
   console.log(users);
 
@@ -49,17 +52,16 @@ function logIn(event) {
   event.preventDefault();
   var givenEmail = document.querySelector("#_email").value,
     given_password = document.querySelector("#_password").value;
-  console.log(users);
+
   var index = users.find((abc) => abc.email == givenEmail);
-  console.log(index);
-  console.log(givenEmail);
   if (!index) {
     alert("email is not registered");
     return;
   } else if (index.password == given_password) {
+    delete index.password;
     sessionStorage.setItem("user", JSON.stringify(index));
-    alert("hogya");
-    openPage("loggedInHome.html")
+    alert("Login successful");
+    openPage("loggedInHome.html");
   } else {
     alert("user not found");
   }
