@@ -113,6 +113,7 @@ h1 {
   justify-content: space-evenly;
 }
 .card {
+  position: relative;
   flex-basis: 0 1 1;
   width: 30%;
   min-width: 200px;
@@ -126,7 +127,7 @@ h1 {
   transition: all 0.3s ease-in-out;
 }
 .card:hover{
-  filter: drop-shadow(5px 5px 5px  #19191975);
+  box-shadow: 5px 5px 10px 1px  #19191975;
   background-color: rgb(66, 94, 122);
   transform: translateX(-5px) translateY(-5px) scale(101%);
   cursor: pointer;
@@ -172,5 +173,40 @@ h1 {
 .cardRating {
   font-style: italic;
   color: #888;
+}
+.ownerControls{
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  height: 30px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.ownerControls button:nth-of-type(1){
+  background: lightgreen;
+  font-family: "Raleway", sans-serif;
+  font-weight: 600;
+  color: green;
+  font-size: 0.6em;
+  padding: 5px 10px;
+  height: 100%;
+  border: none;
+  margin: 0;
+  cursor: pointer;
+}
+.ownerControls button:nth-of-type(2){
+  cursor: pointer;
+  background: rgb(255, 106, 106);
+  font-family: "Raleway", sans-serif;
+  padding: 5px 10px;
+  border: none;
+  margin: 0;
+  height: 100%;
+}
+.ownerControls img{
+  object-fit: contain;
+  height: 80%;
+  width: auto;
 }
 

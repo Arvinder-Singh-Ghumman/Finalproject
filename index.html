@@ -198,6 +198,9 @@
 
     <script src="js/index.js"></script>
     <script>
+      if(sessionStorage.getItem("user")!=null)
+        window.location.href="loggedInHome.html";
+      
         (setTimeout(function () {
             document.getElementById('loginPopUp').style.display = 'block';
         }, 10000))(); // 10000 milliseconds = 10 seconds
