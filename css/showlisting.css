@@ -1,20 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap");
 
-<<<<<<< HEAD
-*{
-<<<<<<< HEAD
-    padding: 0%;
-    margin: 0%;
-=======
-  margin: 0;
-  padding: 0;
->>>>>>> 5cce8e783053e96c4fd5e17fcacb0acc98ff5271
-=======
+
 
 * {
   margin: 0;
   padding: 0;
->>>>>>> 2aefd4d99909aff4c6978006b657da9b531dff06
+
 }
 nav li {
   font-size: x-large;
