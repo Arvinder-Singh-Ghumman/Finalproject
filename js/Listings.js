@@ -160,6 +160,9 @@ window.onload = () => {
 
   //adding event listenr
   try {
+    document.querySelectorAll(".card").forEach((el)=>{
+      el.addEventListener("click", (e)=> window.location.href=("listinginfo.html?id="+el.id))
+    })
     document.querySelector("#filtered").addEventListener("click", getListings);
     document
       .querySelector("#searchBar")

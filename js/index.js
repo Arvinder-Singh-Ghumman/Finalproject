@@ -69,6 +69,10 @@ window.onload = () => {
 
   getListings();
 
+  document.querySelectorAll(".card").forEach((el)=>{
+    el.addEventListener("click", (e)=> window.location.href=("listinginfo.html?id="+el.id))
+  })
+
   window.addEventListener("scroll", () => {
     if (window.scrollY > 100) {
       document.querySelector("nav").classList.add("navScrolled");
