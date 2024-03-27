@@ -1,0 +1,8 @@
+main{
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    padding: 20vmin;
+    background: linear-gradient(to bottom,rgb(21, 21, 30), rgb(21, 21, 84) )  ;
+}
+

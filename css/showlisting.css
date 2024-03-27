@@ -197,9 +197,9 @@ display: inline;
 .slider-container {
   margin-top: 20px;
 }
-#editListing{
+/* #editListing{
   /* display: none; */
-}
+
 .slider {
   width: 200px;
 }
@@ -207,3 +207,39 @@ display: inline;
 #sliderValue {
   margin-top: 10px;
 }
+ 
+/* #containerInput{
+    position: relative;
+    display: flex;
+} */
+
+/* #containerInput{
+    position: relative;
+    top: 80%;
+    min-width: 50dvw;
+    min-height: 90dvh;
+    background-color: whitesmoke;
+    border-radius: 30px;
+    gap: 50px;
+    padding: 2vw;
+
+} */
+/* 
+#containerInput{
+    position: absolute;
+    top: 130%;
+    display: flex;
+  min-width: 50dvh ;
+   min-height: 90dvh
+
+}
+
+ #submitEdit{
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    right: 0%;
+
+    
+    top: 120%;
+} */
