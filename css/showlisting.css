@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap");
 
-
-
 * {
   margin: 0;
   padding: 0;
@@ -29,11 +27,13 @@ main {
 }
 .splitContainer{
     display: flex;
+    justify-content: space-between;
 }
 #left{
     flex: 0 1 1;
     flex-grow: 1;
     width:50% ;
+    line-height: 30px;
     /* background: black; */
 }
 
@@ -41,12 +41,22 @@ main {
 #right{
     flex: 0 1 1;
     flex-grow: 1;
-    text-align: right;
+    line-height: 30px;
+    gap: 10px;
     /* background: red; */
+}
+#right p::before{
+  height: 20px;
+  filter: grayscale(0.5);
+  width: 20px;
+  top: 0;
+  left: -25px;
+  object-fit: contain;
+  background-size: contain;
 }
 #container p{
     font-family: "arial", sans-serif;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 #title{
     font-weight: 800;
@@ -62,43 +72,42 @@ main {
     font-weight: bolder;
 }
 #image{
-    padding: 10vmin;
+    padding: 5vmin;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: contain;
+    max-height: clamp(100px, 50dvh , 100dvh);
     box-sizing: border-box;
 }
 #description{
     text-align: justify;
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 2px;
-    margin: 50px 0
-}
-#price::before{
-    content: "$" ;
+    margin: 50px 0;
 }
 
 #location::before{
     content: "Address: ";
     font-weight: bolder;
-    text-decoration: underline;
-
 }
+
 #contact::before {
-    content: "Contact Info:";
+    content: "Contact Info: ";
     font-weight: bolder;
-    text-decoration: underline ;
 }
 
 #smoking::before{
-    content: "Smoking:"; font-weight: bolder;text-decoration: underline ;
+    content: "Smoking: " ; font-weight: bolder;
 }
 #term::before{
-    content: "Term:"; font-weight: bolder;text-decoration: underline ;
+    content: "Term: "; font-weight: bolder;
 }
 #availability::before{
-    content:  "Availability:"; font-weight: bolder;text-decoration: underline ;
+    content:  "Availability: "; font-weight: bolder;
 }
 #category::before{
-    content: "Category:"; font-weight: bolder;text-decoration: underline ;
+    content: "Category: "; font-weight: bolder;
 }
 
 #rating{
