@@ -66,6 +66,10 @@ body {
   text-decoration: none;
   color: white;
 }
+html{
+  scroll-behavior:  smooth;
+  scroll-padding-top: 20vh;
+}
 /* about section */
 .about {
   background: #e4e4e4;
@@ -77,7 +81,7 @@ body {
   flex-direction: column;
   justify-content: center;
   font-family: "Raleway", sans-serif;
-  padding-inline: 20vmin;
+  padding-inline: 40vmin;
 }
 .about p:nth-of-type(1){
   font-size: 1.1em;

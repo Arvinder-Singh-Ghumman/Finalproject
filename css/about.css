@@ -3,14 +3,43 @@
     margin: 0;
     box-sizing: border-box;
 }
-body{
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+
+/* Main Content */
+main {
+    max-width: 800px;
+    margin: 100px auto 20px auto;
+    padding: 20px;
+    background: url(../assets/);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-main{
-    flex-grow: 1;
-    padding-top: 200px;
-    background: conic-gradient(from 270deg at 50% 50%, red, blue);
+main h2 {
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 2.5em;
 }
+
+main ul {
+    list-style: none;
+    padding: 0;
+}
+
+main li {
+    margin-bottom: 10px;
+}
+
+main p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
