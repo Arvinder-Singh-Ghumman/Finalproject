@@ -18,11 +18,6 @@ body {
   background-color: rgb(247, 247, 233);
 }
 
-<<<<<<< HEAD
-.container{
-    /* display: block; */
-    display: none;
-=======
 .container {
   display: none;
   position: relative;
@@ -34,10 +29,9 @@ body {
   background: #e4e4e4;
   padding:15vmin;
   margin:25vmin auto;
->>>>>>> e49231aa0f195abc1a5ce40bf13900d066fea991
 }
 .container2 {
-  /* display: none; */
+  display: none;
   position: relative;
   height: fit-content;
   width: 50vw;
@@ -48,12 +42,8 @@ body {
   /* padding:15vmin; */
   margin:25vmin auto;
 }
-<<<<<<< HEAD
-.container3{
-    /* display: none; */
-=======
 .container3 {
-  display: none;
+  /* display: none; */
   position: relative;
   height: fit-content;
   width: 50vw;
@@ -63,7 +53,6 @@ body {
   background: #e4e4e4;
   padding:15vmin;
   margin:25vmin auto;
->>>>>>> e49231aa0f195abc1a5ce40bf13900d066fea991
 }
 
 #iconContainer {
