@@ -73,21 +73,21 @@
             <div class="profileInfo" id="coWorkerProfile">
                 <div class="inputContainer">
                     <span>Name</span>
-                    <input type="text" id="coWorkerName" value="John" disabled>
+                    <input type="text" class="coWorker" value="John" disabled>
                 </div>
                 <div class="inputContainer">
                     <span>E-mail</span>
-                    <input type="text" class="coWorkerEmail" value="John" disabled>
+                    <input type="text" class="coWorker" value="John" disabled>
                 </div>
                 <div class="inputContainer">
                     <span>Phone</span>
-                    <input type="number" class="coWorkerPhone" value="123" disabled>
+                    <input type="number" class="coWorker" value="123" disabled>
                 </div>
                 <div class="inputContainer">
                     <span>Rating</span>
-                    <input type="text" class="coWorkerRating" value="4.9" disabled>
+                    <input type="text" class="coWorker" value="4.9" disabled>
                 </div>
-                <button class="updateInfo">Update</button>
+                <button class="editInfo">Edit</button>
                 
                 
             </div>
@@ -126,8 +126,8 @@
             var container2 = document.querySelector(".container3");
             var container3 = document.querySelector(".container2");
             var profileIcon = document.querySelectorAll(".profileIcon");
-            var edit = document.querySelector(".editInfo");
-            var update = document.querySelector(".updateInfo");
+            var edit = document.querySelectorAll(".editInfo");
+            // var update = document.querySelector(".updateInfo");
             var settingsIcon = document.querySelectorAll(".settingsIcon")
             // console.log(profileIcon)
             for(var i=0; i<profileIcon.length; i++){
@@ -136,16 +136,18 @@
                 container3.style.display = "none";
                 container1.style.display = "block";
             })};
-            edit.addEventListener("click", ()=>{
-                container3.style.display = "none";
-                container1.style.display = "none";
-                container2.style.display = "block";
-            })
-            update.addEventListener("click", ()=>{
-                container3.style.display = "none";
-                container1.style.display = "block";
-                container2.style.display = "none";
-            })
+            for(var i =0;i<edit.length; i++){
+                edit[i].addEventListener("click", (btn)=>{
+                    // console.log(btn.target);
+                    document.querySelectorAll(".coWorker").forEach((el)=>el.disabled = false);
+                    btn.target.innerText = "Update";
+                })
+            }
+            // update.addEventListener("click", ()=>{
+            //     container3.style.display = "none";
+            //     container1.style.display = "block";
+            //     container2.style.display = "none";
+            // })
             for(var i=0;i<settingsIcon.length; i++){
                 settingsIcon[i].addEventListener("click", ()=>{
                     container1.style.display = "none";
