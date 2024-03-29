@@ -96,13 +96,13 @@ function displayEdit() {
 
 window.onload = () => {
   getListing();
-  // let user = JSON.parse(sessionStorage.getItem("user"));
-  // if (user.email === listing.ownerContact) {
-  //   alert("ye")
-  //   document.getElementById("editListing").style.display = "block";
-  // } else {
-  //   document.getElementById("editListing").style.display = "none";
-  // }
+  let user = JSON.parse(sessionStorage.getItem("user"));
+  if (user.email === listing.ownerContact) {
+    alert("ye")
+    document.getElementById("editListing").style.display = "block";
+  } else {
+    document.getElementById("editListing").style.display = "none";
+  }
 
   document.getElementById("addRating").addEventListener("click", addRating);
 
