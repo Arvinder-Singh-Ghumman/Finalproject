@@ -28,7 +28,7 @@ main {
 }
 
 #container {
-    display: none;
+    display: block;
     width: fit-content;
     max-width: 50dvw;
     min-width: 600px;
@@ -314,15 +314,15 @@ main {
 } */
 
 #containerInput {
-    display: flex;
-    /* display: none; */
+    /* display: flex; */
+    display: none;
     height: 800px;
     width: 45vw;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    background: radial-gradient(in circle, rgb(255, 255, 255), 20vw, rgb(255, 241, 204));
-    background: transparent;
+    background: radial-gradient(in circle, rgb(255, 255, 255), 20vw, rgb(237, 231, 227));
+    /* background: transparent; */
     position: relative;
     min-width: 600px;
     border-radius: 35px;
@@ -371,10 +371,12 @@ main {
     flex-direction: column;
     gap: 10px;
 }
-#leftInput p{
+#rightInput p{
+    /* width: 20vw; */
     display: flex;
-    justify-content: last baseline;
-    gap: 10px;
+    
+    justify-content: space-between;
+    /* gap: 10px; */
     align-items: center;
 }
 #rightInput {
@@ -481,7 +483,7 @@ main {
 }
 
 
-#leftInput p #smokingInput{
+#rightInput p #smokingInput{
     /* height: 20px; */
     width: 20px;
     border-radius: 0px;
@@ -491,7 +493,7 @@ main {
 
 #buttonBackground{
     width: 100px;
-    opacity: 0.6;
+    /* opacity: 0.6; */
     /* position: absolute;
     bottom: 65px;
     z-index: 1; */
@@ -500,4 +502,8 @@ main {
     margin-top: 30px;
     display: flex;
     justify-content: right;
+}
+#leftInput .inputContainer{
+    display: flex;
+    flex-direction: column;
 }

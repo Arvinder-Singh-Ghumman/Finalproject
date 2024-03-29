@@ -1,0 +1,118 @@
+/* Reset CSS */
+body {
+    font-family: "Raleway", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    /* Dark background */
+    color: #fff;
+    /* Light text */
+}
+
+
+/* Main Content */
+main {
+    padding-top: 200px;
+    /* height: 500px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    background:linear-gradient(to bottom, rgb(0, 0, 0), rgb(66, 94, 122));
+    min-height: 100vh;
+    /* max-width: 800px; */
+    /* margin: 50px auto; */
+    /* margin-top: 200px; */
+    /* background-color: #222; */
+    /* Dark background */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); */
+    /* Darker shadow */
+}
+
+main form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40vw;
+    height: fit-content;
+    background: linear-gradient(to bottom, white, silver);
+    /* background: radial-gradient(circle,white,400px, black); */
+    border-radius: 10px;
+    padding: 20px;
+    border:3px solid white;
+    box-shadow: 3px 3px 20px 2px rgba(0, 0, 0, 0.754);
+}
+main p{
+    font-size: 40px;
+    margin-bottom: 50px;
+    text-align: center;
+    font-weight: 700;
+    text-wrap: wrap;
+    color: rgb(5, 25, 59);
+    /* text-shadow: 1px 1px 5px #b4ffff; */
+    /* width: 50%; */
+}
+main p#helpLine{
+    /* color: rgb(151, 144, 0); */
+    color: rgb(8, 7, 34);
+    /* text-shadow: 1px 1px 5px #0e0551; */
+}
+main form p{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+main form label{
+    font-size: 20px;
+    /* margin-bottom: 10px; */
+    font-weight: bold;
+    color: black;
+    text-shadow: none;
+}
+
+main form input[type="text"]{
+    padding: 5px;
+    /* Darker border */
+    border-radius: 5px;
+    width: 100%;
+    font-size: 20px;
+    border: 2px solid black;
+}
+main form textarea{
+    width: 50%;
+    height: 150px;
+    padding: 5px;
+    font-size: 16px;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+main form input[type="submit"] {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4e54c8;
+    /* Purple color */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+main form input[type="submit"]:hover {
+    background-color: #8f94fb;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    /* Darker background */
+    color: #fff;
+    /* Light text */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    /* Darker shadow */
+}

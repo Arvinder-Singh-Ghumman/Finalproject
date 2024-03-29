@@ -68,18 +68,35 @@
       <div class="splitContainer">
         <div id="leftInput">
           <input type="text" id="locationInput" placeholder="Address" />
-          <input type="text" id="contactInput" placeholder="Contact" />
-          <input type="text" id="termInput" placeholder="Term" />
-          <input type="text" id="availabilityInput" placeholder="Availability" />
-          <input type="text" id="categoryInput" placeholder="Category" />
-          <p>
-            <label for="smokingInput">Smoking Allowed</label>
-            <input type="checkbox" id="smokingInput">
-          </p>
+          <input type="number" id="contactInput" placeholder="Contact" />
+          <div class="inputContainer">
+            <span>Availability:</span>
+            <p></p>
+            <label for="addFromAvailability">From</label>
+            <input type="date" id="addFromAvailability" name="availability">
+            <label for="addToAvailability">To</label>
+            <input type="date" id="addToAvailability" name="availability">
+            <!-- if to availability is null then it is available till infinite time there is no expected closure of this workspace -->
+          </div>
+          <div class="inputContainer" id="categoryInputContainer">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <option id="addMeetingRoom" value="meetingRoom">Meeting Room</option>
+              <option id="addDesk" value="desk">Desk</option>
+              <option id="addWorkspace" value="workspace">Workspace</option>
+              <option id="addPrivateOffice" value="privateOffice">Private Office</option>
+            </select>
+            
+          </div>
         </div>
         <div id="rightInput">
           <input type="text" id="seatingInput" placeholder="Seating Capacity" />
           <input type="text" id="priceInput" placeholder="Price">
+          <input type="text" id="termInput" placeholder="Term" />
+          <p>
+            <label for="smokingInput">Smoking Allowed</label>
+            <input type="checkbox" id="smokingInput">
+          </p>
         </div>
       </div>
       <img id="buttonBackground" src="assets/paintbrushStroke.png" alt="">
@@ -99,12 +116,28 @@
  
   </main>
 
-  <footer>
-    <p>Copyright@group-4SODV1201</p>
-    <p></p>
-    <p id="date">Date:</p>
-  </footer>
 </body>
 <script src="./js/listing.js" type="module"></script>
+<script>
+  window.onload = ()=>{
+    var container1 = document.querySelector("#container");
+    var container2 = document.querySelector("#containerInput");
+    var container3 = document.querySelector(".rate")
+    var editListing = document.querySelector("#editListing");
+    var editingDone = document.querySelector("#submitEdit");
+
+    editListing.addEventListener("click", ()=>{
+      container1.style.display = "none";
+      container2.style.display = "flex";
+      container1.style.display = "none";
+    })
+    editingDone.addEventListener("click", ()=>{
+      container1.style.display = "block";
+      container2.style.display = "none";
+      container1.style.display = "flex";
+
+    })
+  }
+</script>
 
 </html>
