@@ -1,56 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> <link rel="stylesheet" href="css/ownerprofile.css"> <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/ownerprofile.css">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
+
 <body>
+    <!-- navbar -->
     <nav>
-
-        <!-- logo will be on the left side of the nav bar -->
         <li>logo</li>
-
-        <!-- page links will be in the center -->
-        <pages>
-            <li><a href="loggedInHome.html">Home</a></li>
+        <!--links to other pages -->
+        <div class="pages">
+            <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="help.html">Help</a></li>
-        </pages>
-        <search>
-            <li><input type="text" placeholder=" search"> </li><a href="search.html"><img src="assets/search.png"
-                id="searchIconPNG" alt="icon of search"></a>
-        </search>
-
-        <!-- Account info will be on the right side of the nav bar -->
-        <li><a href="loggedInProfile.html">Account</a></li>
-
+        </div>
+        <!-- search andd account -->
+        <div class="navSearch">
+            <li><input type="text" placeholder=" search" /></li>
+            <a href="search.html"><img src="assets/search.png" id="searchIconPNG" alt="icon of search" /></a>
+        </div>
+        <li><a href="loggedInProfile.html" class="active">Account</a></li>
     </nav>
     <main>
-       
-        <li> <img src="assets/profile.png" alt="profilepicture">
-            <div id="name">
-        <h2 id="firstname">First and last name</h2> 
-        <h2>Owner</h2><br>
-        <h3>Email: </h3>
-        <h3>Phone no. :</h3> <br>
-        <h2> Rating: </h2>
+        <div class="container" id="ownerProfile">
+            <!-- <div class="notebookCoilContainer">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+            </div> -->
+            <div id="iconContainer">
+                <img src="assets/profileIcon.png" alt="Profile Details">
+                <img src="assets/settingsIcon.png" alt="Settings">
+            </div>
+            <div class="profileInfo">
+                <div class="inputContainer">
+                    <span>Name</span>
+                    <input type="text" id="OwnerName" value="John" disabled>
+                </div>
+                <div class="inputContainer">
+                    <span>E-mail</span>
+                    <input type="text" id="OwnerEmail" value="John" disabled>
+                </div>
+                <div class="inputContainer">
+                    <span>Phone</span>
+                    <input type="number" id="OwnerPhone" value="123" disabled>
+                </div>
+                <!-- <div class="inputContainer">
+                    <span>Name</span>
+                    <input type="text" id="name" value="John" disabled>
+                </div> -->
+
+
+                <button class="updateInfo">Edit</button>
+            </div>
+        </div>
+        <div class="container3">
+            <!-- <div class="notebookCoilContainer">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+            </div> -->
+            <div id="iconContainer">
+                <img src="assets/profileIcon.png" alt="Profile Details">
+                <img src="assets/settingsIcon.png" alt="Settings">
+            </div>
+            <div class="profileInfo" id="coWorkerProfile">
+                <div class="inputContainer">
+                    <span>Name</span>
+                    <input type="text" id="coWorkerName" value="John" disabled>
+                </div>
+                <div class="inputContainer">
+                    <span>E-mail</span>
+                    <input type="text" class="coWorkerEmail" value="John" disabled>
+                </div>
+                <div class="inputContainer">
+                    <span>Phone</span>
+                    <input type="number" class="coWorkerPhone" value="123" disabled>
+                </div>
+                <div class="inputContainer">
+                    <span>Rating</span>
+                    <input type="text" class="coWorkerRating" value="4.9" disabled>
+                </div>
+
+
+            </div>
         </div>
 
-        <br><br>
-        
 
-        <div id="rating">
-            <h1>Workspace Listings: </h1> <br> 
-          
+        <div class="container2">
+            <div id="iconContainer">
+                <img src="assets/profileIcon.png" alt="Profile Details">
+                <img src="assets/settingsIcon.png" alt="Settings">
+            </div>
+            <div class="settingsInfo">
+                <button id="logOut">Log Out</button>
+                <button id="changePassword">Change Password</button>
+                <button id="delete">Delete this account</button>
+                <!-- <div class="inputContainer" id="logOut">
+                </div>
+                <div class="inputContainer">
+                </div>
+                <div class="inputContainer">
+                </div>
+         -->
+            </div>
         </div>
-   
     </main>
 
     <footer>
-        <p>copyright info</p>
-        <p>extra links about the site</p>
-        <p>Date:</p>
+        <p>Copyright@group-4SODV1201</p>
+        <p></p>
+        <p id="date">Date:</p>
     </footer>
+
+    <!-- script added to update the date in the footer but there is some problem -->
+    <script src="js/user.js"></script>
 </body>
+
 </html>

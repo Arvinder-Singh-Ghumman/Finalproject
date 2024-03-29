@@ -1,127 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="css/navbar.css"/>
-    <link rel="stylesheet" href="css/showlisting.css"/>
-  </head>
-  <body>
-    <!-- navbar -->
-    <nav>
-      <li>logo</li>
-      <!--links to other pages -->
-      <div class="pages">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="help.html">Help</a></li>
-      </div>
-      <!-- search andd account -->
-      <div class="navSearch">
-        <li><input type="text" placeholder=" search" /></li>
-        <a href="search.html"
-          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
-        /></a>
-      </div>
-      <li><a href="login.html">Account</a></li>
-    </nav>
 
-    <main>
-      <div id="container">
-        <button id="editListing">Edit Listing</button>
-        <div id="listingInfo">
-          <p id="title">Title:</p>
-          <p id="owner">Owner:</p>
-          <img id="image" src="" alt="image" />
-          <p id="description">Description:</p>
-        </div>
-        <div class="splitContainer">
-          <div id="left">
-            <p id="location">Address:</p>
-            <p id="contact">Contact</p>
-            <p id="smoking">Smoking:</p>
-            <p id="term">Term:</p>
-            <p id="availability">Availability:</p>
-            <p id="category">Category:</p>
-          </div>
-          <div id="right">
-            <p id="seating">Seating Capacity:</p> <br>
-            <p id="rating">Rating:</p><br>
-            <p id="reviews">Reviews:</p><br>
-            <p id="price">Price:</p><br>
-          </div>
-        </div>
-      </div>
-      <div id="containerInput">
-        <button id="submitEdit">Done</button>
-        <div id="listingInfoInput">
-          <input type="text" id="titleInput" placeholder="Title" />
-          <input type="text" id="ownerInput" placeholder="Owner" />
-          <input type="text" id="imageInput" placeholder="Image URL" />
-          <textarea id="descriptionInput" placeholder="Description"></textarea>
-        </div>
-        <div class="splitContainer">
-          <div id="leftInput">
-            <input type="text" id="locationInput" placeholder="Address" />
-            <input type="text" id="contactInput" placeholder="Contact" />
-            <input type="text" id="smokingInput" placeholder="Smoking" />
-            <input type="text" id="termInput" placeholder="Term" />
-            <input
-              type="text"
-              id="availabilityInput"
-              placeholder="Availability"
-            />
-            <input type="text" id="categoryInput" placeholder="Category" />
-          </div>
-          <div id="rightInput">
-            <input
-              type="text"
-              id="seatingInput"
-              placeholder="Seating Capacity"
-            />
-            <input type="text" id="ratingInput" placeholder="Rating" />
-            <input type="text" id="reviewsInput" placeholder="Reviews" />
-            <input type="text" id="priceInput" placeholder="Price" />
-          </div>
-        </div>
-      </div>
-      <div class="rate">
-        <h4>Rate this listing :</h4>
-        <div class="slider-container">
-          <input
-            type="range"
-            min="1"
-            max="5"
-            value="3"
-            class="slider"
-            id="ratingSlider"
-          />
-          <p id="sliderValue">3</p>
-        </div>
-        <div class="message-container">
-          <textarea
-            id="message"
-            rows="4"
-            placeholder="Enter your message"
-          ></textarea>
-        </div>
-        <button id="addRating">Submit</button>
-      </div>
-      <div class="contactOwner">
-        <!-- <button id="pay">pay</button> -->
-        <p>Contact owner for further inquiry:</p>
-        <a href="mailto:arvindersinghghumman@gmail.com" id="contactOwner"
-          >Contact via email</a
-        >
-      </div>
-    </main>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/showlisting.css" />
+</head>
 
-    <footer>
-      <p>Copyright@group-4SODV1201</p>
-      <p></p>
-      <p id="date">Date:</p>
-    </footer>
-  </body>
-  <script src="./js/listing.js" type="module"></script>
+<body>
+  <!-- navbar -->
+  <nav>
+    <li>logo</li>
+    <!--links to other pages -->
+    <div class="pages">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="help.html">Help</a></li>
+    </div>
+    <!-- search andd account -->
+    <div class="navSearch">
+      <li><input type="text" placeholder=" search" /></li>
+      <a href="search.html"><img src="assets/search.png" id="searchIconPNG" alt="icon of search" /></a>
+    </div>
+    <li><a href="login.html">Account</a></li>
+  </nav>
+
+  <main>
+    <div id="container">
+      <button id="editListing">Edit Listing</button>
+      <div id="listingInfo">
+        <p id="title">Title:</p>
+        <p id="owner">Owner:</p>
+        <img id="image" src="" alt="image" />
+        <p id="description">Description:</p>
+      </div>
+      <div class="splitContainer">
+        <div id="left">
+          <p id="location">Address:</p>
+          <p id="contact">Contact</p>
+          <p id="smoking">Smoking:</p>
+          <p id="term">Term:</p>
+          <p id="availability">Availability:</p>
+          <p id="category">Category:</p>
+        </div>
+        <div id="right">
+          <p id="seating">Seating Capacity:</p> <br>
+          <p id="rating">Rating:</p><br>
+          <p id="reviews">Reviews:</p><br>
+          <p id="price">Price:</p><br>
+        </div>
+      </div>
+    </div>
+    <div id="containerInput">
+      <h1 id="editListingHeader">Edit Listing</h1>
+      <div id="listingInfoInput">
+        <input type="text" id="titleInput" placeholder="Title" />
+        <input type="file" id="imageInput" placeholder="Image URL" />
+        <textarea id="descriptionInput" rows="4" placeholder="Description"></textarea>
+      </div>
+      <div class="splitContainer">
+        <div id="leftInput">
+          <input type="text" id="locationInput" placeholder="Address" />
+          <input type="text" id="contactInput" placeholder="Contact" />
+          <input type="text" id="termInput" placeholder="Term" />
+          <input type="text" id="availabilityInput" placeholder="Availability" />
+          <input type="text" id="categoryInput" placeholder="Category" />
+          <p>
+            <label for="smokingInput">Smoking Allowed</label>
+            <input type="checkbox" id="smokingInput">
+          </p>
+        </div>
+        <div id="rightInput">
+          <input type="text" id="seatingInput" placeholder="Seating Capacity" />
+          <input type="text" id="priceInput" placeholder="Price">
+        </div>
+      </div>
+      <div id="button"><button id="submitEdit">Done</button></div>
+    </div>
+    <div class="rate">
+      <h4>Rate This Listing</h4>
+      <div class="slider-container">
+        <input type="range" min="1" max="5" value="3" class="slider" id="ratingSlider" />
+        <p id="sliderValue">3</p>
+      </div>
+      <div class="message-container">
+        <textarea id="message" rows="4" placeholder="Enter your message"></textarea>
+      </div>
+      <button id="addRating">Submit</button>
+    </div>
+    <div class="contactOwner">
+      <!-- <button id="pay">pay</button> -->
+      <p>Contact owner for further inquiry:</p>
+      <a href="mailto:arvindersinghghumman@gmail.com" id="contactOwner">Contact via email</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Copyright@group-4SODV1201</p>
+    <p></p>
+    <p id="date">Date:</p>
+  </footer>
+</body>
+<script src="./js/listing.js" type="module"></script>
+
 </html>
