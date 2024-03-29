@@ -59,6 +59,8 @@ function addRating() {
 }
 
 function displayEdit() {
+  document.getElementById("containerInput").style.display = "flex"
+  document.getElementById("container").style.display = "none"
   // Retrieve all input elements
   let titleInput = document.getElementById("titleInput");
   let ownerInput = document.getElementById("ownerInput");
@@ -74,32 +76,35 @@ function displayEdit() {
   let seatingCapacityInput = document.getElementById("seatingInput");
   let reviewsInput = document.getElementById("reviewsInput");
   
-  titleInput.value = listing.title;
-  ownerInput.value = listing.owner;
-  priceInput.value = listing.price;
-  imageSrcInput.value = listing.image;
-  descriptionInput.value = listing.description;
-  locationInput.value = listing.location;
-  contactInput.value = listing.contact;
-  smokingInput.value = listing.isSmokingAllowed;
-  termInput.value = listing.term;
-  availabilityInput.value = listing.availability;
-  categoryInput.value = listing.category;
-  seatingCapacityInput.value = listing.seating;
-
-  if(titleInput.value !==listing.title){
-    let index = workspaces.findIndex((el)=>el.id===id)
-    workspaces[index].title = titleInput.value;
-  }
+  // titleInput.value = listing.title;
+  // ownerInput.value = listing.owner;
+  // priceInput.value = listing.price;
+  // imageSrcInput.value = listing.image;
+  // descriptionInput.value = listing.description;
+  // locationInput.value = listing.location;
+  // contactInput.value = listing.contact;
+  // smokingInput.value = listing.isSmokingAllowed;
+  // termInput.value = listing.term;
+  // availabilityInput.value = listing.availability;
+  // categoryInput.value = listing.category;
+  // seatingCapacityInput.value = listing.seating;
+  // if(titleInput.value !==listing.title){
+  //   let index = workspaces.findIndex((el)=>el.id===id)
+  //   workspaces[index].title = titleInput.value;
+  // }
   //complete this similarly for alll other inputs
 }
 
 window.onload = () => {
   getListing();
   let user = JSON.parse(sessionStorage.getItem("user"));
+  if(user.role==="owner"){
+    document.getElementById("rate").display = "flex";
+  }
+  console.log(listing.ownerContact)
   if (user.email === listing.ownerContact) {
-    alert("ye")
     document.getElementById("editListing").style.display = "block";
+    document.getElementById("rate").style.display = "none";
   } else {
     document.getElementById("editListing").style.display = "none";
   }

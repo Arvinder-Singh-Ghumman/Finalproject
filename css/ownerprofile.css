@@ -31,7 +31,7 @@ body {
   margin:25vmin auto;
 }
 .container2 {
-  /* display: none; */
+  display: none;
   position: relative;
   height: fit-content;
   width: 50vw;
@@ -43,7 +43,7 @@ body {
   margin:25vmin auto;
 }
 .container3 {
-  display: none;
+  /* display: none; */
   position: relative;
   height: fit-content;
   width: 50vw;

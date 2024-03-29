@@ -15,16 +15,18 @@
     <li>logo</li>
     <!--links to other pages -->
     <div class="pages">
-      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="loggedInHome.html" class="active" id="navHome">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="help.html">Help</a></li>
     </div>
     <!-- search andd account -->
     <div class="navSearch">
       <li><input type="text" placeholder=" search" /></li>
-      <a href="search.html"><img src="assets/search.png" id="searchIconPNG" alt="icon of search" /></a>
+      <a href="search.html"
+        ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+      /></a>
     </div>
-    <li><a href="login.html">Account</a></li>
+    <li><a href="login.html" id="navAccount">Account</a></li>
   </nav>
 
   <main>
@@ -102,7 +104,7 @@
       <img id="buttonBackground" src="assets/paintbrushStroke.png" alt="">
       <button id="submitEdit">Done</button>
     </div>
-    <div class="rate">
+    <div class="rate" id="rate">
       <h4>Rate This Listing</h4>
       <div class="slider-container">
         <input type="range" min="1" max="5" value="3" class="slider" id="ratingSlider" />
@@ -116,28 +118,12 @@
  
   </main>
 
+
+  <footer>
+    <p>Thanks for Visiting Our Site | Final Project for Web development</p>
+  </footer>
+  
 </body>
 <script src="./js/listing.js" type="module"></script>
-<script>
-  window.onload = ()=>{
-    var container1 = document.querySelector("#container");
-    var container2 = document.querySelector("#containerInput");
-    var container3 = document.querySelector(".rate")
-    var editListing = document.querySelector("#editListing");
-    var editingDone = document.querySelector("#submitEdit");
-
-    editListing.addEventListener("click", ()=>{
-      container1.style.display = "none";
-      container2.style.display = "flex";
-      container1.style.display = "none";
-    })
-    editingDone.addEventListener("click", ()=>{
-      container1.style.display = "block";
-      container2.style.display = "none";
-      container1.style.display = "flex";
-
-    })
-  }
-</script>
-
+<script src="./js/nav.js"></script>
 </html>

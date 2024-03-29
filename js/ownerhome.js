@@ -64,7 +64,7 @@ function addListing(list) {
   list.forEach((listing) => {
     var card = document.createElement("div");
     card.classList.add("card");
-    card.id=listing.id;
+    card.id = listing.id;
 
     var cardTitle = document.createElement("h3");
     cardTitle.classList.add("cardTitle");
@@ -99,6 +99,7 @@ function addListing(list) {
     cardManipulate.appendChild(updateButton);
 
     // Create a delete button with an image
+    if (user.role === "owner") {
     var deleteButton = document.createElement("button");
     deleteButton.className = "deleteListingButton";
     deleteButton.classList.add(listing.id);
@@ -107,7 +108,7 @@ function addListing(list) {
     deleteButton.appendChild(deleteImage);
     cardManipulate.appendChild(deleteButton);
     card.appendChild(cardManipulate);
-    // }
+    }
 
     card.appendChild(cardImg);
     card.appendChild(cardDescr);
@@ -134,12 +135,22 @@ function deleteListing(id) {
     );
 }
 
-window.onload = () => {
-  var currentDate = new Date();
-  var currentDateElement = document.getElementById("date");
-  currentDateElement.innerHTML += currentDate.toLocaleDateString();
 
+window.onload = () => {
   getListings();
+  if (user.role !== "owner") {
+    document
+      .querySelectorAll(".deleteListingButton")
+      .forEach((el) => (el.style.display = "none"));
+    document
+      .querySelectorAll(".updateListingButton")
+      .forEach((el) => (el.style.display = "none"));
+      document.getElementById("addListing").style.display = "none";
+  }else{
+    document.getElementById("listingsTitle").innerText = "My listings";
+    document.getElementById("addListing").addEventListener("click", ()=> window.location.href = "addListing.html")
+  }
+
   //for nav
   window.addEventListener("scroll", () => {
     if (window.scrollY > 100) {
@@ -148,10 +159,13 @@ window.onload = () => {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
-  
-  document.querySelectorAll(".card").forEach((el)=>{
-    el.addEventListener("click", (e)=> window.location.href=("listinginfo.html?id="+el.id))
-  })
+
+  document.querySelectorAll(".card").forEach((el) => { 
+    el.addEventListener(
+      "click",
+      (e) => (window.location.href = "listinginfo.html?id=" + el.id)
+    );
+  });
 
   //displaying name
   document.querySelector("#ownerInfo").innerText = `Hey, ${user.name}!`;
@@ -164,6 +178,7 @@ window.onload = () => {
     myListCounter += 6;
     getListings();
   });
+
   document
     .querySelectorAll(".deleteListingButton")
     .forEach((el) =>
