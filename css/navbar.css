@@ -42,7 +42,7 @@ nav {
   background: #191919;
 }
 nav li a {
-  opacity: 0.5;
+  opacity: 0.75;
   position: relative;
   font-weight: 500;
   transition: 0.3s all ease-out;
