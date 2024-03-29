@@ -35,8 +35,8 @@
                 <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
             </div> -->
             <div id="iconContainer">
-                <img src="assets/profileIcon.png" alt="Profile Details">
-                <img src="assets/settingsIcon.png" alt="Settings">
+                <img src="assets/profileIcon.png" class="profileIcon" alt="Profile Details">
+                <img src="assets/settingsIcon.png" class="settingsIcon" alt="Settings">
             </div>
             <div class="profileInfo">
                 <div class="inputContainer">
@@ -57,7 +57,7 @@
                 </div> -->
 
 
-                <button class="updateInfo">Edit</button>
+                <button class="editInfo">Edit</button>
             </div>
         </div>
         <div class="container3">
@@ -67,8 +67,8 @@
                 <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
             </div> -->
             <div id="iconContainer">
-                <img src="assets/profileIcon.png" alt="Profile Details">
-                <img src="assets/settingsIcon.png" alt="Settings">
+                <img src="assets/profileIcon.png" class="profileIcon" alt="Profile Details">
+                <img src="assets/settingsIcon.png" class="settingsIcon" alt="Settings">
             </div>
             <div class="profileInfo" id="coWorkerProfile">
                 <div class="inputContainer">
@@ -87,16 +87,17 @@
                     <span>Rating</span>
                     <input type="text" class="coWorkerRating" value="4.9" disabled>
                 </div>
-
-
+                <button class="updateInfo">Update</button>
+                
+                
             </div>
         </div>
 
 
         <div class="container2">
             <div id="iconContainer">
-                <img src="assets/profileIcon.png" alt="Profile Details">
-                <img src="assets/settingsIcon.png" alt="Settings">
+                <img src="assets/profileIcon.png" class="profileIcon" alt="Profile Details">
+                <img src="assets/settingsIcon.png" class="settingsIcon" alt="Settings">
             </div>
             <div class="settingsInfo">
                 <button id="logOut">Log Out</button>
@@ -119,8 +120,42 @@
         <p id="date">Date:</p>
     </footer>
 
-    <!-- script added to update the date in the footer but there is some problem -->
-    <script src="js/user.js"></script>
+    <script>
+        window.onload = () => {
+            var container1 = document.querySelector(".container");
+            var container2 = document.querySelector(".container3");
+            var container3 = document.querySelector(".container2");
+            var profileIcon = document.querySelectorAll(".profileIcon");
+            var edit = document.querySelector(".editInfo");
+            var update = document.querySelector(".updateInfo");
+            var settingsIcon = document.querySelectorAll(".settingsIcon")
+            // console.log(profileIcon)
+            for(var i=0; i<profileIcon.length; i++){
+                profileIcon[i].addEventListener("click", ()=>{
+                container2.style.display = "none";
+                container3.style.display = "none";
+                container1.style.display = "block";
+            })};
+            edit.addEventListener("click", ()=>{
+                container3.style.display = "none";
+                container1.style.display = "none";
+                container2.style.display = "block";
+            })
+            update.addEventListener("click", ()=>{
+                container3.style.display = "none";
+                container1.style.display = "block";
+                container2.style.display = "none";
+            })
+            for(var i=0;i<settingsIcon.length; i++){
+                settingsIcon[i].addEventListener("click", ()=>{
+                    container1.style.display = "none";
+                    container2.style.display = "none";
+                    container3.style.display = "block";
+                })
+            }
+        };
+    </script>
+
 </body>
 
 </html>

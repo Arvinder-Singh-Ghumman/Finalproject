@@ -28,7 +28,7 @@ main {
 }
 
 #container {
-    /* display: none; */
+    display: none;
     width: fit-content;
     max-width: 50dvw;
     min-width: 600px;
@@ -315,13 +315,14 @@ main {
 
 #containerInput {
     display: flex;
-    display: none;
+    /* display: none; */
     height: 800px;
     width: 45vw;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    background: radial-gradient(in circle, rgb(237, 215, 144), 20vw, rgb(179, 137, 21));
+    background: radial-gradient(in circle, rgb(255, 255, 255), 20vw, rgb(255, 241, 204));
+    background: transparent;
     position: relative;
     min-width: 600px;
     border-radius: 35px;

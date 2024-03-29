@@ -5,7 +5,7 @@ export const listings = [
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=1`,
     seating: 6,
-    ownerContact: "info@techinnovations.com",
+    ownerContact: "john.doe@example.com",
     rating: [],
     reviews: 35,
     description:
@@ -23,7 +23,7 @@ export const listings = [
     owner: "Bob Anderson",
     image: `https://source.unsplash.com/random?workspace&number=2`,
     seating: 1,
-    ownerContact: "info@downtownenterprises.com",
+    ownerContact: "bob.anderson@example.com",
     rating: [],
     reviews: 20,
     description:
@@ -41,7 +41,7 @@ export const listings = [
     owner: "Alice Johnson",
     image: `https://source.unsplash.com/random?workspace&number=3`,
     seating: 12,
-    ownerContact: "info@collabzone.com",
+    ownerContact: "alice.johnson@example.com",
     rating: [],
     reviews: 40,
     description:
@@ -59,7 +59,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=4`,
     seating: 4,
-    ownerContact: "info@eliteworkspaces.com",
+    ownerContact: "jane.smith@example.com",
     rating:[],
     reviews: 25,
     description:
@@ -77,7 +77,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
-    ownerContact: "info@creativesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 30,
     description:
@@ -95,7 +95,7 @@ export const listings = [
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
-    ownerContact: "info@seasideoffices.com",
+    ownerContact: "john.doe@example.com",
     rating: [],
     reviews: 18,
     description:
@@ -113,7 +113,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
-    ownerContact: "info@corporatesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 45,
     description:
@@ -131,7 +131,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
-    ownerContact: "info@creativesolutions.com",
+    ownerContact: "jaen.smith@example.com",
     rating:[],
     reviews: 30,
     description:
@@ -149,7 +149,7 @@ export const listings = [
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
-    ownerContact: "info@seasideoffices.com",
+    ownerContact: "john.doe@example.com",
     rating: [],
     reviews: 18,
     description:
@@ -167,7 +167,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
-    ownerContact: "info@corporatesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 45,
     description:
@@ -185,7 +185,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
-    ownerContact: "info@creativesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 30,
     description:
@@ -203,7 +203,7 @@ export const listings = [
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
-    ownerContact: "info@seasideoffices.com",
+    ownerContact: "john.doe@example.com",
     rating: [],
     reviews: 18,
     description:
@@ -221,7 +221,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
-    ownerContact: "info@corporatesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 45,
     description:
@@ -239,7 +239,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=5`,
     seating: 8,
-    ownerContact: "info@creativesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 30,
     description:
@@ -257,7 +257,7 @@ export const listings = [
     owner: "John Doe",
     image: `https://source.unsplash.com/random?workspace&number=6`,
     seating: 1,
-    ownerContact: "info@seasideoffices.com",
+    ownerContact: "john.doe@example.com",
     rating: [],
     reviews: 18,
     description:
@@ -275,7 +275,7 @@ export const listings = [
     owner: "Jane Smith",
     image: `https://source.unsplash.com/random?workspace&number=7`,
     seating: 16,
-    ownerContact: "info@corporatesolutions.com",
+    ownerContact: "jane.smith@example.com",
     rating: [],
     reviews: 45,
     description:

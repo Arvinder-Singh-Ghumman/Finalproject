@@ -25,10 +25,13 @@ body {
 }
 
 .container{
-    /* display: none; */
+    display: block;
 }
 .container2{
-    /* display: none; */
+    display: none;
+}
+.container3{
+    display: none;
 }
 
 #iconContainer {
@@ -56,6 +59,9 @@ body {
     padding: 30px 2px; 
     /* height: 100px; */
     
+}
+#iconContainer img:hover{
+    cursor: pointer;
 }
 
 .profileInfo {
@@ -94,7 +100,7 @@ body {
     font-weight: 500;
 }
 
-.updateInfo{
+.editInfo, .updateInfo{
     position: relative;
     left: 6vw;
     background-color: white;

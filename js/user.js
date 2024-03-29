@@ -117,6 +117,19 @@ window.onload = () => {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
+
+
+
+  var container1 = document.querySelector(".container");
+  var container2 = document.querySelector(".container3");
+  var container3 = document.querySelector(".container2");
+  var profileIcon = document.querySelector("#profileIcon");
+
+  profileIcon.addEventListener("click",()=>{
+      container2.style.display = "none";
+      container3.style.display = "none";
+  })
+</script>
 };
 
 function openPage(pageName) {
