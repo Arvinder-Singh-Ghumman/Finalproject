@@ -5,55 +5,12 @@ body {
     padding: 0;
 }
 
-/* Navigation */
-nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-nav li {
-    list-style: none;
-}
-
-.nav-pages {
-    display: flex;
-    align-items: center;
-}
-
-.nav-pages li {
-    margin-right: 20px;
-}
-
-nav search input[type="text"] {
-    padding: 8px;
-    border: none;
-    border-radius: 3px;
-    background-color: #444;
-    color: #fff;
-    transition: background-color 0.3s ease;
-}
-
-nav search input[type="text"]:focus {
-    background-color: #555;
-}
-
-nav search img {
-    width: 20px;
-    height: 20px;
-}
-
 /* Main Content */
 main {
     max-width: 800px;
     margin: 100px auto 20px auto;
     padding: 20px;
-    border-radius: 10px;
-    background-color: #181616;
+    background: url(../assets/);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
