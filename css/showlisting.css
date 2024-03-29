@@ -28,7 +28,7 @@ main {
 }
 
 #container {
-    display: none;
+    /* display: none; */
     width: fit-content;
     max-width: 50dvw;
     min-width: 600px;
@@ -315,7 +315,7 @@ main {
 
 #containerInput {
     display: flex;
-    /* display: none; */
+    display: none;
     height: 800px;
     width: 45vw;
     justify-content: space-evenly;

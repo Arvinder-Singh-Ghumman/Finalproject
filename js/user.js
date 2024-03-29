@@ -1,6 +1,4 @@
-import {
-  userDatabase
-} from "../database/usersDatabase.js";
+import { userDatabase } from "../database/usersDatabase.js";
 var users;
 //get users if in localstorage otherwise the default user.js
 if (localStorage.getItem("users") != null) {
@@ -86,15 +84,11 @@ function displaySignUp() {
   loginPage.style.display = "none";
 }
 
+function openPage(pageName) {
+  window.location.href = pageName;
+}
+
 window.onload = () => {
-  // Get the current date
-  var currentDate = new Date();
-
-  // Get the HTML element with the ID "currentDate"
-  var currentDateElement = document.getElementById("date");
-
-  // Update the innerHTML of the element with the current date
-  currentDateElement.innerHTML += currentDate.toLocaleDateString();
   document
     .querySelector("#signup")
     .addEventListener("submit", (event) => signUp(event));
@@ -109,16 +103,4 @@ window.onload = () => {
   document
     .getElementById("Displaylogin")
     .addEventListener("click", displayLogIn);
-
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-      document.querySelector("nav").classList.add("navScrolled");
-    } else {
-      document.querySelector("nav").classList.remove("navScrolled");
-    }
-  });
 };
-
-function openPage(pageName) {
-  window.location.href = pageName;
-}

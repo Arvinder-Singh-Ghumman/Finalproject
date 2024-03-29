@@ -1,25 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About</title>
     <!-- <link rel="stylesheet" href="css/styles.css"> -->
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/navbar.css">
-</head>
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+  </head>
 
-<body>
-
+  <body>
     <!-- navbar -->
     <nav>
       <li>logo</li>
       <!--links to other pages -->
       <div class="pages">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="loggedInHome.html" id="navHome">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
         <li><a href="help.html">Help</a></li>
       </div>
       <!-- search andd account -->
@@ -29,21 +27,30 @@
           ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
         /></a>
       </div>
-      <li><a href="login.html">Account</a></li>
+      <li><a href="login.html" id="navAccount">Account</a></li>
     </nav>
 
     <main>
-        This is the final project made by our team-2 of Introduction to Web Programming - 24JANMNTR2.
-        <h2>Team Members: </h2>
-        <li> Arshdeep Singh, Arvinder Singh Ghuman, Harsh Khullar, Prashant Pandey</li>
-
-        <p>more info about the roles of each individual</p>
+      <div class="overlay">
+        <div class="containerAbout">
+          <p>
+            This is the final project made by our team-2 of Introduction to Web
+            Programming - 24JANMNTR2.
+          </p>
+          <h2>Team Members:</h2>
+          <ul>
+            <li>Arvinder Singh Ghumman</li>
+            <li>Arshdeep Singh</li>
+            <li>Harsh Khullar</li>
+            <li>Prashant Pandey</li>
+          </ul>
+        </div>
+      </div>
     </main>
+    
     <footer>
-        <p>Copyright @ group-4</p>
-        <p>extra links about the site</p>
-        <p id="date">Date: </p>
+      <p>Thanks for Visiting Our Site | Final Project for Web development</p>
     </footer>
-</body>
-
+  </body>
+  <script src="./js/nav.js"></script>
 </html>
