@@ -1,9 +1,10 @@
 var otherUser;
+var user;
+const url = "http://localhost:5678";
 const urlParams = new URLSearchParams(window.location.search);
 var userId = urlParams.get("userId");
 
 async function fillValues() {
-  getUsers();
   //getting details of other user
   if (userId === null) {
     userId = user._id;
@@ -25,10 +26,9 @@ async function fillValues() {
     console.error("Error occurred: ", error);
   }
 }
-console.log("almost")
+
   // let userIndex = users.findIndex((el) => el.id === userId);
   if (otherUser !== undefined) {
-    console.log("phonch gya")
     document.getElementById("name").value = otherUser.name;
     document.getElementById("email").value = otherUser.email;
     document.getElementById("phone").value = otherUser.phone;
@@ -48,7 +48,7 @@ async function updateUserDatabase() {
   var phoneInput = document.getElementById("phone");
 
   if (nameInput && nameInput.value.trim() !== "") {
-    otherUser.name = nameInput.value.trim();
+    user.name = nameInput.value.trim();
   }
 
   if (
@@ -56,7 +56,7 @@ async function updateUserDatabase() {
     emailInput.value.trim() !== "" &&
     /\S+@\S+\.\S+/.test(emailInput.value.trim())
   ) {
-    otherUser.email = emailInput.value.trim();
+    user.email = emailInput.value.trim();
   }else if(emailInput){
     alert("email format is wrong")
   }
@@ -66,7 +66,7 @@ async function updateUserDatabase() {
     phoneInput.value.trim() !== "" &&
     !isNaN(phoneInput.value.trim())
   ) {
-    otherUser.phone = phoneInput.value.trim();
+    user.phone = phoneInput.value.trim();
   }else if(phoneInput){
     alert("phone format is wrong");
   }
@@ -75,9 +75,9 @@ async function updateUserDatabase() {
   let token = localStorage.getItem("token");
   try {
     let userData = {
-      name: otherUser.name,
-      email: otherUser.email,
-      phone: otherUser.phone,
+      name: user.name,
+      email: user.email,
+      phone: user.phone,
     };
     const response = await fetch(`${url}/user/update`, {
       method: "POST",
@@ -123,17 +123,48 @@ async function deleteAccount() {
   }
 }
 
+async function getUsers(){
+  var resStatus;
+  let token = localStorage.getItem("token");
+
+  if (token !== null) {
+    loggedIn=true;
+    try {
+      const response = await fetch(`${url}/user/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await response.json();
+      resStatus = response.status;
+
+      if (resStatus !== 200 && resStatus !== 201) {
+        if (resStatus === 404) {
+          throw new Error("The token has expired. Sign in again");
+        }
+        throw new Error(data.message);
+      }
+
+      return data;
+    } catch (error) {
+      alert(error);
+      loggedIn = false;
+      localStorage.setItem("token", null);
+      window.location.href = "login.html";
+    }
+  }
+}
+
 window.onload = async ()  =>  {
-  // if (isNaN(userId)) {
-  //   try {
-  //     userId = JSON.parse(sessionStorage.getItem("user")).id;
-  //   } catch {
-  //     window.location.href = "login.html";
-  //   }
-  // }
-
-  fillValues();
-
+  try {
+    user = await getUsers();
+    fillValues();
+  } catch (error) {
+    console.error("Error fetching user:", error);
+  }
   //containers
   var container1 = document.querySelector(".container");
   var container2 = document.querySelector(".container2");
@@ -191,6 +222,3 @@ window.onload = async ()  =>  {
   document.getElementById("logOut").addEventListener("click", logOut);
   document.getElementById("delete").addEventListener("click", deleteAccount);
 };
-document.addEventListener("DOMContentLoaded", function() {
-  fillValues();
-})

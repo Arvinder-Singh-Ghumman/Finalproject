@@ -3,11 +3,10 @@ var loggedIn=false;
 var user;
 
 
-async function getUsers(){
   var resStatus;
   let token = localStorage.getItem("token");
 
-  if (token !== null) {
+  if (token) {
     loggedIn=true;
     fetch(`${url}/user/`, {
       method: "GET",
@@ -25,6 +24,7 @@ async function getUsers(){
         if (resStatus === 404) {
           throw new Error("The token has expired. Sign in again");
         }
+        localStorage.removeItem("token")
         throw new Error(data.message);
       }
       user=data;
@@ -32,9 +32,7 @@ async function getUsers(){
     .catch((error) => {
       alert(error);
       loggedIn=false;
-      localStorage.setItem("token", null)
+      localStorage.removeItem("token")
       window.location.href = "login.html";
     });
   }
-  return user;
-}

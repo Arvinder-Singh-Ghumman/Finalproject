@@ -1,5 +1,4 @@
 window.addEventListener('load', async function() {
-  getUsers();
   window.addEventListener("scroll", () => {
     if (window.scrollY > 80) {
       document.querySelector("nav").classList.add("navScrolled");
