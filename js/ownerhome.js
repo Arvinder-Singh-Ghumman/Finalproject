@@ -1,6 +1,3 @@
-import { listings } from "../database/listingsDatabse.js";
-var workspaces;
-// user == null ? (window.location = "index.html") : "";
 var myListCounter = 9;
 
 //fetch listings
@@ -24,7 +21,7 @@ async function getListings() {
         throw new Error(data.message);
       }
 
-      resultLists=data;
+      resultLists = data;
       console.log(resultLists);
     } catch (error) {
       console.error("Error occurred: ", error);
@@ -32,7 +29,7 @@ async function getListings() {
   } else {
     document.getElementById("listingsTitle").innerText = "All listings";
 
-    try {
+    // try {
       const response = await fetch(`${url}/listing/`, {
         method: "GET",
         headers: {
@@ -44,14 +41,13 @@ async function getListings() {
       if (!response.ok) {
         throw new Error(data.message);
       }
-
-      resultLists=data;
-      console.log(resultLists);
-    } catch (error) {
-      console.error("Error occurred: ", error);
-    }
+      resultLists = data;
+      // resultLists = data;
+      // console.log(resultLists);
+    // } catch (error) {
+    //   console.error("Error occurred: ", error);
+    // }
   }
-  
 
   //see more button
   if (resultLists.length <= myListCounter)
@@ -91,7 +87,7 @@ function sortListings(unsorted, sortBy) {
 }
 
 function addListing(list) {
-  document.getElementById("listings").innerHTML=""
+  document.getElementById("listings").innerHTML = "";
   list.forEach((listing) => {
     var card = document.createElement("div");
     card.classList.add("card");
@@ -187,8 +183,10 @@ function deleteListing(id) {
     );
 }
 
-window.onload = () => {
-  getListings();
+window.onload = async ()  =>  {
+  user = getUsers();
+
+  await getListings();
 
   if (user.role !== "owner") {
     document
