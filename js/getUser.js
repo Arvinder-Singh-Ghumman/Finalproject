@@ -2,17 +2,20 @@ const url = "http://localhost:5678";
 var loggedIn=false;
 var user;
 
-var resStatus;
-let token = localStorage.getItem("token");
-if (token !== null) {
-  loggedIn=true;
-  fetch(`${url}/user/`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  })
+
+async function getUsers(){
+  var resStatus;
+  let token = localStorage.getItem("token");
+
+  if (token !== null) {
+    loggedIn=true;
+    fetch(`${url}/user/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    })
     .then((response) => {
       resStatus = response.status;
       return response.json();
@@ -32,4 +35,6 @@ if (token !== null) {
       localStorage.setItem("token", null)
       window.location.href = "login.html";
     });
+  }
+  return user;
 }
