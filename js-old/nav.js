@@ -7,7 +7,7 @@ window.addEventListener('load', function() {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
-  if(loggedIn){
+  if(this.sessionStorage.getItem("user")!==null){
     document.getElementById("navAccount").href="loggedInProfile.html";
     document.getElementById("navHome").href="loggedInHome.html";
   }else{

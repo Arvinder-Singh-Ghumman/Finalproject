@@ -64,7 +64,7 @@ function closeLoginPopUp() {
 }
 
 window.onload = () => {
-  if (localStorage.getItem("token") !== null)
+  if (sessionStorage.getItem("user") != null)
     window.location.href = "loggedInHome.html";
 
   getListings();

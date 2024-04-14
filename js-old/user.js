@@ -1,4 +1,11 @@
-const url = "http://localhost:5678";
+import { userDatabase } from "../database/usersDatabase.js";
+var users;
+//get users if in localstorage otherwise the default user.js
+if (localStorage.getItem("users") != null) {
+  users = JSON.parse(localStorage.getItem("users"));
+} else {
+  users = userDatabase;
+}
 
 function signUp(event) {
   event.preventDefault();
@@ -16,66 +23,48 @@ function signUp(event) {
   new_userPassword = document.querySelector("#_password_").value;
   new_userRole = document.querySelector('input[name="role"]:checked').value;
 
-  var userData = {name: new_userName,email:new_userEmail,password:new_userPassword,role:new_userRole,phone:new_userPhone}
-
-  //validation
+  //change the colour of input box, display a message alerting that username already exists
   if (new_userName.length < 3) alert("Name too small");
-  var resStatus;
-  //signup
-  fetch(`${url}/user/signup`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(userData)
-  })
-  .then(response => {
-    resStatus = response.status
-    return response.json();
-  })
-  .then(data => {
-    if (resStatus !== 200 && resStatus !== 201) {
-      console.log(resStatus);
-      throw new Error(data.message);
-    }
-    localStorage.setItem("token",data.token);
+  else if (users.find((obj) => obj.email == new_userEmail))
+    alert("email already registered");
+  else {
+    users.push({
+      name: new_userName,
+      password: new_userPassword,
+      phone: new_userPhone,
+      email: new_userEmail,
+      role: new_userRole,
+    });
+
+    var index = users.find((abc) => abc.email == new_userEmail);
+    delete index.password;
+    sessionStorage.setItem("user", JSON.stringify(index));
     alert("Signup successful");
     openPage("loggedInHome.html");
-  })
-  .catch(error => {
-    console.warn('Error during signup:', error);
-  });
+  }
+  console.log(users);
+
+  //uploading these to localstorage as we are not doing backend yet(thats phase 2)
+  localStorage.setItem("users", JSON.stringify(users));
 }
 
 function logIn(event) {
   event.preventDefault();
   var givenEmail = document.querySelector("#_email").value,
     given_password = document.querySelector("#_password").value;
-  var resStatus;
-    fetch(`${url}/user/login`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({email: givenEmail,password: given_password})
-    })
-    .then(response => {
-      resStatus = response.status;
-      return response.json();
-    })
-    .then(data => {
-      if (resStatus !== 200 && resStatus !== 201) {
-        console.log(resStatus);
-        throw new Error(data.message);
-      }
-      localStorage.setItem("token",data.token);
-      alert("LogIn successful");
-      openPage("loggedInHome.html");
-    })
-    .catch(error => {
-      console.log(error)
-      alert('Error during Log In: '+ error.message);
-    });
+
+  var index = users.find((abc) => abc.email == givenEmail);
+  if (!index) {
+    alert("email is not registered");
+    return;
+  } else if (index.password == given_password) {
+    delete index.password;
+    sessionStorage.setItem("user", JSON.stringify(index));
+    alert("Login successful");
+    openPage("loggedInHome.html");
+  } else {
+    alert("user not found");
+  }
 }
 
 function displayLogIn() {

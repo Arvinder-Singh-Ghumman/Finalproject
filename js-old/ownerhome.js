@@ -1,69 +1,38 @@
 import { listings } from "../database/listingsDatabse.js";
 var workspaces;
-// user == null ? (window.location = "index.html") : "";
-var myListCounter = 9;
+var user = JSON.parse(sessionStorage.getItem("user"));
+user == null ? (window.location = "index.html") : "";
+var myListCounter = 3;
 
 //fetch listings
-async function getListings() {
-  var resultLists = [];
-  //checking owner or coworker
-  if (user.role === "owner") {
-    //getting listings of this id
-    let id = user._id;
-
-    try {
-      const response = await fetch(`${url}/listing/mylistings/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message);
-      }
-
-      resultLists=data;
-      console.log(resultLists);
-    } catch (error) {
-      console.error("Error occurred: ", error);
-    }
+function getListings() {
+  let resultLists;
+  //storing all the listings in local database as we are not implementing a backend in phase 1
+  if (localStorage.getItem("workspaces") == null) {
+    workspaces = listings;
+    localStorage.setItem("workspaces", JSON.stringify(workspaces));
   } else {
-    document.getElementById("listingsTitle").innerText = "All listings";
-
-    try {
-      const response = await fetch(`${url}/listing/`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message);
-      }
-
-      resultLists=data;
-      console.log(resultLists);
-    } catch (error) {
-      console.error("Error occurred: ", error);
-    }
+    workspaces = JSON.parse(localStorage.getItem("workspaces"));
   }
-  
+  document.querySelector("#listings").innerHTML = "";
+
+  //checking owner or coworker
+  if (user.role === "owner")
+    resultLists = workspaces.filter((el) => el.owner === user.name);
+  else {
+    resultLists = workspaces;
+    document.getElementById("listingsTitle").innerText = "All listings";
+  }
 
   //see more button
   if (resultLists.length <= myListCounter)
     document.querySelector("#myListingsMore").style.display = "none";
 
-  if (document.querySelector("#sortOptions").value !== "None") {
+  if (document.querySelector("#sortOptions").value !== "none")
     resultLists = sortListings(
-      resultLists.slice(0, myListCounter),
+      resultLists,
       document.querySelector("#sortOptions").value
     );
-  }
-  console.log(resultLists);
 
   addListing(resultLists.slice(0, myListCounter));
 }
@@ -73,6 +42,7 @@ function sortListings(unsorted, sortBy) {
   switch (sortBy) {
     case "price":
       sortedList = unsorted.sort((a, b) => a.price - b.price);
+      alert("yea");
       break;
     case "price dec":
       sortedList = unsorted.sort((a, b) => b.price - a.price);
@@ -91,7 +61,6 @@ function sortListings(unsorted, sortBy) {
 }
 
 function addListing(list) {
-  document.getElementById("listings").innerHTML=""
   list.forEach((listing) => {
     var card = document.createElement("div");
     card.classList.add("card");
@@ -131,14 +100,14 @@ function addListing(list) {
 
     // Create a delete button with an image
     if (user.role === "owner") {
-      var deleteButton = document.createElement("button");
-      deleteButton.className = "deleteListingButton";
-      deleteButton.classList.add(listing.id);
-      var deleteImage = document.createElement("img");
-      deleteImage.src = "./assets/bin.png";
-      deleteButton.appendChild(deleteImage);
-      cardManipulate.appendChild(deleteButton);
-      card.appendChild(cardManipulate);
+    var deleteButton = document.createElement("button");
+    deleteButton.className = "deleteListingButton";
+    deleteButton.classList.add(listing.id);
+    var deleteImage = document.createElement("img");
+    deleteImage.src = "./assets/bin.png";
+    deleteButton.appendChild(deleteImage);
+    cardManipulate.appendChild(deleteButton);
+    card.appendChild(cardManipulate);
     }
 
     card.appendChild(cardImg);
@@ -154,29 +123,8 @@ function addListing(list) {
 }
 
 function deleteListing(id) {
-  let resStatus;
-  //getting listings
-  fetch(`${url}/listing/${id}`, {
-    method: "DELETE", // or any other HTTP method
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((response) => {
-      resStatus = response.status;
-      return response.json();
-    })
-    .then((data) => {
-      if (resStatus !== 200 && resStatus !== 201) {
-        throw new Error(data.message);
-      }
-      resultLists = data;
-      console.log(data);
-    })
-    .catch((error) => {
-      console.error("Error ooccured: ", error);
-    });
-  //updating listings
+  workspaces = workspaces.filter((el) => el.id != id);
+  localStorage.setItem("workspaces", JSON.stringify(workspaces));
   getListings();
   document
     .querySelectorAll(".deleteListingButton")
@@ -187,9 +135,9 @@ function deleteListing(id) {
     );
 }
 
+
 window.onload = () => {
   getListings();
-
   if (user.role !== "owner") {
     document
       .querySelectorAll(".deleteListingButton")
@@ -197,15 +145,10 @@ window.onload = () => {
     document
       .querySelectorAll(".updateListingButton")
       .forEach((el) => (el.style.display = "none"));
-    document.getElementById("addListing").style.display = "none";
-  } else {
+      document.getElementById("addListing").style.display = "none";
+  }else{
     document.getElementById("listingsTitle").innerText = "My listings";
-    document
-      .getElementById("addListing")
-      .addEventListener(
-        "click",
-        () => (window.location.href = "addListing.html")
-      );
+    document.getElementById("addListing").addEventListener("click", ()=> window.location.href = "addListing.html")
   }
 
   //for nav
@@ -217,10 +160,10 @@ window.onload = () => {
     }
   });
 
-  document.querySelectorAll(".card").forEach((el) => {
+  document.querySelectorAll(".card").forEach((el) => { 
     el.addEventListener(
       "click",
-      (e) => (window.location.href = "listinginfo.html?id=" + el._id)
+      (e) => (window.location.href = "listinginfo.html?id=" + el.id)
     );
   });
 

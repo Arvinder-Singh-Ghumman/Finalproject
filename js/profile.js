@@ -1,40 +1,102 @@
-var users = JSON.parse(localStorage.getItem("users"));
+var otherUser;
 const urlParams = new URLSearchParams(window.location.search);
-const userId = urlParams.get("userId");
+var userId = urlParams.get("userId");
 
-function fillValues() {
-  let userIndex = users.findIndex((el) => el.id === userId);
-  if (userIndex >= 0) {
-    document.getElementById("name").value = users[userIndex].name;
-    document.getElementById("email").value = users[userIndex].email;
-    document.getElementById("phone").value = users[userIndex].phone;
+async function fillValues() {
+  //getting details of other user
+  if(userId===null)
+  {
+    userId=user._id;
+  }
+  console.log(userId)
+  try {
+    const response = await fetch(`${url}/user/${userId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    otherUser = data;
+  } catch (error) {
+    console.error("Error occurred: ", error);
+  }
+  // let userIndex = users.findIndex((el) => el.id === userId);
+  if (otherUser!==undefined) {
+    document.getElementById("name").value = otherUser.name;
+    document.getElementById("email").value = otherUser.email;
+    document.getElementById("phone").value = otherUser.phone;
   }
 }
 
-function updateUserDatabase() {
-  let userIndex = users.findIndex((el) => el.id === userId);
-  if (userIndex >= 0) {
-    users[userIndex].name = document.getElementById("name");
-    users[userIndex].email = document.getElementById("email");
-    users[userIndex].phone = document.getElementById("phone");
-    localStorage.setItem("user");
-  } else {
-    alert("failed");
-  }
+async function updateUserDatabase() {
+  //validating input and storing
+    var nameInput = document.getElementById("name");
+    var emailInput = document.getElementById("email");
+    var phoneInput = document.getElementById("phone");
+
+    if (nameInput && nameInput.value.trim() !== "") {
+        otherUser.name = nameInput.value.trim();
+    }
+
+    if (emailInput && emailInput.value.trim() !== "" && /\S+@\S+\.\S+/.test(emailInput.value.trim())) {
+        otherUser.email = emailInput.value.trim();
+    }
+
+    if (phoneInput && phoneInput.value.trim() !== "" && /^\d{10}$/.test(phoneInput.value.trim())) {
+        otherUser.phone = phoneInput.value.trim();
+    }
+    
+//changing in database
+    let token = localStorage.getItem("token");
+    try {
+      let userData = {name:otherUser.name, email:otherUser.email,phone:otherUser.phone}
+      const response = await fetch(`${url}/user/update`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(userData)
+      });
+  
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      otherUser = data;
+    } catch (error) {
+      console.error("Error occurred: ", error);
+    }
 }
 
 function logOut(){
-  sessionStorage.removeItem("user");
+  sessionStorage.removeItem("token");
   window.location.href = "index.html"
 }
-function deleteAccount(){
-  let userIndex = users.findIndex((el) => el.id === userId);
-  if (userIndex >= 0) {
-   let res =  users.filter((el)=>el.id!==users[index].id)
-   localStorage.setItem("users", JSON.stringify(res));
-  } else {
-    alert("failed");
-  }
+async function deleteAccount(){
+  let token = localStorage.getItem("token");
+    try {
+      const response = await fetch(`${url}/user/`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+      });
+  
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      alert("Deleted succesffully");
+    } catch (error) {
+      console.error("Error occurred: ", error);
+    }
 }
 
 window.onload = () => {
@@ -44,7 +106,6 @@ window.onload = () => {
     }catch{
       window.location.href="login.html"
     }
-
   }
 
   fillValues();
