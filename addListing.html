@@ -5,224 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Listing</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/addListing.css">
 
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-
-        }
-
-        body {
-            /* background-color: gray; */
-        }
-
-        main {
-            padding-top: 10px;
-            padding-bottom: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: sans serif;
-            background-image: url("assets/addListingWorkspaceImage.jpg");
-            background-size: cover;
-            /* background: inherit; */
-            position: relative;
-            left: -60px;
-            /* filter: blur(5px); */
-        }
-
-        .background-overlay {
-            position: absolute;
-            top: 0px;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(216, 208, 208, 0.1);
-            /* Adjust the overlay color and opacity as needed */
-            filter: blur(5px);
-            /* Adjust the blur radius as needed */
-        }
-
-        #formContainer {
-            /* background-color: rgb(240, 240, 240); */
-            background-color: white;
-            max-width: 30rem;
-            border: 1px solid lightgray;
-            border-radius: 8px;
-            padding: 10px 50px 40px 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            gap: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        form {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            gap: 30px;
-        }
-
-        #formHeading {
-            margin-top: px;
-            margin-bottom: 10px;
-            font-weight: bolder;
-        }
-
-        .textInputContainer {
-            position: relative;
-            width: 100%;
-        }
-
-        .textInputContainer input {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid black;
-            border-radius: 5px;
-            outline: none;
-            color: black;
-            font-size: 1rem;
-        }
-
-        .textInputContainer span {
-            position: absolute;
-            left: 0;
-            top: 1px;
-            padding: 10px;
-            pointer-events: none;
-            font-size: 1em;
-            color: black;
-            text-transform: uppercase;
-
-        }
-
-        .textInputContainer input:focus~span {
-            /* color: #4385f4; */
-            color: #4385f4;
-            transform: translateX(10px) translateY(-10px);
-            padding: 0 10px;
-            background-color: #fff;
-            transition: color 0.2s ease, transform 0.2s ease, padding 0.2s ease, background-color 0.2s ease;
-
-        }
-
-        .textInputContainer input:valid~span {
-
-            color: green;
-            transform: translateX(10px) translateY(-10px);
-            padding: 0 10px;
-            background-color: #fff;
-        }
-
-        .textInputContainer input:focus {
-            border: 2px solid #4385f4;
-        }
-
-        .textInputContainer input:valid {
-            border: 3px solid rgb(36, 161, 36);
-        }
-
-        .textInputContainer textarea {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid black;
-            border-radius: 5px;
-            outline: none;
-            color: black;
-            font-size: 1em;
-        }
-
-        .textInputContainer textarea:focus~span {
-            color: #4385f4;
-            transform: translateX(10px) translateY(-10px);
-            padding: 0 10px;
-            background-color: #fff;
-            transition: color 0.2s ease, transform 0.2s ease, padding 0.2s ease, background-color 0.2s ease;
-        }
-
-        .textInputContainer textarea:valid~span {
-            color: green;
-            transform: translateX(10px) translateY(-10px);
-            padding: 0 10px;
-            background-color: #fff;
-        }
-
-        .textInputContainer textarea:focus {
-            border: 2px solid #4385f4;
-        }
-
-        .textInputContainer textarea:valid {
-            border: 3px solid rgb(36, 161, 36);
-        }
-
-        #formSubmissionButton {
-            width: 65px;
-            padding: 5px;
-            font-size: 14px;
-            /* text-transform: uppercase; */
-            /* border: 2px solid black; */
-            border: none;
-            background-color: #3c79e4;
-            color: white;
-            border-radius: 20px;
-            margin-left: 150px;
-
-        }
-
-        #formSubmissionButton:hover {
-            box-shadow: 1px 1px 5px 5px rgb(0,0,0,0.1);
-        }
-
-        #formSubmissionButton:active {
-            box-shadow: 1px 1px 10px 1px #4385f4;
-        }
-
-        /* input[type="checkbox"]{
-            appearance: none;
-        }
-        input[type="checkbox"]{
-            margin-left: 5px;
-            margin-bottom: -2px;
-            display: inline-block;
-            width: 15px;
-            height: 15px;
-            background-color: white;
-            border: 1px solid black;
-            border-radius: 2px;
-        }
-        input[type="checkbox"]:checked{
-            background-color: green;
-            color: green;
-        } */
+        
     </style>
 </head>
 
 <body>
 
+    <!-- navbar -->
     <nav>
-
-        <!-- logo will be on the left side of the nav bar -->
-        <li>logo</li>
-
-        <!-- page links will be in the center -->
-        <pages>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder=" search"> <a href="search.html"><img src="assets/search.png" id="searchIconPNG"
-                        alt="icon of search"></a>
-            </li>
-        </pages>
-
-        <!-- Account info will be on the right side of the nav bar -->
-        <li><a href="login.html">Account</a></li>
-
+      <li>logo</li>
+      <!--links to other pages -->
+      <div class="pages">
+        <li><a href="loggedInHome.html" class="active" id="navHome">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+      </div>
+      <!-- search andd account -->
+      <div class="navSearch">
+        <li><input type="text" placeholder=" search" /></li>
+        <a href="search.html"
+          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+        /></a>
+      </div>
+      <li><a href="login.html" id="navAccount">Account</a></li>
     </nav>
 
     <main>
@@ -230,7 +39,7 @@
         <div class="background-overlay"></div>
         <div id="formContainer">
             <h2 id="formHeading">Add New Listing</h2>
-            <form>
+            <form id="newListing">
                 <div id="addTitleContainer" class="textInputContainer">
                     <input type="text" class="textInput" id="title" name="title" required>
                     <!-- <label for="title" id="titleInputLabel"></label> -->
@@ -310,10 +119,12 @@
     </main>
 
     <footer>
-        <p>Copyright @ group-4</p>
-        <p>extra links about the site</p>
-        <p id="date">Date: </p>
+      <p>Thanks for Visiting Our Site | Final Project for Web development</p>
     </footer>
+    
+    <script src="./js/newListing.js" type="module"></script>
+    <script src="./js/nav.js"></script>
+    <script src="js/getUser.js"></script>
 
 </body>
 

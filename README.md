@@ -1,1 +1,1 @@
-Currently this is under development and not yet completed.
+This is the final project of SODV1201

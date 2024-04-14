@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap");
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  /* color: white; */
+  /* gap: 2vw; */
+  /* background-color: white; */
+  /* rgb(182, 182, 99); */
+  height: 65px;
+  align-items: center;
+  font-size: 22px;
+  padding: 0 2vw;
+  color: whitesmoke;
+  z-index: 2;
+  background: transparent;
+}
+
+nav li {
+  list-style-type: none;
+}
+
+nav li a {
+  text-decoration: none;
+  color: white;
+}
+
+nav {
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  /* font-weight: 600; */
+}
+.navScrolled {
+  height: 50px;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+  background: #191919;
+}
+nav li a {
+  opacity: 0.75;
+  position: relative;
+  font-weight: 500;
+  transition: 0.3s all ease-out;
+}
+nav li a:hover {
+  opacity: 1;
+  font-weight: 700;
+}
+/* Hover effect for the underline */
+nav li a::before {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #ff0000;
+  transition: width 0.3s;
+}
+nav li a:hover::before {
+  width: 100%;
+}
+nav .active {
+  color: aqua;
+  opacity: 1;
+  font-weight: 700;
+}
+nav .active::before {
+  background-color: aqua;
+}
+.pages {
+  /* flex-grow: 1; */
+  display: flex;
+  /* justify-content: space-evenly; */
+  gap: 8vw;
+  margin-left: 15vw;
+  align-items: center;
+  /* gap: 10px; */
+  /* max-width: 60vw; */
+  /* min-width: none; */
+}
+.pages li a {
+  text-decoration: none;
+}
+
+.pages li {
+  list-style-type: none;
+}
+.navSearch input {
+  height: 29px;
+  margin-top: 24px;
+  margin-left: 10vw;
+  border: 1px solid black;
+  border-radius: 5px;
+  /* position: relative; */
+}
+.navSearch img {
+  width: 20px;
+  position: relative;
+  top: -24.5px;
+  right: -142px;
+  margin-left: 10vw;
+}
+nav li img:active {
+  width: 20.3px;
+}
+
+
+/* footer */
+footer {
+  margin:0;
+  border: none;
+  text-align: center;
+  background: black;
+  padding: 10px;
+}
+footer p {
+  color: #e4e4e4;
+  font-weight: thin;
+  font-size: 0.7em;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 2px;
+}

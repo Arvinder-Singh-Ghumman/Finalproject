@@ -7,39 +7,124 @@
     <title>Search Page</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/serach.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <style>
+        main {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 1), white, rgba(0, 0, 0, 1));
+            animation: gradientAnimation 5s ease infinite alternate;
+            padding-top: 90px;
+        }
+
+        /* .searchBarOnclickFilter{} */
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+
+        #sort {
+            color: white;
+            display: none;
+            position: absolute;
+            top: 65px;
+            /* font-weight: 600; */
+            right: 14vw;
+            border: 1px solid white;
+            padding: 0 3px;
+            border-radius: 5px;
+            /* text-transform: uppercase; */
+        }
+
+        #sortIcon {
+            width: 33px;
+            position: absolute;
+            /* bottom: 0px; */
+            top: 92px;
+            right: 14vw;
+            background-color: gray;
+            padding: 3px 4px 3px 4px;
+        }
+
+        #sortIcon:hover~#sort {
+            display: block;
+        }
+
+        #sortSelection {
+            position: absolute;
+            top: 123px;
+            right: 14vw;
+            /* display: none; */
+        }
+
+        #sortIcon:focus~#sortSelection {
+            display: block;
+        }
+
+        #sortOptions {
+            font-size: 14px;
+            color: white;
+            padding: 1px;
+            background-color: rgb(41, 41, 59);
+        }
+
+        select option {
+            background-color: rgb(41, 41, 59);
+            color: white;
+            font-size: 14px;
+        }
+    </style>
+
 </head>
 
 <body>
 
+    <!-- navbar -->
     <nav>
-
-        <!-- logo will be on the left side of the nav bar -->
-        <li>logo</li>
-
-        <!-- page links will be in the center -->
-        <pages>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="search.html"><img src="assets/search.png"
-                        alt="icon of search"></a>
-            </li>
-        </pages>
-
-        <!-- Account info will be on the right side of the nav bar -->
-        <li><a href="login.html">Account</a></li>
-
+      <li>logo</li>
+      <!--links to other pages -->
+      <div class="pages">
+        <li><a href="loggedInHome.html" class="active" id="navHome">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+      </div>
+      <!-- search andd account -->
+      <div class="navSearch">
+        <li><input type="text" placeholder=" search" /></li>
+        <a href="search.html"
+          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+        /></a>
+      </div>
+      <li><a href="login.html" id="navAccount">Account</a></li>
     </nav>
 
-    <br>
-    <main>
+    <main style="padding-top: 90px;">
 
         <div id="searchAndFilter">
             <div id="searchInput">
                 <!-- <label for="searchBar">Search</label> -->
                 <input type="text" id="searchBar" placeholder="Search">
             </div>
-            <div id="filterIcon" onclick="filterSelectionDisplay()"><img src="assets/filterIcon.png" id="filterImg" alt="Filter"></div>
+            <div id="sortContainer">
+                <img id="sortIcon" onclick="displaySort()" src="assets/sortIcon.png" alt="">
+                <div id="sort">Sort </div>
+                <div id="sortSelection">
+                    <select name="SortSelection" id="sortOptions">
+                        <option value="None">None</option>
+                        <option value="Sort By Price(Dec)">Sort By Price(Dec)</option>
+                        <option value="Sort By Price(Inc)">Sort By Price(Inc)</option>
+                        <option value="Sort By Name">Sort By Name</option>
+                        <option value="Sort By Rating">Sort By Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div id="filterIcon" onclick="filterSelectionDisplay()"><img src="assets/filterIcon.png" id="filterImg"
+                    alt="Filter"></div>
             <div id="filter">Filters</div>
         </div>
         <div id="filterSelection">
@@ -139,8 +224,6 @@
         </div>
     </main>
 
-
-    <br><br><br><br><br><br><br><br>
     <footer>
         <p>Copyright @ group-4</p>
         <p>extra links about the site</p>
@@ -148,11 +231,35 @@
     </footer>
 
     <script src="js/Listings.js" type="module"></script>
+    <script src="js/nav.js"></script>
     <script>
         //function to display the filter div on clicking the filter icon
+
         function filterSelectionDisplay() {
             var filterDiv = document.querySelector("#filterSelection");
-            filterDiv.style.display==="none"? filterDiv.style.display="flex":filterDiv.style.display="none";
+            var searchBar = document.querySelector("#searchBar");
+            var cards = document.querySelectorAll(".card");
+            var cardsContainer = document.querySelector("#SearchResults");
+            // var filterIcon = document.querySelector("filterIcon");
+            // var main = document.getElementsByName("searchAndFilter");
+
+            // Toggle filterDiv display between "flex" and "none"
+            filterDiv.style.display !== "flex" ? filterDiv.style.display = "flex" : filterDiv.style.display = "none";
+
+            // Adjust width of searchBar
+            searchBar.style.width = filterDiv.style.display === "flex" ? "65.5vw" : "80vw";
+            searchBar.style.marginLeft = filterDiv.style.display === "flex" ? "4vw" : "9vw";
+            // cards.forEach(function (card) {
+            //     card.style.width = filterDiv.style.display === "flex" ? "20%" : "30%";
+            // });
+            cardsContainer.style.width = filterDiv.style.display === "flex" ? "70vw" : "90vw";
+            // main.style.width = filterDiv.style.display !== "flex" ? "100%" : "calc(100% - 429px)"
+            cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "2vw" : "4.8vw";
+        }
+
+        function displaySort() {
+            var sortContainer = document.querySelector("#sortSelection");
+            sortContainer.style.display = sortContainer.style.display ==="block" ? "none": "block";
         }
     </script>
 </body>

@@ -1,43 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100..900&display=swap');
+
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  /* align-items: center; */
 }
-
+#loginDiv, #signUpDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-radius: 10px; */
+}
 form {
-  margin-top: 10vh;
+  width: max-content;
+  /* margin-top: 10vh; */
+  /* margin-left: 45vw; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
-  /* justify-content: space-between; */
+  gap: 40px;
+  padding: 60px;
+  border-radius: 20px;
 }
 form p {
   text-align: left;
   width: 310px;
   height: 20px;
-  display: flex;
-  justify-content: space-between;
+  /* display: flex; */
+  /* justify-content: space-between; */
 } 
-
+form h1{
+  font-family: "Raleway", sans-serif;
+  font-weight: 700;
+  color: white  ;
+  padding-bottom: 10px;
+}
+form #loginButton, form #signUpButton{
+  width: 80px;
+  margin-top: 20px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 15px;
+  background-color: #3c79e4;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+form #loginButton:hover, form #signUpButton:hover{
+  background-color: #2a62c4;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.13);
+}
+form #loginButton:active, form #signUpButton:active{
+  background-color: #3c79e4;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.13);
+}
 main {
-  flex-grow: 1;
+  background-image: url("../assets/shakingHands.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100dvh;
+  /* gap: 10px; */
+  /* z-index: 1; */
+}
+.containerLogin{
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px) brightness(50%);
 }
 
 
-input {
+/* form input {
   width: 10vw;
-}
+} */
 
  #displaySignup {
-  margin-left: 41.5%;
-  margin-top: 5vw;
-  
+  /* margin-left: 41.5%;
+  margin-top: 5vw; */
+  position: relative; 
+  cursor: pointer;  
 }
 
 #Displaylogin {
-  margin-left: 41.5%;
-  margin-top: 3.8vw;
+  /* margin-left: 41.5%;
+  margin-top: 3.8vw; */
   
 } 
 
@@ -47,11 +98,11 @@ input {
   text-transform: uppercase;
 }
 
-#loginbutton:hover {
+/* #loginbutton:hover {
   color: aliceblue;
   background-color: rgb(104, 197, 104);
   text-transform: uppercase;
-}
+} */
 
 button {
   padding: 4px;
@@ -59,11 +110,94 @@ button {
 
 #displaySignup:hover {
   text-decoration: underline;
-  color: rgb(93, 93, 238);
+  color: white;
+  cursor:pointer;
 }
 
 #Displaylogin:hover {
   text-decoration: underline;
-  color: rgb(93, 93, 238);
+  color: white;
+  cursor: pointer;
 }
 
+
+
+/* 
+#login, #signup{
+  padding: 50px;
+} */
+
+#loginDiv, #signUpDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, rgba(152, 152, 152, 0.367), rgba(46, 46, 46, 0.192));
+  background-size: 500% 500%;
+  animation: gradientMove 5s alternate-reverse ease-in-out infinite forwards;
+  border: 1px solid white;
+  border-radius: 10px;
+  /* gap: 5vw; */
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+#Displaylogin, #displaySignup{
+  position: relative;
+  bottom: 40px;
+  cursor: pointer;
+  text-align: center;
+}
+#signUpDiv{
+  display: none;
+}
+form#signup div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+form p input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 14px;
+  /* margin-bottom: 10px; */
+  /* z-index: 5; */
+}
+
+form p span {
+  position: relative;
+  bottom: 30px;
+  left: 7px;
+  text-transform: uppercase;
+  /* z-index: 1; */
+  pointer-events: none;
+}
+
+form p input:focus~span,
+form p input.focused {
+  font-size: 13px;
+  position: relative;
+  bottom: 50px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  transition: bottom 2s ease, padding 0.2 ease , background-color 0.2s ease;
+}
+
+form p input:valid~span {
+  font-size: 13px;
+  position: relative;
+  bottom: 50px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+}

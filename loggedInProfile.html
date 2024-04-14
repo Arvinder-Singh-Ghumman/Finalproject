@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/ownerprofile.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+  </head>
+
+  <body>
+    <!-- navbar -->
+    <nav>
+      <li>logo</li>
+      <!--links to other pages -->
+      <div class="pages">
+        <li><a href="loggedInHome.html" class="active" id="navHome">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+      </div>
+      <!-- search andd account -->
+      <div class="navSearch">
+        <li><input type="text" placeholder=" search" /></li>
+        <a href="search.html"
+          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+        /></a>
+      </div>
+      <li><a href="login.html" id="navAccount">Account</a></li>
+    </nav>
+
+    <main>
+      <div class="container" id="ownerProfile">
+        <!-- <div class="notebookCoilContainer">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+                <img src="assets/icons8-coil-100.png" alt="" id="notebookCoil">
+            </div> -->
+        <div id="iconContainer">
+          <img
+            src="assets/profileIcon.png"
+            class="profileIcon"
+            alt="Profile Details"
+          />
+          <img
+            src="assets/settingsIcon.png"
+            class="settingsIcon"
+            alt="Settings"
+          />
+        </div>
+        <div class="profileInfo">
+          <div class="inputContainer">
+            <span>Name</span>
+            <input type="text" id="OwnerName" value="John" disabled />
+          </div>
+          <div class="inputContainer">
+            <span>E-mail</span>
+            <input type="text" id="OwnerEmail" value="John" disabled />
+          </div>
+          <div class="inputContainer">
+            <span>Phone</span>
+            <input type="number" id="OwnerPhone" value="123" disabled />
+          </div>
+          <button class="editInfo">Edit</button>
+        </div>
+      </div>
+      <div class="container3">
+        <div id="iconContainer">
+          <img
+            src="assets/profileIcon.png"
+            class="profileIcon"
+            alt="Profile Details"
+          />
+          <img
+            src="assets/settingsIcon.png"
+            class="settingsIcon"
+            alt="Settings"
+          />
+        </div>
+        <div class="profileInfo" id="coWorkerProfile">
+          <div class="inputContainer">
+            <span>Name</span>
+            <input type="text" class="coWorker" id="name" value="John" disabled />
+          </div>
+          <div class="inputContainer">
+            <span>E-mail</span>
+            <input type="text" class="coWorker" id="email" value="John" disabled />
+          </div>
+          <div class="inputContainer">
+            <span>Phone</span>
+            <input type="number" class="coWorker" id="phone" value="123" disabled />
+          </div>
+          <div class="inputContainer">
+            <span>Rating</span>
+            <input type="text" class="coWorker" id="rating" value="4.9" disabled />
+          </div>
+          <button class="editInfo">Edit</button>
+        </div>
+      </div>
+
+      <div class="container2">
+        <div id="iconContainer">
+          <img
+            src="assets/profileIcon.png"
+            class="profileIcon"
+            alt="Profile Details"
+          />
+          <img
+            src="assets/settingsIcon.png"
+            class="settingsIcon"
+            alt="Settings"
+          />
+        </div>
+        <div class="settingsInfo">
+          <button id="logOut">Log Out</button>
+          <button id="changePassword">Change Password</button>
+          <button id="delete">Delete this account</button>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>Thanks for Visiting Our Site | Final Project for Web development</p>
+    </footer>
+    
+  </body>
+  <script src="js/getUser.js"></script>
+  <script src="./js/profile.js"></script>
+  <script src="./js/nav.js"></script>
+</html>

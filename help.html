@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title> <link rel="stylesheet" href="css/styles.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
+    <!-- navbar -->
     <nav>
-
-        <!-- logo will be on the left side of the nav bar -->
-        <li>logo</li>
-
-        <!-- page links will be in the center -->
-        <pages>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="search.html"><img src="assets/search.png" alt="icon of search"></a>
-            </li>
-        </pages>
-
-        <!-- Account info will be on the right side of the nav bar -->
-        <li><a href="login.html">Account</a></li>
-
+      <li>logo</li>
+      <!--links to other pages -->
+      <div class="pages">
+        <li><a href="loggedInHome.html" id="navHome">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html" class="active">Help</a></li>
+      </div>
+      <!-- search andd account -->
+      <div class="navSearch">
+        <li><input type="text" placeholder=" search" /></li>
+        <a href="search.html"
+          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+        /></a>
+      </div>
+      <li><a href="login.html" id="navAccount">Account</a></li>
     </nav>
-<main>
-    <form action="mailto: c#finalProjectGroup2">
-        <label for="name">Name</label>
-        <input type="text" id="name">
 
-        <label for="review:">Message/ Questions:</label>
-        <input type="text" id="review" placeholder="write here!">
+    <main>
+        <form action="mailto: c#finalProjectGroup2">
+            <label for="name">Name</label>
+            <input type="text" id="name">
 
-        <input type="submit">
-    </form>
-</main>
+            <label for="review:">Message/ Questions:</label>
+            <input type="text" id="review" placeholder="write here!">
+
+            <input type="submit">
+        </form>
+    </main>
+    
     <footer>
-        <p>Copyright @ group-4</p>
-        <p>extra links about the site</p>
-        <p id="date">Date: </p>
+      <p>Thanks for Visiting Our Site | Final Project for Web development</p>
     </footer>
+    
 </body>
+<script src="./js/nav.js"></script>
+<script src="js/getUser.js"></script>
+
 </html>

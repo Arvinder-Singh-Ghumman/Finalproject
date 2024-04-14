@@ -1,101 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login Page</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
-  
+
   <body>
-    
+    <!-- navbar -->
     <nav>
-      
-      <!-- logo will be on the left side of the nav bar -->
       <li>logo</li>
-      
-      <!-- page links will be in the center -->
-      <pages>
-        <li><a href="index.html">Home</a></li>
+      <!--links to other pages -->
+      <div class="pages">
+        <li><a href="loggedInHome.html" class="active" id="navHome">Home</a></li>
         <li><a href="about.html">About</a></li>
-            <li><a href="help.html">Help</a></li>
-            <li><input type="text" placeholder="search"> <a href="search.png"><img src="assets/search.png"
-              alt="icon of search"></a>
-            </li>
-          </pages>
-          
-          <!-- Account info will be on the right side of the nav bar -->
-          <li><a href="login.html">Account</a></li>
-          
-        </nav>
-        
-        <main>
-          
-          <div id="loginDiv" style="display:none">
-            
-            
-            
-            <form id="login">
-              <h1>LOG IN</h1>
-              <p> <label for="_email">E-mail address: </label>
-                <input type="email" id="_email" inputmode="email" required>
-              </p>
-              <p> <label for="_password">Password: </label>
-                <input type="password" id="_password" required>
-              </p><br>              
-              <br>
-              <br><br><input id="loginbutton" type="submit" value="Login">
-            </form>
-            
-            <p id="displaySignup">Don't have an account? Sign Up</p>
-          </div>
+        <li><a href="help.html">Help</a></li>
+      </div>
+      <!-- search andd account -->
+      <div class="navSearch">
+        <li><input type="text" placeholder=" search" /></li>
+        <a href="search.html"
+          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+        /></a>
+      </div>
+      <li><a href="login.html" id="navAccount">Account</a></li>
+    </nav>
+
+    <main>
+      <div class="containerLogin">
+        <div id="loginDiv">
+          <form id="login">
+            <h1>LOG IN</h1>
+            <p>
+              <!-- <label for="_email">E-mail address: </label> -->
+              <input type="text" id="_email" required />
+              <span>E-mail</span>
+            </p>
+            <p>
+              <!-- <label for="_password">Password: </label> -->
+              <input type="password" id="_password" required />
+              <span>Password</span>
+            </p>
+            <input id="loginButton" type="submit" value="Login" />
+          </form>
+
+          <p id="displaySignup">Don't have an account? Sign Up</p>
+        </div>
         <div id="signUpDiv">
-          
           <form id="signup">
             <h1>Sign Up</h1>
             <p>
-              <label for="_name_">Name:</label>
-              <input type="text" id="_name_" required>
+              <!-- <label for="_name_">Name:</label> -->
+              <input type="text" id="_name_" required />
+              <span>Name</span>
             </p>
-            
-            <p> <label for="_phone_">Phone Number:</label>
-              <input type="tel" id="_phone_" inputmode="numeric" required>
+            <p>
+              <!-- <label for="_phone_">Phone Number:</label> -->
+              <input type="text" id="_phone_" inputmode="numeric" required />
+              <span>Phone Number</span>
             </p>
-            <p><label for="_email_">E-mail address:</label>
-              <input type="email" id="_email_" required></p>
-              
-              <p><label for="_password_">Password</label>
-                <input type="password" id="_password_" required>
-              </p>
-              <br>
-              
-                <p>
-                  <label for="owner">Owner</label>
-                  <input type="radio" name="role" value="owner" id="owner" required>
-                  <label for="co-worker">CoWorker</label>
-                  <input type="radio" name="role" value="coWorker" id="co-worker" required>
-                </p>
-                
-                <br><br><input id="signupbutton" type="submit" value="Sign up">
-              </form>
-              
-              <p id="Displaylogin">Already have an account?
-                Login
-              </p>
+            <p>
+              <!-- <label for="_email_">E-mail address:</label> -->
+              <input type="text" id="_email_" required />
+              <span>E-mail</span>
+            </p>
+            <p>
+              <!-- <label for="_password_">Password</label> -->
+              <input type="password" id="_password_" required />
+              <span>Password</span>
+            </p>
+            <div>
+              <div1>
+                <label for="owner">Owner</label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="owner"
+                  id="owner"
+                  required
+                />
+              </div1>
+              <div2>
+                <label for="co-worker">CoWorker</label>
+                <input
+                  type="radio"
+                  name="role"
+                  value="coWorker"
+                  id="co-worker"
+                  required
+                />
+              </div2>
             </div>
+            <input id="signUpButton" type="submit" value="Sign up" />
+          </form>
+          <p id="Displaylogin">Already have an account? Login</p>
+        </div>
+      </div>
+    </main>
 
-          </main>
+    <footer>
+      <p>Thanks for Visiting Our Site | Final Project for Web development</p>
+    </footer>
 
-          <footer>
-            <p>copyright info</p>
-            <p>extra links about the site</p>
-            <p>Date:</p>
-          </footer>
-          
-          <script src="js/user.js" type="module"></script>  
-        </body>
-        
-        
-        </html>
+    <script src="js/user.js" type="module"></script>
+    <script src="./js/nav.js"></script>
+    <!-- <script>
+    // Get the input element
+    var inputElement = document.getElementById("_email");
+
+    // Add event listeners for focus and blur
+    inputElement.addEventListener("focus", function () {
+      this.classList.add("focused");
+    });
+
+    inputElement.addEventListener("blur", function () {
+      this.classList.remove("focused");
+    });
+  </script> -->
+  </body>
+</html>

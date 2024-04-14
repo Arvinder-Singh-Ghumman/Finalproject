@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/ownerhome.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <!-- navbar -->
+    <nav>
+      <li>logo</li>
+      <!--links to other pages -->
+      <div class="pages">
+        <li><a href="loggedInHome.html" class="active" id="navHome">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="help.html">Help</a></li>
+      </div>
+      <!-- search andd account -->
+      <div class="navSearch">
+        <li><input type="text" placeholder=" search" /></li>
+        <a href="search.html"
+          ><img src="assets/search.png" id="searchIconPNG" alt="icon of search"
+        /></a>
+      </div>
+      <li><a href="login.html" id="navAccount">Account</a></li>
+    </nav>
+
+    <main>
+      <div id="ownerInfo">WELCOME [display owner's name here]</div>
+      <p id="ownerWelcome">
+        Welcome back to the workspace! We're thrilled to see you return and
+        excited for the productive work we'll accomplish together. Your presence
+        adds value to our team, and we look forward to collaborating with you
+        once again.
+      </p>
+
+      <div id="container">
+        <div class="titleContainer">
+          <h1 id="listingsTitle">My Listings</h1>
+
+          <div id="sortContainer">
+            <img
+              id="sortIcon"
+              onclick="displaySort()"
+              src="assets/sortIcon.png"
+              alt=""
+            />
+            <div id="sortSelection">
+              <select name="SortSelection" id="sortOptions">
+                <option value="None">None</option>
+                <option value="price">Sort By Price(Inc)</option>
+                <option value="price dec">Sort By Price(Dec)</option>
+                <option value="name">Sort By Name</option>
+                <option value="rating">Sort By Rating</option>
+                <option value="rating dec">Sort By Rating</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div id="listings"></div>
+          <button id="myListingsMore">See More</button>
+        </div>
+        <button id="addListing">Add Listing</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>Thanks for Visiting Our Site | Final Project for Web development</p>
+    </footer>
+    
+  </body>
+  <script src="js/ownerhome.js" type="module"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/getUser.js"></script>
+  <script>
+    function displaySort() {
+      var sortContainer = document.querySelector("#sortSelection");
+      sortContainer.style.display =
+        sortContainer.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</html>
