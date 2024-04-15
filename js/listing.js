@@ -80,11 +80,11 @@ function fillingIn() {
   document.getElementById("title").innerText = listing.title;
   document.getElementById("owner").innerText = listing.owner;
   document.getElementById("price").innerText = listing.price;
-  if(listing.image)
-  document.getElementById("image").src = listing.image;
-else
-document.getElementById("image").src = "https://source.unsplash.com/random/?work";
-
+  if (!listing.picturePath)
+    cardImg.src = `https://source.unsplash.com/random/?${
+      "office " + Math.random()
+    }`;
+  else cardImg.src = listing.picturePath;
   document.getElementById("description").innerText = listing.description;
   document.getElementById("location").innerText = listing.location;
   document.getElementById("contact").innerText = listing.contact;
