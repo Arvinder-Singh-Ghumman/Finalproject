@@ -1,46 +1,79 @@
+var resultLists = [];
 async function getListings() {
-  try {
-    let resStatus;
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get("id");
+  let body;
+  var searchData={};
+  var fetchUrl = `${url}/listing/search/?`;
 
-    const response = await fetch(`${url}/listing?id=${id}`, {
+  var search = document.getElementById("searchBar").value;
+  if (search && search.trim()!=="") searchData.title = search;
+
+  // address
+  var address = document.getElementById("citySelection").value;
+  if (address && address.trim()!=="") searchData.address = address.trim();
+  //category
+  let category =
+  document.querySelector('input[name="category"]:checked') == null
+  ? null
+  : document.querySelector('input[name="category"]:checked').value;
+  console.log(category);
+  if (category) searchData.category = category;
+  // minprice
+  var minPrice = document.getElementById("minPrice").value;
+  if (minPrice && minPrice!=="") searchData.minPrice = minPrice.trim();
+  // maxPrice
+  var maxPrice = document.getElementById("maxPrice").value;
+  if (maxPrice && maxPrice!=="") searchData.maxPrice = maxPrice.trim();
+  // seatingCapacity
+  var seatingCapacity = document.getElementById("seatingCapacity").value;
+  if (seatingCapacity && seatingCapacity.trim()!=="") searchData.seatingCapacity = seatingCapacity.trim();
+   var rate =
+    document.querySelector('input[name="rating"]:checked') == null
+      ? null
+      : document.querySelector('input[name="rating"]:checked').value;
+  if(rate && rate!=="")searchData.rate = rate;
+  
+  let finalUrl  =  fetchUrl + toQuery(searchData);
+  try {
+    const response = await fetch(finalUrl, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
       },
     });
 
-    resStatus = response.status;
     const data = await response.json();
-    console.log(data)
-
-    if (resStatus !== 200 && resStatus !== 201) {
-      if (resStatus === 404) {
-        throw new Error("The token has expired. Sign in again");
-      }
+    console.log(data);
+    if (!response.ok) {
       throw new Error(data.message);
     }
-
-    return data;
+    resultLists = data;
   } catch (error) {
-    console.error("Error occurred: ", error.message);
-    throw error;
+    console.error("Error occurred: ", error);
   }
+  resultLists.forEach((el) => addListing(el));
 }
 
-function search(searchParam) {
-  //in name
-  let res = workspaces.filter((el) => {
-    if (el.title.includes(searchParam)) return true;
-  });
-  let categories = ["workspace", "meeting Room", "desk", "private Office"];
-  categories.forEach((el) => {
-    if (searchParam.toLowerCase().includes(el.toLowerCase()))
-      document.querySelector("#" + el.replace(" ", "")).checked = true;
-  });
+// function search(searchParam) {
+//   //in name
+//   let res = workspaces.filter((el) => {
+//     if (el.title.includes(searchParam)) return true;
+//   });
+//   let categories = ["workspace", "meeting Room", "desk", "private Office"];
+//   categories.forEach((el) => {
+//     if (searchParam.toLowerCase().includes(el.toLowerCase()))
+//       document.querySelector("#" + el.replace(" ", "")).checked = true;
+//   });
 
-  return res;
+//   return res;
+// }
+function toQuery(data) {
+  const queryParams = [];
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      queryParams.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`);
+    }
+  }
+  return queryParams.join('&');
 }
 
 function filterListings(results) {
@@ -132,14 +165,22 @@ function addListing(listing, cardsId) {
   // creating card and its elements
   var card = document.createElement("div");
   card.classList.add("card");
-  card.id = listing.id;
+  card.id = listing._id;
 
   var cardTitle = document.createElement("h3");
   cardTitle.classList.add("cardTitle");
-  cardTitle.innerText = listing.owner;
+  cardTitle.innerText = listing.title;
 
   var cardImg = document.createElement("img");
-  cardImg.src = listing.image;
+  if (
+    !listing.picturePath ||
+    listing.picturePath === "" ||
+    listing.picturePath.length === 0
+  )
+    cardImg.src = `https://source.unsplash.com/random/?${
+      "office " + Math.random()
+    }`;
+  else cardImg.src = listing.picturePath;
 
   var cardDescr = document.createElement("p");
   cardDescr.classList.add("cardDescr");
@@ -162,11 +203,11 @@ function addListing(listing, cardsId) {
   card.appendChild(cardRating);
 
   //adding card to the given cardsId
-  var cards = document.getElementById(cardsId);
+  var cards = document.getElementById("SearchResults");
   cards.append(card);
 }
 
-window.onload = async ()  => {
+window.onload = async () => {
   await getListings();
 
   //adding event listenr

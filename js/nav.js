@@ -6,6 +6,7 @@ window.addEventListener('load', async function() {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
+  await getUsers()
   if(loggedIn){
     document.getElementById("navAccount").href="loggedInProfile.html";
     document.getElementById("navHome").href="loggedInHome.html";
