@@ -74,7 +74,7 @@ main {
 #left {
     flex: 0 1 1;
     flex-grow: 1;
-    width: 50%;
+    width: 60%;
     line-height: 30px;
     /* background: black; */
 }
@@ -326,6 +326,7 @@ main {
     position: relative;
     min-width: 600px;
     border-radius: 35px;
+    padding-bottom: 50px;
 }
 
 #listingInfoInput {
@@ -360,6 +361,7 @@ main {
     /* display: hidden; */
     flex-direction: row;
     width: 80%;
+    width: fit-content;
     /* gap: 80px; */
     justify-content: space-between;
     /* align-items: ; */
@@ -370,6 +372,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    /* width: 70%; */
 }
 #leftInput p{
     display: flex;
@@ -406,8 +409,9 @@ main {
     font-weight: 500;
     /* border-radius: 20px; */
     position: absolute;
-    bottom: 63px;
+    bottom: 22px;
     z-index: 999;
+    /* margin-bottom: 50px; */
 }
 #containerInput #submitEdit:active{
     color: black;
@@ -481,7 +485,7 @@ main {
 }
 
 
-#leftInput p #smokingInput{
+#leftInput p input[type="checkbox"]{
     /* height: 20px; */
     width: 20px;
     border-radius: 0px;
@@ -492,9 +496,9 @@ main {
 #buttonBackground{
     width: 100px;
     opacity: 0.6;
-    /* position: absolute;
-    bottom: 65px;
-    z-index: 1; */
+    position: absolute;
+    bottom: 22px;
+    z-index: 1;
 }
 .contactOwner{
     margin-top: 30px;
