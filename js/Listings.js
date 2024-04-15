@@ -1,21 +1,32 @@
-import { listings } from "../database/listingsDatabse.js";
-var workspaces;
+async function getListings() {
+  try {
+    let resStatus;
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get("id");
 
-//fetch listings
-function getListings() {
-  //storing all the listings in local database as we are not implementing a backend in phase 1
-  if (localStorage.getItem("workspaces") == null) {
-    workspaces = listings;
-    localStorage.setItem("workspaces", JSON.stringify(workspaces));
-  } else {
-    workspaces = JSON.parse(localStorage.getItem("workspaces"));
+    const response = await fetch(`${url}/listing?id=${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    resStatus = response.status;
+    const data = await response.json();
+    console.log(data)
+
+    if (resStatus !== 200 && resStatus !== 201) {
+      if (resStatus === 404) {
+        throw new Error("The token has expired. Sign in again");
+      }
+      throw new Error(data.message);
+    }
+
+    return data;
+  } catch (error) {
+    console.error("Error occurred: ", error.message);
+    throw error;
   }
-
-  //updating workspaces as per search param
-  let searchParam = document.querySelector("#searchBar").value;
-  if (search !== "") var results = search(searchParam);
-
-  results !== null ? filterListings(results) : filterListings(workspaces);
 }
 
 function search(searchParam) {
@@ -121,7 +132,7 @@ function addListing(listing, cardsId) {
   // creating card and its elements
   var card = document.createElement("div");
   card.classList.add("card");
-  card.id=listing.id;
+  card.id = listing.id;
 
   var cardTitle = document.createElement("h3");
   cardTitle.classList.add("cardTitle");
@@ -155,14 +166,17 @@ function addListing(listing, cardsId) {
   cards.append(card);
 }
 
-window.onload = () => {
-  getListings();
+window.onload = async ()  => {
+  await getListings();
 
   //adding event listenr
   try {
-    document.querySelectorAll(".card").forEach((el)=>{
-      el.addEventListener("click", (e)=> window.location.href=("listinginfo.html?id="+el.id))
-    })
+    document.querySelectorAll(".card").forEach((el) => {
+      el.addEventListener(
+        "click",
+        (e) => (window.location.href = "listinginfo.html?id=" + el.id)
+      );
+    });
     document.querySelector("#filtered").addEventListener("click", getListings);
     document
       .querySelector("#searchBar")
