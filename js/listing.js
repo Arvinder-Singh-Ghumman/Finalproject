@@ -92,7 +92,7 @@ function displayEdit() {
   //   let index = workspaces.findIndex((el)=>el.id===id)
   //   workspaces[index].title = titleInput.value;
   // }
-  //complete this similarly for alll other inputs
+  //complete this similarly for all other inputs
 }
 
 window.onload = () => {

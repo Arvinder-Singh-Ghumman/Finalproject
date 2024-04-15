@@ -142,7 +142,8 @@ footer {
 
 #filterSelection{
   display: none;
-  background-color: #ffffff;
+  background: linear-gradient(to bottom, black, white);
+  color: white;
   height: 100vh;
   position: fixed;
   right: 0;

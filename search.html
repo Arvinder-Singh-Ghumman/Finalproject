@@ -27,7 +27,9 @@
             }
         }
 
-
+        #sortContainer{
+            position: relative;
+        }
         #sort {
             color: white;
             display: none;
@@ -45,8 +47,8 @@
             width: 33px;
             position: absolute;
             /* bottom: 0px; */
-            top: 92px;
-            right: 14vw;
+            top: 2px;
+            right: 3vw;
             background-color: gray;
             padding: 3px 4px 3px 4px;
         }
@@ -57,8 +59,8 @@
 
         #sortSelection {
             position: absolute;
-            top: 123px;
-            right: 14vw;
+            top: 35px;
+            right: 3vw;
             /* display: none; */
         }
 
@@ -240,6 +242,8 @@
             var searchBar = document.querySelector("#searchBar");
             var cards = document.querySelectorAll(".card");
             var cardsContainer = document.querySelector("#SearchResults");
+            var sortIconContainer = document.querySelector("#sortContainer");
+
             // var filterIcon = document.querySelector("filterIcon");
             // var main = document.getElementsByName("searchAndFilter");
 
@@ -255,12 +259,13 @@
             cardsContainer.style.width = filterDiv.style.display === "flex" ? "70vw" : "90vw";
             // main.style.width = filterDiv.style.display !== "flex" ? "100%" : "calc(100% - 429px)"
             cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "2vw" : "4.8vw";
+            // sortIconContainer.style.
         }
 
-        function displaySort() {
-            var sortContainer = document.querySelector("#sortSelection");
-            sortContainer.style.display = sortContainer.style.display ==="block" ? "none": "block";
-        }
+        // function displaySort() {
+        //     var sortContainer = document.querySelector("#sortSelection");
+        //     sortContainer.style.display = sortContainer.style.display ==="block" ? "none": "block";
+        // }
     </script>
 </body>
 
