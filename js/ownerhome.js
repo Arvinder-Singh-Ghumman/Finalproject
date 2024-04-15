@@ -1,45 +1,51 @@
 var myListCounter = 9;
+var user;
 
-
-async function getUsers(){
+async function getUsers() {
   var resStatus;
   let token = localStorage.getItem("token");
 
-  if (token !== null) {
-    loggedIn=true;
-    fetch(`${url}/user/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    })
-    .then((response) => {
-      resStatus = response.status;
-      return response.json();
-    })
-    .then((data) => {
-      if (resStatus !== 200 && resStatus !== 201) {
-        if (resStatus === 404) {
-          throw new Error("The token has expired. Sign in again");
+  if (token) {
+    loggedIn = true;
+    try {
+      let resStatus;
+      const token = localStorage.getItem("token");
+  
+      if (token !== null) {
+        const response = await fetch(`${url}/user/`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        resStatus = response.status;
+        const data = await response.json();
+  
+        if (resStatus !== 200 && resStatus !== 201) {
+          if (resStatus === 404) {
+            throw new Error("The token has expired. Sign in again");
+          }
+          localStorage.removeItem("token");
+          throw new Error(data.message);
         }
-        throw new Error(data.message);
+  
+        user= data;
       }
-      user=data;
-    })
-    .catch((error) => {
+    } catch (error) {
       alert(error);
-      loggedIn=false;
-      localStorage.setItem("token", null)
+      loggedIn = false;
+      localStorage.removeItem("token");
       window.location.href = "login.html";
-    });
+    }
   }
-  return user;
 }
 
 //fetch listings
 async function getListings() {
   var resultLists = [];
+  console.log(user)
   //checking owner or coworker
   if (user.role === "owner") {
     //getting listings of this id
@@ -66,24 +72,23 @@ async function getListings() {
   } else {
     document.getElementById("listingsTitle").innerText = "All listings";
 
-    // try {
-      const response = await fetch(`${url}/listing/`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+    try {
+    const response = await fetch(`${url}/listing/`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message);
-      }
-      resultLists = data;
-      // resultLists = data;
-      // console.log(resultLists);
-    // } catch (error) {
-    //   console.error("Error occurred: ", error);
-    // }
+    const data = await response.json();
+    console.log(data);
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    resultLists = data;
+    } catch (error) {
+      console.error("Error occurred: ", error);
+    }
   }
 
   //see more button
@@ -128,14 +133,16 @@ function addListing(list) {
   list.forEach((listing) => {
     var card = document.createElement("div");
     card.classList.add("card");
-    card.id = listing.id;
+    card.id = listing._id;
 
     var cardTitle = document.createElement("h3");
     cardTitle.classList.add("cardTitle");
     cardTitle.innerText = listing.title;
 
     var cardImg = document.createElement("img");
-    cardImg.src = listing.image;
+    if(!cardImg)
+    console.log(listing.image);
+    cardImg.src = `https://source.unsplash.com/random/?${"office "+Math.random()}`;
 
     var cardDescr = document.createElement("p");
     cardDescr.classList.add("cardDescr");
@@ -220,10 +227,10 @@ function deleteListing(id) {
     );
 }
 
-window.onload = async ()  =>  {
+window.onload = async () => {
   await getUsers();
 
-  await getListings();
+  await getListings()
 
   if (user.role !== "owner") {
     document
@@ -255,7 +262,7 @@ window.onload = async ()  =>  {
   document.querySelectorAll(".card").forEach((el) => {
     el.addEventListener(
       "click",
-      (e) => (window.location.href = "listinginfo.html?id=" + el._id)
+      (e) => (window.location.href = "listinginfo.html?id=" + el.id)
     );
   });
 

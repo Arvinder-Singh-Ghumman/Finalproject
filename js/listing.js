@@ -1,40 +1,90 @@
-import { listings } from "../database/listingsDatabse.js";
-var workspaces;
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 var listing = null;
 
-function getListing() {
-  //fetch listing
-  if (localStorage.getItem("workspaces") == null) {
-    listing = listings.find((el) => el.id == id);
-  } else {
-    workspaces = JSON.parse(localStorage.getItem("workspaces"));
-    console.log(workspaces);
-    listing = workspaces.find((el) => el.id == id);
-  }
-  if (listing == null) alert("This listing does not exist :(");
-  console.log(listing);
+async function getListings() {
+  try {
+    let resStatus;
 
-  fillingIn();
+    const response = await fetch(`${url}/listing?id=${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    resStatus = response.status;
+    const data = await response.json();
+
+    if (resStatus !== 200 && resStatus !== 201) {
+      if (resStatus === 404) {
+        throw new Error("The token has expired. Sign in again");
+      }
+      throw new Error(data.message);
+    }
+    listing = data;
+    fillingIn();
+    return data;
+  } catch (error) {
+    console.error("Error occurred: ", error.message);
+    throw error;
+  }
 }
+// async function getUsers() {
+//   var resStatus;
+//   let token = localStorage.getItem("token");
+
+//   if (token !== null) {
+//     loggedIn = true;
+//     try {
+//       const response = await fetch(`${url}/user/`, {
+//         method: "GET",
+//         headers: {
+//           "Content-Type": "application/json",
+//           Authorization: `Bearer ${token}`,
+//         },
+//       });
+
+//       const data = await response.json();
+//       resStatus = response.status;
+
+//       if (resStatus !== 200 && resStatus !== 201) {
+//         if (resStatus === 404) {
+//           throw new Error("The token has expired. Sign in again");
+//         }
+//         throw new Error(data.message);
+//       }
+
+//       return data;
+//     } catch (error) {
+//       alert(error);
+//       loggedIn = false;
+//       localStorage.setItem("token", null);
+//       window.location.href = "login.html";
+//     }
+//   }
+// }
 
 function fillingIn() {
   //getting avgRating
-  let rating = listing.rating;
+  // rating = listing.reviews?.rate;
   let totalRating = 0;
   let avgRating;
-  rating.forEach((el) => {
-    totalRating += el.rate;
-  });
-  rating.length === 0
-    ? (avgRating = 0)
-    : (avgRating = totalRating / rating.length);
+  // rating.forEach((el) => {
+  //   totalRating += el.rate;
+  // });
+  // rating?.length === 0
+  //   ? (avgRating = 0)
+  //   : (avgRating = totalRating / rating.length);
   document.getElementById("title").innerText = listing.title;
   document.getElementById("owner").innerText = listing.owner;
   document.getElementById("price").innerText = listing.price;
+  if(listing.image)
   document.getElementById("image").src = listing.image;
+else
+document.getElementById("image").src = "https://source.unsplash.com/random/?work";
+
   document.getElementById("description").innerText = listing.description;
   document.getElementById("location").innerText = listing.location;
   document.getElementById("contact").innerText = listing.contact;
@@ -59,8 +109,8 @@ function addRating() {
 }
 
 function displayEdit() {
-  document.getElementById("containerInput").style.display = "flex"
-  document.getElementById("container").style.display = "none"
+  document.getElementById("containerInput").style.display = "flex";
+  document.getElementById("container").style.display = "none";
   // Retrieve all input elements
   let titleInput = document.getElementById("titleInput");
   let ownerInput = document.getElementById("ownerInput");
@@ -75,7 +125,7 @@ function displayEdit() {
   let categoryInput = document.getElementById("categoryInput");
   let seatingCapacityInput = document.getElementById("seatingInput");
   let reviewsInput = document.getElementById("reviewsInput");
-  
+
   // titleInput.value = listing.title;
   // ownerInput.value = listing.owner;
   // priceInput.value = listing.price;
@@ -95,14 +145,15 @@ function displayEdit() {
   //complete this similarly for all other inputs
 }
 
-window.onload = () => {
-  getListing();
+window.onload = async () => {
+  listing = await getListings();
+  // user = await getUsers();
   let user = JSON.parse(sessionStorage.getItem("user"));
-  if(user.role==="owner"){
+  if (user.role === "owner") {
     document.getElementById("rate").display = "flex";
   }
-  console.log(listing.ownerContact)
-  if (user.email === listing.ownerContact) {
+
+  if (user._id === listing.owner._id) {
     document.getElementById("editListing").style.display = "block";
     document.getElementById("rate").style.display = "none";
   } else {
