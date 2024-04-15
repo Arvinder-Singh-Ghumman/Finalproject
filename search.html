@@ -27,14 +27,16 @@
             }
         }
 
-
+        #sortContainer{
+            position: relative;
+        }
         #sort {
             color: white;
             display: none;
             position: absolute;
-            top: 65px;
+            top: -25px;
             /* font-weight: 600; */
-            right: 14vw;
+            right: 3vw;
             border: 1px solid white;
             padding: 0 3px;
             border-radius: 5px;
@@ -45,8 +47,8 @@
             width: 33px;
             position: absolute;
             /* bottom: 0px; */
-            top: 92px;
-            right: 14vw;
+            top: 2px;
+            right: 3vw;
             background-color: gray;
             padding: 3px 4px 3px 4px;
         }
@@ -57,8 +59,8 @@
 
         #sortSelection {
             position: absolute;
-            top: 123px;
-            right: 14vw;
+            top: 35px;
+            right: 3vw;
             /* display: none; */
         }
 
@@ -129,14 +131,16 @@
         </div>
         <div id="filterSelection">
             <p id="filterContainerHeading"><b>Filters</b></p>
+            <hr>
             <div class="filters" id="cityFilter">
                 <p class="filterSubHeadings">City</p>
                 <p>
-                    <label for="citySelection">Select City</label>
-                    <input type="text" id="citySelection">
+                    <!-- <label class="citySelectionElements" for="citySelection">Select City</label> -->
+                    <input type="text" id="citySelection" placeholder="Select City">
                 </p>
             </div>
-
+            <hr>
+            
             <div class="filters" id="categoryFilter">
                 <p class="filterSubHeadings">Category</p>
                 <div class="filterOptions">
@@ -157,35 +161,38 @@
                         <label for="privateOffice">Private Office</label>
                     </p>
                 </div>
-
+                
             </div>
-
+            
+            <hr>
             <div class="filters" id="priceFilter">
                 <p class="filterSubHeadings">Price</p>
                 <div class="filterOptions">
                     <p>
-                        <label for="minPrice">Minimum Price(in $):</label>
-                        <input type="number" id="minPrice" placeholder="Enter a number">
+                        <!-- <label for="minPrice">Minimum Price(in $):</label> -->
+                        <input type="number" id="minPrice" placeholder="Min Price">
                     </p>
                     <p>
-                        <label for="maxPrice">Maximum Price(in $):</label>
-                        <input type="number" id="maxPrice" placeholder="Enter a number">
+                        <!-- <label for="maxPrice">Maximum Price(in $):</label> -->
+                        <input type="number" id="maxPrice" placeholder="Max Price">
                     </p>
                 </div>
-
-
+                
+                
             </div>
-
+            <hr>
+            
             <div class="filters" id="ratingFilter">
                 <p class="filterSubHeadings">Seating Capacity</p>
                 <div class="filterOptions">
                     <p>
-                        <label for="seatingCapcity">Minimum Seating Capacity:</label>
-                        <input type="number" id="seatingCapacity" placeholder="Enter a number">
+                        <!-- <label for="seatingCapcity">Minimum Seating Capacity:</label> -->
+                        <input type="number" id="seatingCapacity" placeholder="Min Seating Capacity">
                     </p>
                 </div>
             </div>
-
+            
+            <hr>
             <div class="filters" id="ratingFilter">
                 <p class="filterSubHeadings">Rating</p>
                 <div class="filterOptions">
@@ -210,6 +217,7 @@
                         <label for="RatingFilter">1 Star</label>
                     </p>
                 </div>
+                <hr>
                 <br>
                 <input id="filtered" type="submit" value="Search">
 
@@ -234,33 +242,19 @@
     <script src="js/Listings.js" type="module"></script>
     <script src="js/nav.js"></script>
     <script>
-        //function to display the filter div on clicking the filter icon
 
         function filterSelectionDisplay() {
             var filterDiv = document.querySelector("#filterSelection");
             var searchBar = document.querySelector("#searchBar");
             var cards = document.querySelectorAll(".card");
             var cardsContainer = document.querySelector("#SearchResults");
-            // var filterIcon = document.querySelector("filterIcon");
-            // var main = document.getElementsByName("searchAndFilter");
+            var sortIconContainer = document.querySelector("#sortContainer");
 
-            // Toggle filterDiv display between "flex" and "none"
             filterDiv.style.display !== "flex" ? filterDiv.style.display = "flex" : filterDiv.style.display = "none";
 
-            // Adjust width of searchBar
-            searchBar.style.width = filterDiv.style.display === "flex" ? "65.5vw" : "80vw";
             searchBar.style.marginLeft = filterDiv.style.display === "flex" ? "4vw" : "9vw";
-            // cards.forEach(function (card) {
-            //     card.style.width = filterDiv.style.display === "flex" ? "20%" : "30%";
-            // });
-            cardsContainer.style.width = filterDiv.style.display === "flex" ? "70vw" : "90vw";
-            // main.style.width = filterDiv.style.display !== "flex" ? "100%" : "calc(100% - 429px)"
-            cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "2vw" : "4.8vw";
-        }
-
-        function displaySort() {
-            var sortContainer = document.querySelector("#sortSelection");
-            sortContainer.style.display = sortContainer.style.display ==="block" ? "none": "block";
+            cardsContainer.style.width = filterDiv.style.display === "flex" ? "85vw" : "90vw";
+            cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "1.5vw" : "4.8vw";
         }
     </script>
 </body>
