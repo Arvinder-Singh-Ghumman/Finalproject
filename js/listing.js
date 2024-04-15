@@ -1,6 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
-
+var huff;
 var listing = null;
 
 async function getListings() {
@@ -23,50 +23,16 @@ async function getListings() {
       }
       throw new Error(data.message);
     }
-    listing = data;
-    fillingIn();
-    return data;
+    listing = data[0];
   } catch (error) {
     console.error("Error occurred: ", error.message);
     throw error;
   }
+  fillingIn();
 }
-// async function getUsers() {
-//   var resStatus;
-//   let token = localStorage.getItem("token");
-
-//   if (token !== null) {
-//     loggedIn = true;
-//     try {
-//       const response = await fetch(`${url}/user/`, {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-
-//       const data = await response.json();
-//       resStatus = response.status;
-
-//       if (resStatus !== 200 && resStatus !== 201) {
-//         if (resStatus === 404) {
-//           throw new Error("The token has expired. Sign in again");
-//         }
-//         throw new Error(data.message);
-//       }
-
-//       return data;
-//     } catch (error) {
-//       alert(error);
-//       loggedIn = false;
-//       localStorage.setItem("token", null);
-//       window.location.href = "login.html";
-//     }
-//   }
-// }
 
 function fillingIn() {
+  console.log(listing);
   //getting avgRating
   // rating = listing.reviews?.rate;
   let totalRating = 0;
@@ -78,16 +44,21 @@ function fillingIn() {
   //   ? (avgRating = 0)
   //   : (avgRating = totalRating / rating.length);
   document.getElementById("title").innerText = listing.title;
-  document.getElementById("owner").innerText = listing.owner;
+  document.getElementById("owner").innerText = listing.owner.name;
   document.getElementById("price").innerText = listing.price;
-  if (!listing.picturePath)
+  var cardImg = document.getElementById("image");
+  if (
+    !listing.picturePath ||
+    listing.picturePath === "" ||
+    listing.picturePath.length === 0
+  )
     cardImg.src = `https://source.unsplash.com/random/?${
       "office " + Math.random()
     }`;
   else cardImg.src = listing.picturePath;
   document.getElementById("description").innerText = listing.description;
   document.getElementById("location").innerText = listing.location;
-  document.getElementById("contact").innerText = listing.contact;
+  document.getElementById("contact").innerText = listing.owner.email;
   document.getElementById("smoking").innerText = listing.isSmokingAllowed
     ? "Smoking is allowed"
     : "Smoking NOT ALLOWED";
@@ -97,6 +68,7 @@ function fillingIn() {
   document.getElementById("seating").innerText = listing.seating;
   document.getElementById("rating").innerText = avgRating;
   document.getElementById("reviews").innerText = listing.reviews;
+  document.getElementById("contactOwner").href = listing.owner.email;
 }
 
 function addRating() {
@@ -106,6 +78,62 @@ function addRating() {
   listings[index].rating.push({ rate: rate, rateText: rateText });
   localStorage.setItem("workspaces", JSON.stringify(listings));
   getListing();
+}
+
+async function editListing(event) {
+  event.preventDefault();
+
+  // Retrieve all input elements
+  let titleInput = document.getElementById("titleInput").value;
+  let priceInput = document.getElementById("priceInput").value;
+  let imageInput = document.getElementById("imageInput").files[0]; // Retrieve the file from input
+  let descriptionInput = document.getElementById("descriptionInput").value;
+  let locationInput = document.getElementById("locationInput").value;
+  let contactInput = document.getElementById("contactInput").value;
+  let smokingInput = document.getElementById("smokingInput").checked; // Checkbox value
+  let termInput = document.getElementById("termInput").value;
+  let availabilityInput = document.getElementById("availabilityInput").value;
+  let categoryInput = document.getElementById("categoryInput").value;
+  let seatingCapacityInput = document.getElementById("seatingInput").value;
+  
+  // Create FormData object
+  try {
+    let formData = new FormData();
+
+    // Append values to FormData object
+    formData.append("title", titleInput);
+    formData.append("price", priceInput);
+    formData.append("image", imageInput); // Append the file
+    formData.append("description", descriptionInput);
+    formData.append("location", locationInput);
+    formData.append("contact", contactInput);
+    formData.append("smoking", smokingInput);
+    formData.append("term", termInput);
+    formData.append("availability", availabilityInput);
+    formData.append("category", categoryInput);
+    formData.append("seatingCapacity", seatingCapacityInput);
+
+    //updating
+    const response = await fetch(`${url}/listing/update/${listing._id}`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${token}`
+      },
+      body: formData,
+    });
+    const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+
+      alert("Edit successful")
+      document.getElementById("containerInput").style.display = "none";
+      document.getElementById("container").style.display = "block";
+      getListings();
+  } catch (error) {
+    alert("failed to update the listing")
+    console.error("Error occurred: ", error.message);
+  }
 }
 
 function displayEdit() {
@@ -146,14 +174,14 @@ function displayEdit() {
 }
 
 window.onload = async () => {
-  listing = await getListings();
-  // user = await getUsers();
-  let user = JSON.parse(sessionStorage.getItem("user"));
-  if (user.role === "owner") {
+  await getListings();
+  await getUsers();
+
+  if (loggedIn && user.role === "owner") {
     document.getElementById("rate").display = "flex";
   }
 
-  if (user._id === listing.owner._id) {
+  if (loggedIn && user._id === listing.owner._id) {
     document.getElementById("editListing").style.display = "block";
     document.getElementById("rate").style.display = "none";
   } else {
@@ -172,4 +200,7 @@ window.onload = async () => {
   });
 
   document.getElementById("editListing").addEventListener("click", displayEdit);
+  document
+    .getElementById("submitEdit")
+    .addEventListener("click", (event) => editListing(event));
 };
