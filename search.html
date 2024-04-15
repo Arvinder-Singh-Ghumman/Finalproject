@@ -131,14 +131,16 @@
         </div>
         <div id="filterSelection">
             <p id="filterContainerHeading"><b>Filters</b></p>
+            <hr>
             <div class="filters" id="cityFilter">
                 <p class="filterSubHeadings">City</p>
                 <p>
-                    <label for="citySelection">Select City</label>
-                    <input type="text" id="citySelection">
+                    <!-- <label class="citySelectionElements" for="citySelection">Select City</label> -->
+                    <input type="text" id="citySelection" placeholder="Select City">
                 </p>
             </div>
-
+            <hr>
+            
             <div class="filters" id="categoryFilter">
                 <p class="filterSubHeadings">Category</p>
                 <div class="filterOptions">
@@ -159,35 +161,38 @@
                         <label for="privateOffice">Private Office</label>
                     </p>
                 </div>
-
+                
             </div>
-
+            
+            <hr>
             <div class="filters" id="priceFilter">
                 <p class="filterSubHeadings">Price</p>
                 <div class="filterOptions">
                     <p>
-                        <label for="minPrice">Minimum Price(in $):</label>
-                        <input type="number" id="minPrice" placeholder="Enter a number">
+                        <!-- <label for="minPrice">Minimum Price(in $):</label> -->
+                        <input type="number" id="minPrice" placeholder="Min Price">
                     </p>
                     <p>
-                        <label for="maxPrice">Maximum Price(in $):</label>
-                        <input type="number" id="maxPrice" placeholder="Enter a number">
+                        <!-- <label for="maxPrice">Maximum Price(in $):</label> -->
+                        <input type="number" id="maxPrice" placeholder="Max Price">
                     </p>
                 </div>
-
-
+                
+                
             </div>
-
+            <hr>
+            
             <div class="filters" id="ratingFilter">
                 <p class="filterSubHeadings">Seating Capacity</p>
                 <div class="filterOptions">
                     <p>
-                        <label for="seatingCapcity">Minimum Seating Capacity:</label>
-                        <input type="number" id="seatingCapacity" placeholder="Enter a number">
+                        <!-- <label for="seatingCapcity">Minimum Seating Capacity:</label> -->
+                        <input type="number" id="seatingCapacity" placeholder="Min Seating Capacity">
                     </p>
                 </div>
             </div>
-
+            
+            <hr>
             <div class="filters" id="ratingFilter">
                 <p class="filterSubHeadings">Rating</p>
                 <div class="filterOptions">
@@ -212,6 +217,7 @@
                         <label for="RatingFilter">1 Star</label>
                     </p>
                 </div>
+                <hr>
                 <br>
                 <input id="filtered" type="submit" value="Search">
 
@@ -251,7 +257,7 @@
             filterDiv.style.display !== "flex" ? filterDiv.style.display = "flex" : filterDiv.style.display = "none";
 
             // Adjust width of searchBar
-            searchBar.style.width = filterDiv.style.display === "flex" ? "65.5vw" : "80vw";
+            // searchBar.style.width = filterDiv.style.display === "flex" ? "65.5vw" : "80vw";
             searchBar.style.marginLeft = filterDiv.style.display === "flex" ? "4vw" : "9vw";
             // cards.forEach(function (card) {
             //     card.style.width = filterDiv.style.display === "flex" ? "20%" : "30%";
