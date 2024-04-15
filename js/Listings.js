@@ -50,7 +50,9 @@ async function getListings() {
   } catch (error) {
     console.error("Error occurred: ", error);
   }
+  document.getElementById("SearchResults").innerHTML="";
   resultLists.forEach((el) => addListing(el));
+
 }
 
 // function search(searchParam) {
@@ -107,40 +109,47 @@ function filterListings(results) {
   console.log(sortedList);
   document.querySelector("#SearchResults").innerHTML = "";
   sortedList.forEach((el) => addListing(el, "SearchResults"));
-}
-const filterByPrice = (min, max, sortedList) => {
-  //filter by price
-  let res = sortedList.filter((el) => {
-    if (max !== "" && min !== "") {
-      return el.price < max && el.price > min ? ture : false;
-    } else if (max === "" && min !== "") {
-      return el.price > min ? true : false;
-    } else if (max !== "" && min === "") {
-      return el.price < max ? true : false;
-    }
+  document.querySelectorAll(".card").forEach((el) => {
+    el.addEventListener(
+      "click",
+      (e) => (window.location.href = "listinginfo.html?id=" + el.id)
+    );
   });
-  return res;
-};
-const filterByRate = (rate, sortedList) => {
-  //filter by rate
-  let res = sortedList.filter((el) => Math.floor(el.rating) == rate);
-  return res;
-};
-const filterBySeats = (seats, sortedList) => {
-  //filter by seats
-  let res = sortedList.filter((el) => el.seating >= seats);
-  return res;
-};
-const filterByCategory = (category, sortedList) => {
-  //filter by seats
-  let res = sortedList.filter((el) => el.category == category);
-  return res;
-};
-const filterByCity = (city, sortedList) => {
-  //filter by city
-  let res = sortedList.filter((el) => el.location.includes(city));
-  return res;
-};
+}
+// All THIS IS CONVERTED TO BACKEND IN PHASE 2
+// const filterByPrice = (min, max, sortedList) => {
+//   //filter by price
+//   let res = sortedList.filter((el) => {
+//     if (max !== "" && min !== "") {
+//       return el.price < max && el.price > min ? ture : false;
+//     } else if (max === "" && min !== "") {
+//       return el.price > min ? true : false;
+//     } else if (max !== "" && min === "") {
+//       return el.price < max ? true : false;
+//     }
+//   });
+//   return res;
+// };
+// const filterByRate = (rate, sortedList) => {
+//   //filter by rate
+//   let res = sortedList.filter((el) => Math.floor(el.rating) == rate);
+//   return res;
+// };
+// const filterBySeats = (seats, sortedList) => {
+//   //filter by seats
+//   let res = sortedList.filter((el) => el.seating >= seats);
+//   return res;
+// };
+// const filterByCategory = (category, sortedList) => {
+//   //filter by seats
+//   let res = sortedList.filter((el) => el.category == category);
+//   return res;
+// };
+// const filterByCity = (city, sortedList) => {
+//   //filter by city
+//   let res = sortedList.filter((el) => el.location.includes(city));
+//   return res;
+// };
 
 function sortListings(unsorted, sortBy) {
   let sortedList;
