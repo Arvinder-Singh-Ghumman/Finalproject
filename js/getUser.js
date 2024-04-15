@@ -1,3 +1,4 @@
+// const url = "https://coworker-server.onrender.com";
 const url = "http://localhost:5678";
 var loggedIn = false;
 var user;
@@ -6,7 +7,6 @@ var resStatus;
 let token = localStorage.getItem("token");
 
 async function getUsers(){
-
   if (token) {
     loggedIn = true;
     fetch(`${url}/user/`, {
@@ -29,6 +29,7 @@ async function getUsers(){
         throw new Error(data.message);
       }
       user = data;
+      return data;
     })
     .catch((error) => {
       alert(error);
