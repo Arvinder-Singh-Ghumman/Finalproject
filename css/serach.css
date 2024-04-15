@@ -54,12 +54,17 @@
   height: 100vh;
   position: fixed;
   right: 0;
-  top: 65px;
+  top: 0;
+  padding-top: 65px;
   padding-left: 0px;
   width:auto;
   flex-direction: column;
   gap: 10px;
   flex-basis: 0;
+<<<<<<< HEAD
+  overflow-y: scroll;
+=======
+>>>>>>> 18528132f1c4cb325763186535784cd52aee5000
 }
 
 #filterContainerHeading{
@@ -188,4 +193,8 @@ hr{
   /* color: white; */
   /* margin-left: -5px; */
   /* padding-left: 0; */
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 18528132f1c4cb325763186535784cd52aee5000
