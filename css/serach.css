@@ -49,7 +49,7 @@
 #filterSelection{
   display: none;
   background: transparent;
-  background:linear-gradient(to bottom, rgb(37, 37, 37),75vh, gray);
+  background:linear-gradient(to bottom, rgb(14, 14, 14),75vh, gray);
   color: white;
   height: 100vh;
   position: fixed;
