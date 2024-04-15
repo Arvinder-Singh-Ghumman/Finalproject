@@ -10,7 +10,7 @@ async function getUsers() {
     try {
       let resStatus;
       const token = localStorage.getItem("token");
-  
+
       if (token !== null) {
         const response = await fetch(`${url}/user/`, {
           method: "GET",
@@ -19,10 +19,10 @@ async function getUsers() {
             Authorization: `Bearer ${token}`,
           },
         });
-  
+
         resStatus = response.status;
         const data = await response.json();
-  
+
         if (resStatus !== 200 && resStatus !== 201) {
           if (resStatus === 404) {
             throw new Error("The token has expired. Sign in again");
@@ -30,8 +30,8 @@ async function getUsers() {
           localStorage.removeItem("token");
           throw new Error(data.message);
         }
-  
-        user= data;
+
+        user = data;
       }
     } catch (error) {
       alert(error);
@@ -45,7 +45,6 @@ async function getUsers() {
 //fetch listings
 async function getListings() {
   var resultLists = [];
-  console.log(user)
   //checking owner or coworker
   if (user.role === "owner") {
     //getting listings of this id
@@ -61,31 +60,33 @@ async function getListings() {
 
       const data = await response.json();
       if (!response.ok) {
+        if (response.status === 404) {
+          resultLists = [];
+        }
         throw new Error(data.message);
       }
 
       resultLists = data;
-      console.log(resultLists);
     } catch (error) {
-      console.error("Error occurred: ", error);
+      console.error("Error occurred: ", error.message);
     }
   } else {
     document.getElementById("listingsTitle").innerText = "All listings";
 
     try {
-    const response = await fetch(`${url}/listing/`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+      const response = await fetch(`${url}/listing/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const data = await response.json();
-    console.log(data);
-    if (!response.ok) {
-      throw new Error(data.message);
-    }
-    resultLists = data;
+      const data = await response.json();
+      console.log(data);
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      resultLists = data;
     } catch (error) {
       console.error("Error occurred: ", error);
     }
@@ -101,8 +102,10 @@ async function getListings() {
       document.querySelector("#sortOptions").value
     );
   }
-  console.log(resultLists);
-
+  
+  if(resultLists.length == 0 ){
+    document.getElementById("listingsTitle").innerText = "No listings found";
+  }
   addListing(resultLists.slice(0, myListCounter));
 }
 
@@ -140,9 +143,11 @@ function addListing(list) {
     cardTitle.innerText = listing.title;
 
     var cardImg = document.createElement("img");
-    if(!cardImg)
-    console.log(listing.image);
-    cardImg.src = `https://source.unsplash.com/random/?${"office "+Math.random()}`;
+    if (!listing.picturePath||listing.picturePath===''||listing.picturePath.length===0)
+      cardImg.src = `https://source.unsplash.com/random/?${
+        "office " + Math.random()
+      }`;
+    else cardImg.src = listing.picturePath;
 
     var cardDescr = document.createElement("p");
     cardDescr.classList.add("cardDescr");
@@ -173,7 +178,7 @@ function addListing(list) {
     if (user.role === "owner") {
       var deleteButton = document.createElement("button");
       deleteButton.className = "deleteListingButton";
-      deleteButton.classList.add(listing.id);
+      deleteButton.classList.add(listing._id);
       var deleteImage = document.createElement("img");
       deleteImage.src = "./assets/bin.png";
       deleteButton.appendChild(deleteImage);
@@ -193,13 +198,15 @@ function addListing(list) {
   // creating card and its elements
 }
 
-function deleteListing(id) {
+function deleteListing(event, id) {
+  event.stopPropagation();
   let resStatus;
-  //getting listings
+  //deleting listing
   fetch(`${url}/listing/${id}`, {
-    method: "DELETE", // or any other HTTP method
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((response) => {
@@ -210,27 +217,22 @@ function deleteListing(id) {
       if (resStatus !== 200 && resStatus !== 201) {
         throw new Error(data.message);
       }
-      resultLists = data;
-      console.log(data);
+
+      //updating listings
+      getListings();
+      document
+        .querySelectorAll(".deleteListingButton")
+        .forEach((el) =>
+          el.addEventListener("click", (e) => deleteListing(e, el.classList[1]))
+        );
     })
     .catch((error) => {
       console.error("Error ooccured: ", error);
     });
-  //updating listings
-  getListings();
-  document
-    .querySelectorAll(".deleteListingButton")
-    .forEach((el) =>
-      el.addEventListener("click", (e) =>
-        deleteListing(e.currentTarget.classList[1])
-      )
-    );
 }
 
 window.onload = async () => {
   await getUsers();
-
-  await getListings()
 
   if (user.role !== "owner") {
     document
@@ -249,6 +251,8 @@ window.onload = async () => {
         () => (window.location.href = "addListing.html")
       );
   }
+  await getListings();
+
 
   //for nav
   window.addEventListener("scroll", () => {
@@ -281,8 +285,8 @@ window.onload = async () => {
   document
     .querySelectorAll(".deleteListingButton")
     .forEach((el) =>
-      el.addEventListener("click", (e) =>
-        deleteListing(e.currentTarget.classList[1])
+      el.addEventListener("click", (event) =>
+        deleteListing(event, event.currentTarget.classList[1])
       )
     );
   document

@@ -117,6 +117,7 @@ async function deleteAccount() {
     if (!response.ok) {
       throw new Error(data.message);
     }
+    localStorage.removeItem("token");
     alert("Deleted succesffully");
   } catch (error) {
     console.error("Error occurred: ", error);

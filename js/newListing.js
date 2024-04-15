@@ -72,15 +72,13 @@ async function addListing() {
     formData.append(key, listingData[key]);
 });
 
-  // Append the image file
-  let images = [];
+  // ADDING IMAGES
   let imageFileInput = document.getElementById("imageInput");
   let imageFiles = imageFileInput.files;
   for (let i = 0; i < imageFiles.length; i++) {
-    images.push(imageFiles[i]);
+    formData.append("image", imageFiles[i]);
   }
   
-  formData.append("image", images);
   try {
     let resStatus;
 
@@ -106,24 +104,6 @@ async function addListing() {
 async function newListing(event) {
   event.preventDefault();
   addListing();
-}
-
-function forImage() {
-  return new Promise((resolve, reject) => {
-    //getting image
-    let input = document.getElementById("imageInput");
-    let file = input.files[0];
-
-    if (file) {
-      let reader = new FileReader();
-      reader.onload = function (e) {
-        resolve(e.target.result); // Resolve with the image data
-      };
-      reader.readAsDataURL(file);
-    } else {
-      resolve(null); // Resolve with null if no file is selected
-    }
-  });
 }
 
 window.onload = async () => {
