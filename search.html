@@ -242,7 +242,6 @@
     <script src="js/Listings.js" type="module"></script>
     <script src="js/nav.js"></script>
     <script>
-        //function to display the filter div on clicking the filter icon
 
         function filterSelectionDisplay() {
             var filterDiv = document.querySelector("#filterSelection");
@@ -251,28 +250,12 @@
             var cardsContainer = document.querySelector("#SearchResults");
             var sortIconContainer = document.querySelector("#sortContainer");
 
-            // var filterIcon = document.querySelector("filterIcon");
-            // var main = document.getElementsByName("searchAndFilter");
-
-            // Toggle filterDiv display between "flex" and "none"
             filterDiv.style.display !== "flex" ? filterDiv.style.display = "flex" : filterDiv.style.display = "none";
 
-            // Adjust width of searchBar
-            // searchBar.style.width = filterDiv.style.display === "flex" ? "65.5vw" : "80vw";
             searchBar.style.marginLeft = filterDiv.style.display === "flex" ? "4vw" : "9vw";
-            // cards.forEach(function (card) {
-            //     card.style.width = filterDiv.style.display === "flex" ? "20%" : "30%";
-            // });
             cardsContainer.style.width = filterDiv.style.display === "flex" ? "85vw" : "90vw";
-            // main.style.width = filterDiv.style.display !== "flex" ? "100%" : "calc(100% - 429px)"
             cardsContainer.style.marginLeft = filterDiv.style.display === "flex" ? "1.5vw" : "4.8vw";
-            // sortIconContainer.style.
         }
-
-        // function displaySort() {
-        //     var sortContainer = document.querySelector("#sortSelection");
-        //     sortContainer.style.display = sortContainer.style.display ==="block" ? "none": "block";
-        // }
     </script>
 </body>
 
