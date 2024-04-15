@@ -140,7 +140,9 @@ function addListing(list) {
     cardTitle.innerText = listing.title;
 
     var cardImg = document.createElement("img");
-    cardImg.src = listing.image;
+    if(!cardImg)
+    console.log(listing.image);
+    cardImg.src = `https://source.unsplash.com/random/?${"office "+Math.random()}`;
 
     var cardDescr = document.createElement("p");
     cardDescr.classList.add("cardDescr");
