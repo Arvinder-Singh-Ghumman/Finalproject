@@ -61,10 +61,7 @@
   flex-direction: column;
   gap: 10px;
   flex-basis: 0;
-<<<<<<< HEAD
   overflow-y: scroll;
-=======
->>>>>>> 18528132f1c4cb325763186535784cd52aee5000
 }
 
 #filterContainerHeading{
