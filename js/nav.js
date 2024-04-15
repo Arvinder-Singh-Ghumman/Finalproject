@@ -11,6 +11,6 @@ window.addEventListener('load', async function() {
     document.getElementById("navHome").href="loggedInHome.html";
   }else{
     document.getElementById("navHome").href="index.html";
-    document.getElementById("navAccount").href="logIn.html";
+    document.getElementById("navAccount").href="login.html";
   }
 });
