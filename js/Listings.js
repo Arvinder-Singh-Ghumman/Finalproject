@@ -1,35 +1,79 @@
-import { listings } from "../database/listingsDatabse.js";
-var workspaces;
+var resultLists = [];
+async function getListings() {
+  let body;
+  var searchData={};
+  var fetchUrl = `${url}/listing/search/?`;
 
-//fetch listings
-function getListings() {
-  //storing all the listings in local database as we are not implementing a backend in phase 1
-  if (localStorage.getItem("workspaces") == null) {
-    workspaces = listings;
-    localStorage.setItem("workspaces", JSON.stringify(workspaces));
-  } else {
-    workspaces = JSON.parse(localStorage.getItem("workspaces"));
+  var search = document.getElementById("searchBar").value;
+  if (search && search.trim()!=="") searchData.title = search;
+
+  // address
+  var address = document.getElementById("citySelection").value;
+  if (address && address.trim()!=="") searchData.address = address.trim();
+  //category
+  let category =
+  document.querySelector('input[name="category"]:checked') == null
+  ? null
+  : document.querySelector('input[name="category"]:checked').value;
+  console.log(category);
+  if (category) searchData.category = category;
+  // minprice
+  var minPrice = document.getElementById("minPrice").value;
+  if (minPrice && minPrice!=="") searchData.minPrice = minPrice.trim();
+  // maxPrice
+  var maxPrice = document.getElementById("maxPrice").value;
+  if (maxPrice && maxPrice!=="") searchData.maxPrice = maxPrice.trim();
+  // seatingCapacity
+  var seatingCapacity = document.getElementById("seatingCapacity").value;
+  if (seatingCapacity && seatingCapacity.trim()!=="") searchData.seatingCapacity = seatingCapacity.trim();
+   var rate =
+    document.querySelector('input[name="rating"]:checked') == null
+      ? null
+      : document.querySelector('input[name="rating"]:checked').value;
+  if(rate && rate!=="")searchData.rate = rate;
+  
+  let finalUrl  =  fetchUrl + toQuery(searchData);
+  try {
+    const response = await fetch(finalUrl, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    const data = await response.json();
+    console.log(data);
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+    resultLists = data;
+  } catch (error) {
+    console.error("Error occurred: ", error);
   }
-
-  //updating workspaces as per search param
-  let searchParam = document.querySelector("#searchBar").value;
-  if (search !== "") var results = search(searchParam);
-
-  results !== null ? filterListings(results) : filterListings(workspaces);
+  resultLists.forEach((el) => addListing(el));
 }
 
-function search(searchParam) {
-  //in name
-  let res = workspaces.filter((el) => {
-    if (el.title.includes(searchParam)) return true;
-  });
-  let categories = ["workspace", "meeting Room", "desk", "private Office"];
-  categories.forEach((el) => {
-    if (searchParam.toLowerCase().includes(el.toLowerCase()))
-      document.querySelector("#" + el.replace(" ", "")).checked = true;
-  });
+// function search(searchParam) {
+//   //in name
+//   let res = workspaces.filter((el) => {
+//     if (el.title.includes(searchParam)) return true;
+//   });
+//   let categories = ["workspace", "meeting Room", "desk", "private Office"];
+//   categories.forEach((el) => {
+//     if (searchParam.toLowerCase().includes(el.toLowerCase()))
+//       document.querySelector("#" + el.replace(" ", "")).checked = true;
+//   });
 
-  return res;
+//   return res;
+// }
+function toQuery(data) {
+  const queryParams = [];
+  for (const key in data) {
+    if (data.hasOwnProperty(key)) {
+      queryParams.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`);
+    }
+  }
+  return queryParams.join('&');
 }
 
 function filterListings(results) {
@@ -121,14 +165,22 @@ function addListing(listing, cardsId) {
   // creating card and its elements
   var card = document.createElement("div");
   card.classList.add("card");
-  card.id=listing.id;
+  card.id = listing._id;
 
   var cardTitle = document.createElement("h3");
   cardTitle.classList.add("cardTitle");
-  cardTitle.innerText = listing.owner;
+  cardTitle.innerText = listing.title;
 
   var cardImg = document.createElement("img");
-  cardImg.src = listing.image;
+  if (
+    !listing.picturePath ||
+    listing.picturePath === "" ||
+    listing.picturePath.length === 0
+  )
+    cardImg.src = `https://source.unsplash.com/random/?${
+      "office " + Math.random()
+    }`;
+  else cardImg.src = listing.picturePath;
 
   var cardDescr = document.createElement("p");
   cardDescr.classList.add("cardDescr");
@@ -151,18 +203,21 @@ function addListing(listing, cardsId) {
   card.appendChild(cardRating);
 
   //adding card to the given cardsId
-  var cards = document.getElementById(cardsId);
+  var cards = document.getElementById("SearchResults");
   cards.append(card);
 }
 
-window.onload = () => {
-  getListings();
+window.onload = async () => {
+  await getListings();
 
   //adding event listenr
   try {
-    document.querySelectorAll(".card").forEach((el)=>{
-      el.addEventListener("click", (e)=> window.location.href=("listinginfo.html?id="+el.id))
-    })
+    document.querySelectorAll(".card").forEach((el) => {
+      el.addEventListener(
+        "click",
+        (e) => (window.location.href = "listinginfo.html?id=" + el.id)
+      );
+    });
     document.querySelector("#filtered").addEventListener("click", getListings);
     document
       .querySelector("#searchBar")

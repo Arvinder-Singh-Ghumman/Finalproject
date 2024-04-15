@@ -117,6 +117,7 @@ async function deleteAccount() {
     if (!response.ok) {
       throw new Error(data.message);
     }
+    localStorage.removeItem("token");
     alert("Deleted succesffully");
   } catch (error) {
     console.error("Error occurred: ", error);
@@ -169,9 +170,12 @@ window.onload = async ()  =>  {
   var container1 = document.querySelector(".container");
   var container2 = document.querySelector(".container2");
   var container3 = document.querySelector(".container3");
+  var changePasswordContainer = document.querySelector("#changePasswordContainer");
+  // var updateContainer = document.querySelector("#container")
   container1.style.display = "none";
   container2.style.display = "none";
   container3.style.display = "block";
+  changePasswordContainer.style.display = "none";
 
   //icons
   var profileIcon = document.querySelectorAll(".profileIcon");
@@ -191,6 +195,7 @@ window.onload = async ()  =>  {
       container1.style.display = "none";
       container2.style.display = "none";
       container3.style.display = "block";
+      changePasswordContainer.style.display = "none";
     });
   }
 
@@ -216,9 +221,20 @@ window.onload = async ()  =>  {
       container1.style.display = "none";
       container2.style.display = "block";
       container3.style.display = "none";
+      changePasswordContainer.style.display = "none";
     });
   }
 
   document.getElementById("logOut").addEventListener("click", logOut);
   document.getElementById("delete").addEventListener("click", deleteAccount);
+
+
+  var changePasswordOption = document.querySelector("#changePassword")
+
+  changePasswordOption.addEventListener("click", function(){
+    changePasswordContainer.style.display = "flex";
+    container1.style.display = "none";
+    container2.style.display = "none";
+    container3.style.display = "none";
+  })
 };

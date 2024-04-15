@@ -53,18 +53,21 @@
           <form id="signup">
             <h1>Sign Up</h1>
             <p>
+              <div id="errorMessage"></div>
+            </p>
+            <p>
               <!-- <label for="_name_">Name:</label> -->
               <input type="text" id="_name_" required />
               <span>Name</span>
             </p>
             <p>
               <!-- <label for="_phone_">Phone Number:</label> -->
-              <input type="text" id="_phone_" inputmode="numeric" required />
+              <input type="number" id="_phone_" inputmode="numeric" required />
               <span>Phone Number</span>
             </p>
             <p>
               <!-- <label for="_email_">E-mail address:</label> -->
-              <input type="text" id="_email_" required />
+              <input type="email" id="_email_" required />
               <span>E-mail</span>
             </p>
             <p>

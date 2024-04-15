@@ -1,18 +1,19 @@
 const url = "http://localhost:5678";
-var loggedIn=false;
+var loggedIn = false;
 var user;
 
+var resStatus;
+let token = localStorage.getItem("token");
 
-  var resStatus;
-  let token = localStorage.getItem("token");
+async function getUsers(){
 
   if (token) {
-    loggedIn=true;
+    loggedIn = true;
     fetch(`${url}/user/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+        "Authorization": `Bearer ${token}`,
       },
     })
     .then((response) => {
@@ -24,15 +25,17 @@ var user;
         if (resStatus === 404) {
           throw new Error("The token has expired. Sign in again");
         }
-        localStorage.removeItem("token")
+        localStorage.removeItem("token");
         throw new Error(data.message);
       }
-      user=data;
+      user = data;
     })
     .catch((error) => {
       alert(error);
-      loggedIn=false;
-      localStorage.removeItem("token")
+      loggedIn = false;
+      localStorage.removeItem("token");
       window.location.href = "login.html";
     });
   }
+  
+}
