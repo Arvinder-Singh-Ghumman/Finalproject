@@ -76,8 +76,9 @@ async function addListing() {
   let imageFileInput = document.getElementById("imageInput");
   let imageFiles = imageFileInput.files;
   for (let i = 0; i < imageFiles.length; i++) {
-    formData.append("image", imageFiles[i]);
+    formData.append(`image`, imageFiles[i]);
   }
+  formData.append(``, true);
   
   try {
     let resStatus;

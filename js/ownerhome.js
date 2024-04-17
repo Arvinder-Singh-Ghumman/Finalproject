@@ -102,8 +102,8 @@ async function getListings() {
       document.querySelector("#sortOptions").value
     );
   }
-  
-  if(resultLists.length == 0 ){
+
+  if (resultLists.length == 0) {
     document.getElementById("listingsTitle").innerText = "No listings found";
   }
   addListing(resultLists.slice(0, myListCounter));
@@ -143,7 +143,11 @@ function addListing(list) {
     cardTitle.innerText = listing.title;
 
     var cardImg = document.createElement("img");
-    if (!listing.picturePath||listing.picturePath===''||listing.picturePath.length===0)
+    if (
+      !listing.picturePath ||
+      listing.picturePath === "" ||
+      listing.picturePath.length === 0
+    )
       cardImg.src = `https://source.unsplash.com/random/?${
         "office " + Math.random()
       }`;
@@ -233,6 +237,7 @@ function deleteListing(event, id) {
 
 window.onload = async () => {
   await getUsers();
+  if (user === undefined) window.location.href = "index.html";
 
   if (user.role !== "owner") {
     document
@@ -252,7 +257,6 @@ window.onload = async () => {
       );
   }
   await getListings();
-
 
   //for nav
   window.addEventListener("scroll", () => {

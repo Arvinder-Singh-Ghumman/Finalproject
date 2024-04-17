@@ -231,5 +231,7 @@ window.onload = async () => {
     document
       .querySelector("#searchBar")
       .addEventListener("change", getListings);
-  } catch {}
+  } catch (err){
+    console.log(err)
+  }
 };
