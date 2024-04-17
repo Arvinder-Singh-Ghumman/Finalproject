@@ -1,43 +1,45 @@
-var otherUser;
-var user;
 const url = "http://localhost:5678";
 const urlParams = new URLSearchParams(window.location.search);
-var userId = urlParams.get("userId");
+var otherUser;
+var user;
+var userId;
 
 async function fillValues() {
   //getting details of other user
+  userId = urlParams.get("id");
+  console.log(userId);
   if (userId === null) {
     userId = user._id;
-  }else{
+  } else {
     try {
       const response = await fetch(`${url}/user/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const data = await response.json();
-    if (!response.ok) {
-      throw new Error(data.message);
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      otherUser = data;
+    } catch (error) {
+      console.error("Error occurred: ", error);
     }
-    otherUser = data;
-  } catch (error) {
-    console.error("Error occurred: ", error);
   }
-}
 
   // let userIndex = users.findIndex((el) => el.id === userId);
   if (otherUser !== undefined) {
     document.getElementById("name").value = otherUser.name;
     document.getElementById("email").value = otherUser.email;
     document.getElementById("phone").value = otherUser.phone;
-  }else if(loggedIn){
+  } else if (loggedIn) {
     document.getElementById("name").value = user.name;
     document.getElementById("email").value = user.email;
     document.getElementById("phone").value = user.phone;
-  }else{
-    alert("failed to get details of the user.")
+  } else {
+    alert("failed to get details of the user.");
   }
 }
 
@@ -57,8 +59,8 @@ async function updateUserDatabase() {
     /\S+@\S+\.\S+/.test(emailInput.value.trim())
   ) {
     user.email = emailInput.value.trim();
-  }else if(emailInput){
-    alert("email format is wrong")
+  } else if (emailInput) {
+    alert("email format is wrong");
   }
 
   if (
@@ -67,7 +69,7 @@ async function updateUserDatabase() {
     !isNaN(phoneInput.value.trim())
   ) {
     user.phone = phoneInput.value.trim();
-  }else if(phoneInput){
+  } else if (phoneInput) {
     alert("phone format is wrong");
   }
 
@@ -83,7 +85,7 @@ async function updateUserDatabase() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(userData),
     });
@@ -124,12 +126,12 @@ async function deleteAccount() {
   }
 }
 
-async function getUsers(){
+async function getUsers() {
   var resStatus;
   let token = localStorage.getItem("token");
 
   if (token !== null) {
-    loggedIn=true;
+    loggedIn = true;
     try {
       const response = await fetch(`${url}/user/`, {
         method: "GET",
@@ -159,10 +161,49 @@ async function getUsers(){
   }
 }
 
-window.onload = async ()  =>  {
+async function addRating() {
+  let rate = document.getElementById("ratingSlider").value;
+  let rateText = document.getElementById("message").value;
+  if (otherUser && otherUser.role === "owner" && user.role !== "owner") {
+    alert("Only owners can rate coworkers");
+    return;
+  }
+  //adding rating
+  try {
+    // let formData = new FormData();
+    let reviews = [];
+    if (otherUser.reviews) reviews = otherUser.reviews;
+    reviews.push({ rating: rate, ratingText: rateText, by: user._id });
+
+    // Append values to FormData object
+    // formData.append("reviews", JSON.stringify(reviews));
+    console.log(reviews)
+    //updating
+    const response = await fetch(`${url}/user/addreview/${otherUser._id}`, {
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(reviews),
+    });
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.message);
+    }
+
+    alert("Review added");
+    otherUser = data.updatedUser;
+    fillValues();
+  } catch (error) {
+    alert("failed to update the listing");
+    console.error("Error occurred: ", error.message);
+  }
+}
+
+window.onload = async () => {
   try {
     user = await getUsers();
-    fillValues();
+    await fillValues();
   } catch (error) {
     console.error("Error fetching user:", error);
   }
@@ -170,7 +211,9 @@ window.onload = async ()  =>  {
   var container1 = document.querySelector(".container");
   var container2 = document.querySelector(".container2");
   var container3 = document.querySelector(".container3");
-  var changePasswordContainer = document.querySelector("#changePasswordContainer");
+  var changePasswordContainer = document.querySelector(
+    "#changePasswordContainer"
+  );
   // var updateContainer = document.querySelector("#container")
   container1.style.display = "none";
   container2.style.display = "none";
@@ -185,8 +228,10 @@ window.onload = async ()  =>  {
   //show or hide edit button
   if (loggedIn && userId === user._id) {
     edit.forEach((el) => (el.style.display = "block"));
+    settingsIcon.forEach((el) => (el.style.display = "block"));
   } else {
     edit.forEach((el) => (el.style.display = "none"));
+    settingsIcon.forEach((el) => (el.style.display = "none"));
   }
 
   //to change divs
@@ -228,13 +273,87 @@ window.onload = async ()  =>  {
   document.getElementById("logOut").addEventListener("click", logOut);
   document.getElementById("delete").addEventListener("click", deleteAccount);
 
+  //rating
+  console.log(otherUser)
+  if (loggedIn && user.role === "owner" && otherUser.role !== "owner") {
+    document.getElementById("ratingSlider").addEventListener("change", (el) => {
+      document.getElementById("sliderValue").textContent =
+        document.getElementById("ratingSlider").value;
+    });
+    document.getElementById("addRating").addEventListener("click", addRating);
+  } else {
+    document.getElementById("rate").style.display = "none";
+  }
 
-  var changePasswordOption = document.querySelector("#changePassword")
+  var changePasswordOption = document.querySelector("#changePassword");
 
-  changePasswordOption.addEventListener("click", function(){
+  changePasswordOption.addEventListener("click", function () {
     changePasswordContainer.style.display = "flex";
     container1.style.display = "none";
     container2.style.display = "none";
     container3.style.display = "none";
-  })
+  });
+
+  //reviews
+  if (otherUser) {
+    console.log(otherUser.reviews)
+    if (otherUser.reviews.length > 0) {
+      reviews = otherUser.reviews;
+    } else {
+      reviews = false;
+    }
+  } else if (user) {
+    if (user.reviews && user.reviews.length > 0) {
+      reviews = user.reviews;
+    } else {
+      reviews = false;
+    }
+  }
+
+  showNextReview();
+  setInterval(showNextReview, 3000); // Change review every 3 seconds
 };
+
+
+//reviews
+
+var reviews = otherUser?.reviews;
+const slideshowContainer = document.getElementById("review-slideshow");
+
+function addReviewSlide(review) {
+  const slide = document.createElement("div");
+  if (review === false) {
+    slide.innerHTML = "No reviews YET !";
+    slide.style.textAlign = "center";
+  } else {
+    slide.innerHTML = `
+        <p>by: ${review.name}</p>
+        <p>Rating: ${review.rating}</p>
+        <p>${review.ratingText}</p>
+    `;
+  }
+  slide.classList.add("review-slide");
+  slideshowContainer.appendChild(slide);
+  setTimeout(() => {
+    slide.classList.add("active");
+    setTimeout(() => {
+      slide.classList.remove("active");
+      setTimeout(() => {
+        slideshowContainer.removeChild(slide);
+      }, 1000);
+    }, 2000);
+  }, 1000);
+}
+
+function showNextReview() {
+  console.log(reviews)
+  if (!reviews) {
+    addReviewSlide(false);
+    return;
+  }
+  const review = reviews.shift();
+  addReviewSlide(review);
+  reviews.push(review);
+}
+
+// Start the slideshow

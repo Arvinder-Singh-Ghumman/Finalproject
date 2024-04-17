@@ -66,11 +66,6 @@ main {
 
 }
 
-.splitContainer {
-    display: flex;
-    justify-content: space-between;
-}
-
 #left {
     flex: 0 1 1;
     flex-grow: 1;
@@ -118,6 +113,27 @@ main {
     font-size: medium;
     font-weight: bolder;
 }
+#neighborhood::before {
+    content: "Neighborhood: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+#publicTransportation::before {
+    content: "Public Transportation: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+#parking::before {
+    content: "Parking: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+#area::before {
+    content: "Area: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+
 
 #image {
     padding: 5vmin;
@@ -174,7 +190,7 @@ main {
 
 #rating::before {
     content: "";
-    background-image: url(../assets/rating.jpeg);
+    background-image: url(../assets/image.png);
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -362,6 +378,7 @@ main {
     flex-direction: row;
     width: 80%;
     width: fit-content;
+    width: 100%;
     /* gap: 80px; */
     justify-content: space-between;
     /* align-items: ; */
