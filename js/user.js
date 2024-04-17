@@ -28,7 +28,7 @@ function signUp(event) {
   //validation
   if (new_userName.length < 3) {
     errorMessage.innerText = "Name must be of at least 3 letters.";
-    alert("Name too small");
+    // alert("Name too small");
   }
   var resStatus;
   //signup
@@ -49,11 +49,12 @@ function signUp(event) {
         throw new Error(data.message);
       }
       localStorage.setItem("token", data.token);
-      alert("Signup successful");
+      // alert("Signup successful");
       openPage("loggedInHome.html");
     })
     .catch(error => {
-      console.warn('Error during signup:', error);
+      // console.warn('Error during signup:', error);
+      document.querySelector("#errorMessage").innerText = `Sign Up failed, ${error}`
     });
 }
 
