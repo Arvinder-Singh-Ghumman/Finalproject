@@ -2502,5 +2502,4 @@ const listingsData = [{
     hasParking: true,
     hasPublicTransportation: false,
   }
-
 ];
