@@ -46,6 +46,10 @@
           <p id="term">Term:</p>
           <p id="availability">Availability:</p>
           <p id="category">Category:</p>
+          <p id="neighborhood">Neighborhood</p>
+          <p id="area">Area(in sq feet):</p>
+          <p id="parking">Parking Availability</p>
+          <p id="publicTransportation">Public Transportation Availability</p>
         </div>
         <div id="right">
           <p id="seating">Seating Capacity:</p> <br>
@@ -64,7 +68,7 @@
       <h1 id="editListingHeader">Edit Listing</h1>
       <div id="listingInfoInput">
         <input type="text" id="titleInput" placeholder="Title" />
-        <input type="file" id="imageInput" placeholder="Image URL" />
+        <input type="file" multiple id="imageInput" placeholder="Image URL" />
         <textarea id="descriptionInput" rows="4" placeholder="Description"></textarea>
       </div>
       <div class="splitContainer">
@@ -73,11 +77,22 @@
           <input type="text" id="contactInput" placeholder="Contact" />
           <input type="text" id="termInput" placeholder="Term" />
           <input type="text" id="availabilityInput" placeholder="Availability" />
-          <input type="text" id="categoryInput" placeholder="Category" />
+          <input type="text" id="categoryInput" placeholder="Category" /> 
           <p>
             <label for="smokingInput">Smoking Allowed</label>
             <input type="checkbox" id="smokingInput">
           </p>
+          <input type="text" id="neighborhoodInput" placeholder="Neighborhood">
+          <input type="number" id="areaInput" placeholder="Area in sq feet">
+          <p>
+            <label for="parkingAvailabilityInput">Parking Availability</label>
+            <input type="checkbox" id="parkingAvailabilityInput">
+          </p>
+          <p>
+            <label for="publicTransportationAvailabilityInput">Public Transportation Availability</label>
+            <input type="checkbox" id="publicTransportationAvailabilityInput">
+          </p>
+          
         </div>
         <div id="rightInput">
           <input type="text" id="seatingInput" placeholder="Seating Capacity" />
@@ -87,6 +102,11 @@
       <img id="buttonBackground" src="assets/paintbrushStroke.png" alt="">
       <button id="submitEdit">Done</button>
     </div>
+
+    <div class="slideshow-container" id="review-slideshow">
+      <!-- Reviews will be added dynamically here -->
+    </div>
+
     <div class="rate" id="rate">
       <h4>Rate This Listing</h4>
       <div class="slider-container">

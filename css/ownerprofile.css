@@ -6,6 +6,7 @@
 
 main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(66, 94, 122));
   min-height: 100vh;
@@ -29,6 +30,7 @@ body {
   background: #e4e4e4;
   padding:15vmin;
   margin:25vmin auto;
+  margin-bottom: 5vmin;
 }
 .container2 {
   display: none;
@@ -41,9 +43,10 @@ body {
   background: #e4e4e4;
   /* padding:15vmin; */
   margin:25vmin auto;
+  margin-bottom: 5vmin;
 }
 .container3 {
-  /* display: none; */
+  display: none;
   position: relative;
   height: fit-content;
   width: 50vw;
@@ -53,7 +56,56 @@ body {
   background: #e4e4e4;
   padding:15vmin;
   margin:25vmin auto;
+  margin-bottom: 5vmin;
 }
+#changePasswordContainer{
+  display: none;
+  position: relative;
+  height: fit-content;
+  width: 50vw;
+  min-width: 400px;
+  max-width: 100dvw;
+  border-radius: 10px;
+  background: #e4e4e4;
+  padding:15vmin;
+  margin:25vmin auto;
+  justify-content: space-evenly;
+}
+#changePasswordContainer #changePasswordInfo{
+  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+#changePasswordContainer p{
+  display: flex;
+  justify-content: space-between;
+  /* gap: 40px; */
+  /* height: 20px; */
+  /* width: 50%; */
+}
+#changePasswordContainer label{
+  font-size: 20px;
+  /* width: 150px; */
+}
+#changePasswordContainer input{
+  height: 20px;
+  width: 50%;
+  padding: 3px;
+}
+#changePasswordContainer #confirmPasswordChange{
+  width: 100px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+}
+#changePasswordContainer #confirmPasswordChange:active{
+  background-color: rgb(31, 31, 31);
+}
+
+
 
 #iconContainer {
   position: absolute;
@@ -107,6 +159,19 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   font-weight: 500;
+}
+
+.editInfo{
+  height: 30px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 90px;
+}
+.editInfo:active{
+  background-color: rgba(20, 20, 20, 0.644);
 }
 
 
@@ -191,4 +256,126 @@ body {
   color: white;
   filter: grayscale(0);
   box-shadow: inset 0px 0px 50px 1px rgba(0, 0, 0, 0.57);
+}
+
+/* review */
+.slideshow-container {
+  /* background-color: wheat; */
+  width: 50vw;
+    min-width: 400px;
+    max-width: 100dvw;
+  position: relative;
+  margin: auto;
+  min-height: 150px;
+  /* overflow: hidden; */
+}
+.review-slide  p{
+  color: black;
+  font-size: 1em;
+}
+.review-slide {
+  /* position: absolute; */
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.review-slide.active {
+  opacity: 1;
+}
+
+/* rating */
+.rate {
+  font-family: monospace;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 50vw;
+  min-width: 400px;
+  max-width: 100dvw;
+  margin-bottom: 15vmin;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+}
+
+.slider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.slider {
+  width: 70%;
+}
+
+.message-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.slider-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  width: 70%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
 }

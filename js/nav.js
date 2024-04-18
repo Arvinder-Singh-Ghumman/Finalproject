@@ -6,11 +6,12 @@ window.addEventListener('load', async function() {
       document.querySelector("nav").classList.remove("navScrolled");
     }
   });
+  await getUsers()
   if(loggedIn){
     document.getElementById("navAccount").href="loggedInProfile.html";
     document.getElementById("navHome").href="loggedInHome.html";
   }else{
     document.getElementById("navHome").href="index.html";
-    document.getElementById("navAccount").href="logIn.html";
+    document.getElementById("navAccount").href="login.html";
   }
 });

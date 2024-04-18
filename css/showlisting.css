@@ -66,15 +66,10 @@ main {
 
 }
 
-.splitContainer {
-    display: flex;
-    justify-content: space-between;
-}
-
 #left {
     flex: 0 1 1;
     flex-grow: 1;
-    width: 50%;
+    width: 60%;
     line-height: 30px;
     /* background: black; */
 }
@@ -118,6 +113,27 @@ main {
     font-size: medium;
     font-weight: bolder;
 }
+#neighborhood::before {
+    content: "Neighborhood: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+#publicTransportation::before {
+    content: "Public Transportation: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+#parking::before {
+    content: "Parking: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+#area::before {
+    content: "Area: ";
+    font-size: medium;
+    font-weight: bolder;
+}
+
 
 #image {
     padding: 5vmin;
@@ -174,7 +190,7 @@ main {
 
 #rating::before {
     content: "";
-    background-image: url(../assets/rating.jpeg);
+    background-image: url(../assets/image.png);
     background-size: contain;
     background-repeat: no-repeat;
     position: absolute;
@@ -315,17 +331,18 @@ main {
 
 #containerInput {
     display: flex;
-    display: none;
+    /* display: none; */
     height: 800px;
     width: 45vw;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
     background: radial-gradient(in circle, rgb(255, 255, 255), 20vw, rgb(255, 241, 204));
-    background: transparent;
+    /* background: transparent; */
     position: relative;
     min-width: 600px;
     border-radius: 35px;
+    padding-bottom: 50px;
 }
 
 #listingInfoInput {
@@ -360,6 +377,8 @@ main {
     /* display: hidden; */
     flex-direction: row;
     width: 80%;
+    width: fit-content;
+    width: 100%;
     /* gap: 80px; */
     justify-content: space-between;
     /* align-items: ; */
@@ -370,6 +389,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    /* width: 70%; */
 }
 #leftInput p{
     display: flex;
@@ -406,8 +426,9 @@ main {
     font-weight: 500;
     /* border-radius: 20px; */
     position: absolute;
-    bottom: 63px;
+    bottom: 22px;
     z-index: 999;
+    /* margin-bottom: 50px; */
 }
 #containerInput #submitEdit:active{
     color: black;
@@ -424,80 +445,125 @@ main {
 
 
 
-.rate{
-    display: flex;
-    flex-direction: column;background-color: white;
-    /* width: 25vw; */
-    /* border: 5px solid rgba(0, 0, 0, 0.8); */
-    padding:3vw 7vw;
-    justify-content: space-evenly;
-    align-items: center;
-    border-radius: 30px;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.898),rgba(0, 0, 0, 0.619));
-}
-.rate h4{
-    font-size: 30px;
-}
-.rate .slider-container{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 90px;
-}
-.rate input{
-    width: 10vw;
-    /* padding-bottom: 40px; */
-}
-.rate #sliderValue{
-    font-size: 20px;
-    position: absolute;
-    top: 23px;
-    right: -15px;
-}
-.rate textarea{
-    width: 18vw;
-    /* height: 200px; */
-    height: 150px;
-    border-radius: 5px;
-    padding: 5px;
-    font-size: 15px;
+/* rating */
+.rate {
+  font-family: monospace;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  padding: 20px;
+  width: 50vw;
+  min-width: 400px;
+  max-width: 100dvw;
+  margin-bottom: 15vmin;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
 }
 
-.rate #addRating{
-    margin-top: 50px;
-    width: 70px;
-    height: 30px;
-    border: none;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 500;
-    color: rgb(83, 30, 39);
+.slider-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin-top: 20px;
 }
-.rate #addRating:active{
-    color: white;
-    background-color: rgb(83, 30, 39);
-    /* border:1px solid white; */
+
+.slider {
+  width: 70%;
+}
+
+.message-container {
+  width: 100%;
+  margin-top: 20px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+.slider-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  width: 70%;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #007bff;
+  cursor: pointer;
 }
 
 
-#leftInput p #smokingInput{
-    /* height: 20px; */
-    width: 20px;
-    border-radius: 0px;
-    /* border: none; */
-    padding-left: 0px;
+/* review */
+.slideshow-container {
+  /* background-color: wheat; */
+  width: 50vw;
+    min-width: 400px;
+    max-width: 100dvw;
+  position: relative;
+  margin: auto;
+  min-height: 150px;
+  /* overflow: hidden; */
+}
+.review-slide  p{
+  color: black;
+  font-size: 1em;
+}
+.review-slide {
+  /* position: absolute; */
+  width: 100%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
-#buttonBackground{
-    width: 100px;
-    opacity: 0.6;
-    /* position: absolute;
-    bottom: 65px;
-    z-index: 1; */
-}
-.contactOwner{
-    margin-top: 30px;
-    display: flex;
-    justify-content: right;
+.review-slide.active {
+  opacity: 1;
 }
