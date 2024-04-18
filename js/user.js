@@ -1,4 +1,4 @@
-const url = "http://localhost:5678";
+const url = "https://coworker-server.onrender.com";
 
 function signUp(event) {
   event.preventDefault();

@@ -163,7 +163,19 @@ function addListing(list) {
 
     var cardRating = document.createElement("p");
     cardRating.classList.add("cardRating");
-    cardRating.innerText = listing.rating;
+    //getting avgRating
+  var avgRating;
+  if(listing.reviews){
+    let reviews = listing.reviews;
+    let totalRating = 0;
+    reviews.forEach((el) => {
+      totalRating += parseInt(el.rating);
+    });
+    reviews?.length === 0
+      ? (avgRating = 0)
+      : (avgRating = (totalRating / reviews.length));
+  }
+    cardRating.innerText = avgRating ? avgRating+" Reviews":"no reviews yet";
 
     //adding elements of card to card
     card.appendChild(cardTitle);

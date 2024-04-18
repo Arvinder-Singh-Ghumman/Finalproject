@@ -183,8 +183,8 @@ async function addRating() {
     let formData = new FormData();
     let reviews = [];
     if(listing.reviews) reviews = listing.reviews;
-    reviews.push({rating: rate,ratingText: rateText,by:user._id})
- 
+    reviews.push({rating: rate,ratingText: rateText,by:{id:user._id,name:user.name}})
+ console.log(reviews)
     // Append values to FormData object
       formData.append("reviews", JSON.stringify(reviews));
 
@@ -360,4 +360,48 @@ window.onload = async () => {
   document
     .getElementById("submitEdit")
     .addEventListener("click", (event) => editListing(event));
+
+    showNextReview();
+    setInterval(showNextReview, 3000); // Change review every 3 seconds
 };
+
+//reviews
+
+var reviews = listing?.reviews;
+const slideshowContainer = document.getElementById("review-slideshow");
+
+function addReviewSlide(review) {
+  const slide = document.createElement("div");
+  if (review === false) {
+    slide.innerHTML = "No reviews YET !";
+    slide.style.textAlign = "center";
+  } else {
+    slide.innerHTML = `
+        <p>by: ${review.by.name}</p>
+        <p>Rating: ${review.rating}</p>
+        <p>${review.ratingText}</p>
+    `;
+  }
+  slide.classList.add("review-slide");
+  slideshowContainer.appendChild(slide);
+  setTimeout(() => {
+    slide.classList.add("active");
+    setTimeout(() => {
+      slide.classList.remove("active");
+      setTimeout(() => {
+        slideshowContainer.removeChild(slide);
+      }, 1000);
+    }, 2000);
+  }, 1000);
+}
+
+function showNextReview() {
+  reviews = listing?.reviews
+  if (!reviews) {
+    addReviewSlide(false);
+    return;
+  }
+  const review = reviews.shift();
+  addReviewSlide(review);
+  reviews.push(review);
+}

@@ -1,4 +1,4 @@
-const url = "http://localhost:5678";
+// const url = "http://localhost:5678";
 const urlParams = new URLSearchParams(window.location.search);
 var otherUser;
 var user;
@@ -24,6 +24,22 @@ async function fillValues() {
         throw new Error(data.message);
       }
       otherUser = data;
+
+      //reviews updating
+      if (otherUser) {
+        console.log(otherUser.reviews);
+        if (otherUser.reviews.length > 0) {
+          reviews = otherUser.reviews;
+        } else {
+          reviews = false;
+        }
+      } else if (user) {
+        if (user.reviews && user.reviews.length > 0) {
+          reviews = user.reviews;
+        } else {
+          reviews = false;
+        }
+      }
     } catch (error) {
       console.error("Error occurred: ", error);
     }
@@ -34,10 +50,39 @@ async function fillValues() {
     document.getElementById("name").value = otherUser.name;
     document.getElementById("email").value = otherUser.email;
     document.getElementById("phone").value = otherUser.phone;
+    //getting avgRating
+    var avgRating;
+    if (otherUser.reviews) {
+      let totalRating = 0;
+      otherUser.reviews.forEach((el) => {
+        totalRating += parseInt(el.rating);
+      });
+      otherUser.reviews?.length === 0
+        ? (avgRating = 0)
+        : (avgRating = totalRating / reviews.length);
+    }
+    document.getElementById("rating").value = avgRating
+      ? avgRating
+      : "No reviews Yet!";
   } else if (loggedIn) {
     document.getElementById("name").value = user.name;
     document.getElementById("email").value = user.email;
     document.getElementById("phone").value = user.phone;
+    //getting avgRating
+    var avgRating;
+    if (user.reviews) {
+      let reviews = user.reviews;
+      let totalRating = 0;
+      reviews.forEach((el) => {
+        totalRating += parseInt(el.rating);
+      });
+      reviews?.length === 0
+        ? (avgRating = 0)
+        : (avgRating = totalRating / reviews.length);
+    }
+    document.getElementById("rating").value = avgRating
+      ? avgRating
+      : "No reviews Yet!";
   } else {
     alert("failed to get details of the user.");
   }
@@ -177,12 +222,13 @@ async function addRating() {
 
     // Append values to FormData object
     // formData.append("reviews", JSON.stringify(reviews));
-    console.log(reviews)
+    console.log(reviews);
     //updating
     const response = await fetch(`${url}/user/addreview/${otherUser._id}`, {
       method: "POST",
-      headers:{
-        "Content-Type": "application/json"
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(reviews),
     });
@@ -226,7 +272,7 @@ window.onload = async () => {
   var settingsIcon = document.querySelectorAll(".settingsIcon");
 
   //show or hide edit button
-  if (loggedIn && userId === user._id) {
+  if (loggedIn && userId === user?._id) {
     edit.forEach((el) => (el.style.display = "block"));
     settingsIcon.forEach((el) => (el.style.display = "block"));
   } else {
@@ -274,7 +320,7 @@ window.onload = async () => {
   document.getElementById("delete").addEventListener("click", deleteAccount);
 
   //rating
-  console.log(otherUser)
+  console.log(otherUser);
   if (loggedIn && user.role === "owner" && otherUser.role !== "owner") {
     document.getElementById("ratingSlider").addEventListener("change", (el) => {
       document.getElementById("sliderValue").textContent =
@@ -296,7 +342,7 @@ window.onload = async () => {
 
   //reviews
   if (otherUser) {
-    console.log(otherUser.reviews)
+    console.log(otherUser.reviews);
     if (otherUser.reviews.length > 0) {
       reviews = otherUser.reviews;
     } else {
@@ -314,7 +360,6 @@ window.onload = async () => {
   setInterval(showNextReview, 3000); // Change review every 3 seconds
 };
 
-
 //reviews
 
 var reviews = otherUser?.reviews;
@@ -327,7 +372,7 @@ function addReviewSlide(review) {
     slide.style.textAlign = "center";
   } else {
     slide.innerHTML = `
-        <p>by: ${review.name}</p>
+        <p>by: ${review.by.name}</p>
         <p>Rating: ${review.rating}</p>
         <p>${review.ratingText}</p>
     `;
@@ -346,7 +391,7 @@ function addReviewSlide(review) {
 }
 
 function showNextReview() {
-  console.log(reviews)
+  console.log(reviews);
   if (!reviews) {
     addReviewSlide(false);
     return;

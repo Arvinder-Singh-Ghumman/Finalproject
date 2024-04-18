@@ -1,38 +1,38 @@
 var resultLists = [];
 async function getListings() {
   let body;
-  var searchData={};
+  var searchData = {};
   var fetchUrl = `${url}/listing/search/?`;
 
   var search = document.getElementById("searchBar").value;
-  if (search && search.trim()!=="") searchData.title = search;
+  if (search && search.trim() !== "") searchData.title = search;
 
   // address
   var address = document.getElementById("citySelection").value;
-  if (address && address.trim()!=="") searchData.address = address.trim();
+  if (address && address.trim() !== "") searchData.address = address.trim();
   //category
   let category =
-  document.querySelector('input[name="category"]:checked') == null
-  ? null
-  : document.querySelector('input[name="category"]:checked').value;
-  console.log(category);
+    document.querySelector('input[name="category"]:checked') == null
+      ? null
+      : document.querySelector('input[name="category"]:checked').value;
   if (category) searchData.category = category;
   // minprice
   var minPrice = document.getElementById("minPrice").value;
-  if (minPrice && minPrice!=="") searchData.minPrice = minPrice.trim();
+  if (minPrice && minPrice !== "") searchData.minPrice = minPrice.trim();
   // maxPrice
   var maxPrice = document.getElementById("maxPrice").value;
-  if (maxPrice && maxPrice!=="") searchData.maxPrice = maxPrice.trim();
+  if (maxPrice && maxPrice !== "") searchData.maxPrice = maxPrice.trim();
   // seatingCapacity
   var seatingCapacity = document.getElementById("seatingCapacity").value;
-  if (seatingCapacity && seatingCapacity.trim()!=="") searchData.seatingCapacity = seatingCapacity.trim();
-   var rate =
+  if (seatingCapacity && seatingCapacity.trim() !== "")
+    searchData.seatingCapacity = seatingCapacity.trim();
+  var rate =
     document.querySelector('input[name="rating"]:checked') == null
       ? null
       : document.querySelector('input[name="rating"]:checked').value;
-  if(rate && rate!=="")searchData.rate = rate;
-  
-  let finalUrl  =  fetchUrl + toQuery(searchData);
+  if (rate && rate !== "") searchData.rate = rate;
+
+  let finalUrl = fetchUrl + toQuery(searchData);
   try {
     const response = await fetch(finalUrl, {
       method: "GET",
@@ -50,9 +50,21 @@ async function getListings() {
   } catch (error) {
     console.error("Error occurred: ", error);
   }
-  document.getElementById("SearchResults").innerHTML="";
+  if (document.querySelector("#sortOptions").value !== "None") {
+    resultLists = sortListings(
+      resultLists,
+      document.querySelector("#sortOptions").value
+    );
+  }
+  document.getElementById("SearchResults").innerHTML = "";
+  // resultLists = sortListings(resultLists, )
   resultLists.forEach((el) => addListing(el));
-
+  document.querySelectorAll(".card").forEach((el) => {
+    el.addEventListener(
+      "click",
+      (e) => (window.location.href = "listinginfo.html?id=" + el.id)
+    );
+  });
 }
 
 // function search(searchParam) {
@@ -72,10 +84,12 @@ function toQuery(data) {
   const queryParams = [];
   for (const key in data) {
     if (data.hasOwnProperty(key)) {
-      queryParams.push(`${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`);
+      queryParams.push(
+        `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+      );
     }
   }
-  return queryParams.join('&');
+  return queryParams.join("&");
 }
 
 function filterListings(results) {
@@ -152,23 +166,41 @@ function filterListings(results) {
 // };
 
 function sortListings(unsorted, sortBy) {
-  let sortedList;
+  let sortedList = unsorted;
   switch (sortBy) {
     case "price":
-      sortedList = unsorted.sort((a, b) => a.price > b.price);
+      sortedList = unsorted.sort((a, b) => a.price - b.price);
+      break;
+    case "price dec":
+      sortedList = unsorted.sort((a, b) => b.price - a.price);
       break;
     case "name":
-      sortedList = unsorted.sort((a, b) => a.localeCompare(b));
+      sortedList = unsorted.sort((a, b) => a.title.localeCompare(b.title));
       break;
     case "rating":
-      sortedList = unsorted.sort((a, b) => a.rating > b.rating);
+      sortedList = unsorted.sort((a, b) => avgRating(a) - avgRating(b));
+      break;
+    case "rating dec":
+      sortedList = unsorted.sort((a, b) => avgRating(b) - avgRating(a));
       break;
   }
-  if (document.getElementById("sortByOrder").value === "1")
-    sortedList = sortedList.reverse();
   return sortedList;
 }
 
+function avgRating(a){
+  let res=0;
+  if (a.reviews) {
+    let reviews = a.reviews;
+    let totalRating = 0;
+    reviews.forEach((el) => {
+      totalRating += parseInt(el.rating);
+    });
+    reviews?.length === 0
+      ? (res = 0)
+      : (res = totalRating / reviews.length);
+  }
+  return res;
+}
 //function to add listings to the doc
 function addListing(listing, cardsId) {
   // creating card and its elements
@@ -201,7 +233,19 @@ function addListing(listing, cardsId) {
 
   var cardRating = document.createElement("p");
   cardRating.classList.add("cardRating");
-  cardRating.innerText = listing.rating;
+  //getting avgRating
+  var avgRating;
+  if (listing.reviews) {
+    let reviews = listing.reviews;
+    let totalRating = 0;
+    reviews.forEach((el) => {
+      totalRating += parseInt(el.rating);
+    });
+    reviews?.length === 0
+      ? (avgRating = 0)
+      : (avgRating = totalRating / reviews.length);
+  }
+  cardRating.innerText = avgRating;
 
   //adding elements of card to card
   card.appendChild(cardTitle);
@@ -231,7 +275,10 @@ window.onload = async () => {
     document
       .querySelector("#searchBar")
       .addEventListener("change", getListings);
-  } catch (err){
-    console.log(err)
+    document
+      .querySelector("#sortOptions")
+      .addEventListener("change", getListings);
+  } catch (err) {
+    console.log(err);
   }
 };
